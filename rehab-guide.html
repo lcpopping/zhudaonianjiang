@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>肌肉骨骼康复医学指南</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#2d6a4f;--secondary:#40916c;--accent:#52b788;--light:#d8f3dc;--dark:#1b4332;--bg:#f0f7f4;--text:#2d3436;--border:#b7e4c7}
+body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh}
+header{background:linear-gradient(135deg,var(--dark),var(--primary));color:#fff;padding:1.5rem 2rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+header h1{font-size:1.4rem;font-weight:600;letter-spacing:.05em}
+header p{font-size:.85rem;opacity:.8;margin-top:.2rem}
+.nav-tabs{display:flex;flex-wrap:wrap;gap:.4rem;padding:.8rem 1rem;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:72px;z-index:99;overflow-x:auto;white-space:nowrap}
+.nav-tabs button{background:var(--light);border:1px solid var(--border);border-radius:20px;padding:.4rem .9rem;font-size:.8rem;cursor:pointer;transition:all .2s;color:var(--dark);font-family:inherit}
+.nav-tabs button:hover,.nav-tabs button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.main{padding:1rem;max-width:900px;margin:0 auto;padding-bottom:3rem}
+.search-box{background:#fff;border-radius:12px;padding:.8rem 1rem;margin-bottom:1rem;display:flex;gap:.5rem;align-items:center;border:2px solid var(--border)}
+.search-box input{flex:1;border:none;outline:none;font-size:.9rem;background:transparent;font-family:inherit}
+.search-box input::placeholder{color:#aaa}
+.search-box span{color:var(--secondary);font-size:1.2rem}
+.part{max-width:900px;margin:0 auto}
+.part header{background:linear-gradient(135deg,var(--secondary),var(--accent));border-radius:12px 12px 0 0;padding:1rem 1.2rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
+.part header h2{font-size:1.1rem;font-weight:600;color:#fff}
+.part header span{color:#fff;font-size:1.2rem;transition:transform .3s}
+.part header:hover{filter:brightness(1.05)}
+.part.open header span{transform:rotate(180deg)}
+.part.open .content{display:block}
+.content{background:#fff;border-radius:0 0 12px 12px;padding:1.2rem;display:none;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.section{margin-bottom:1.5rem}
+.section:last-child{margin-bottom:0}
+.section h3{font-size:1rem;color:var(--primary);margin-bottom:.6rem;padding-bottom:.3rem;border-bottom:1px dashed var(--border);font-weight:600}
+.section h4{font-size:.9rem;color:var(--dark);margin:.8rem 0 .4rem;font-weight:600}
+.section p,.section li{font-size:.88rem;color:#444;margin-bottom:.3rem}
+ul{padding-left:1.2rem}
+li{margin-bottom:.2rem}
+.table{width:100%;border-collapse:collapse;margin:.6rem 0;font-size:.85rem}
+.table th{background:var(--light);padding:.5rem .6rem;text-align:left;font-weight:600;color:var(--dark);border:1px solid var(--border)}
+.table td{padding:.45rem .6rem;border:1px solid var(--border);vertical-align:top}
+.table tr:nth-child(even) td{background:#f8faf9}
+.badge{display:inline-block;background:var(--accent);color:#fff;font-size:.7rem;padding:.15rem .45rem;border-radius:10px;margin-right:.3rem;font-weight:600}
+.badge-warning{background:#f9a825}
+.badge-danger{background:#e53935}
+.test-box{background:linear-gradient(135deg,var(--light),#e8f5e9);border-radius:10px;padding:.8rem;border-left:4px solid var(--primary);margin:.6rem 0}
+.test-box strong{color:var(--dark);font-size:.9rem;display:block;margin-bottom:.3rem}
+.test-box p{font-size:.85rem;margin:0}
+.positive{color:#2e7d32;font-weight:600}
+.card{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.6rem;margin:.6rem 0}
+.card-item{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.7rem}
+.card-item strong{display:block;color:var(--dark);font-size:.85rem;margin-bottom:.2rem}
+.card-item p{font-size:.8rem;margin:0}
+.guide{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:.6rem 0}
+.guide-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:.7rem;text-align:center}
+.guide-item .num{width:28px;height:28px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto .4rem;font-size:.85rem;font-weight:600}
+.guide-item p{font-size:.8rem;margin:0}
+.phase{background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:8px;padding:.6rem;margin:.4rem 0}
+.phase strong{color:var(--dark);font-size:.85rem}
+.phase p{font-size:.8rem;margin:.2rem 0 0}
+.empty{text-align:center;padding:2rem;color:#888;font-size:.9rem}
+@media(max-width:600px){.nav-tabs{top:60px}.guide{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<h1>肌肉骨骼康复医学指南</h1>
+<p>身体各部位损伤判断 · 康复训练动作 · 预防措施</p>
+</header>
+<div class="nav-tabs" id="navTabs"></div>
+<div class="main" id="main">
+<div class="search-box">
+<span>🔍</span>
+<input type="text" placeholder="搜索部位或关键词，如" oninput="filterContent(this.value)">
+</div>
+<div id="contentList"></div>
+</div>
+<script>
+const DATA=[
+{title:"肩关节",icon:"💪",id:"shoulder",subs:[
+{title:"解剖",text:"肩关节由肱骨头与肩胛盂组成，是人体活动度最大的关节。包含肩袖肌群（冈上肌、冈下肌、小圆肌、肩胛下肌）、韧带（喙肱韧带、盂肱韧带）、滑囊等结构。"},
+{title:"肩周炎",text:"<strong>判断方法：</strong>主动和被动外展、前屈、外旋均受限；夜间疼痛明显；三角肌止点压痛。<br><strong>自测：</strong>梳头试验阳性（无法完成摸对侧耳朵）。<br><strong>评估：</strong>肩关节活动度测量（前屈、外展、外旋、内旋）。",badge:[{t:"活动度受限",c:"warning"},{t:"夜间痛",c:"danger"}]},
+{title:"肩袖损伤",text:"<strong>判断方法：</strong>主动外展无力；痛感弧试验阳性（在60°-120°外展时疼痛）；空罐试验阳性（冈上肌）。<br><strong>自测：</strong>冈上肌肌力测试——手臂外展90°、前屈30°、内旋，抵抗向下的力。<br><strong>评估：</strong>Drop arm test——手臂外展至90°，无法缓慢放下。",badge:[{t:"外展无力",c:"danger"},{t:"痛感弧",c:"warning"}]},
+{title:"肩关节不稳",text:"<strong>判断方法：</strong>恐惧试验阳性（前屈、外展、外旋时疼痛和恐惧感）；Sulcus sign（牵拉时出现明显凹陷）。<br><strong>自测：</strong>肩关节前后松动感明显。",badge:[{t:"恐惧试验+",c:"danger"}]},
+{title:"康复训练",text:"<div class='table'><tr><th>动作</th><th>目的</th><th>要点</th></tr><tr><td>钟摆运动</td><td>增加活动度</td><td>弯腰，手臂下垂，画圈，从小到大</td></tr><tr><td>爬墙练习</td><td>前屈外展</td><td>手指沿墙向上爬，每天记录高度</td></tr><tr><td>门框外旋</td><td>增加外旋</td><td>肘贴门框，前臂转动</td></tr><tr><td>弹力带外旋</td><td>肩袖肌力</td><td>弹力带固定，手臂外旋</td></tr><tr><td>冈上肌训练</td><td>肌力增强</td><td>手臂外展15°，抗阻上抬</td></tr></div>"},
+{title:"预防措施",text:"• 避免突然用力提重物<br>• 运动前充分热身<br>• 加强肩袖肌群力量训练<br>• 注意肩关节保暖"}
+]}
+,{title:"肘关节",icon:"🦾",id:"elbow",subs:[
+{title:"解剖",text:"肘关节由肱骨远端、桡骨、尺骨组成。包括肱尺关节（屈伸）、肱）、肱桡关节、桡尺近端关节。周围韧带：尺侧副韧带、桡侧副韧带、环状韧带。"},
+{title:"网球肘",text:"<strong>判断方法：</strong>肱骨外上髁压痛；Mill's试验阳性（握拳屈腕伸肘时疼痛）；中指伸展试验阳性。<br><strong>自测：</strong>手腕抗阻伸展时外上髁疼痛。<br><strong>评估：</strong>VAS疼痛评分；握力测量。",badge:[{t:"外上髁压痛",c:"danger"},{t:"Mill's征+",c:"danger"}]},
+{title:"高尔夫球肘",text:"<strong>判断方法：</strong>肱骨内上髁压痛；屈腕抗阻时疼痛；触诊内侧肌腱附着点。<br><strong>自测：</strong>手腕抗阻屈曲时内上髁疼痛。",badge:[{t:"内上髁压痛",c:"danger"}]},
+{title:"康复训练",text:"<strong>网球肘康复：</strong><br>• 离心训练：手腕放在桌边，手掌朝上，拿哑铃手腕缓慢下落再抬起<br>• 伸肌拉伸：手臂伸直，掌心朝下，另一手压下手背<br>• 握力练习：握球或握力器<br><br><strong>高尔夫球肘康复：</strong><br>• 屈腕离心训练<br>• 伸肌群拉伸<br>• 前臂筋膜松解"},
+{title:"预防措施",text:"• 工作时保持手腕中立位<br>• 长时间使用鼠标时手腕垫支撑<br>• 定期做前臂肌群拉伸<br>• 避免过度握力训练"}
+]}
+,{title:"腕关节",icon:"✋",id:"wrist",subs:[
+{title:"解剖",text:"腕关节由桡骨远端、尺骨远端、8块腕骨组成。包含腕管（正中神经通过）、腕横韧带，周围有伸肌腱和屈肌腱。"},
+{title:"腕管综合征",text:"<strong>判断方法：</strong>正中神经分布区麻木（拇指、食指、中指、无名指桡侧）；Tinel's征阳性（敲击腕横韧带处麻电感）；Phalen's试验阳性（屈腕90°60秒后症状加重）。<br><strong>自测：</strong>双手背靠背屈腕30秒出现麻木。<br><strong>评估：</strong>神经传导速度检查。",badge:[{t:"正中神经麻木",c:"danger"},{t:"Tinel's征+",c:"danger"}]},
+{title:"TFCC损伤",text:"<strong>判断方法：</strong>尺骨茎突远端压痛；尺腕应力试验阳性；旋前/旋后时疼痛。<br><strong>自测：</strong>腕关节尺偏时疼痛，前臂旋转痛。",badge:[{t:"尺偏疼痛",c:"warning"},{t:"旋转痛",c:"warning"}]},
+{title:"康复训练",text:"<strong>腕管综合征：</strong>正中神经滑动练习（手臂伸直，依次屈伸手指和手腕）<br><br><strong>TFCC损伤：</strong>尺偏练习、前臂旋前旋后抗阻<br><br>• 握力训练：握球练习<br>• 腕关节活动度：画圈练习"},
+{title:"预防措施",text:"• 使用键盘时手腕保持自然姿势<br>• 佩戴腕管综合征护具<br>• 避免手腕过度屈曲或伸展<br>• 工作间隙做手腕活动操"}
+]}
+,{title:"颈椎",icon:"🧠",id:"neck",subs:[
+{title:"解剖",text:"颈椎由7个椎骨组成，C1-C2为寰枢关节，C3-C7为典型颈椎。包含椎间盘、钩椎关节、关节突关节、脊髓、神经根、椎动脉。"},
+{title:"颈椎病",text:"<strong>判断方法：</strong>颈肩部疼痛、上肢放射痛或麻木；颈椎活动受限；神经根牵拉试验阳性（臂丛牵拉试验）；椎间孔挤压试验阳性。<br><strong>分型：</strong>神经根型（麻木疼痛）、脊髓型（四肢麻木、踩棉感）、椎动脉型（头晕）、交感神经型。<br><strong>自测：</strong>头部前屈、后仰、侧屈、旋转是否诱发症状。",badge:[{t:"上肢放射痛",c:"danger"},{t:"臂丛牵拉+",c:"danger"}]},
+{title:"颈部肌肉劳损",text:"<strong>判断方法：</strong>颈肩部压痛；肌肉紧张僵硬；低头久坐后加重。<br><strong>自测：</strong>斜角肌、斜方肌上部压痛点。",badge:[{t:"肌肉紧张",c:"warning"},{t:"低头加重",c:"warning"}]},
+{title:"康复训练",text:"• 颈部活动度练习：前屈、后仰、侧屈、旋转（每个方向10次）<br>• 颈部肌肉等长收缩：用手顶住头部，各方向抗阻6秒<br>• 肩胛骨收紧练习：挺胸收肩胛骨<br>• 麦肯基颈部伸展：仰卧抬头<br>• 姿势矫正：避免低头玩手机"},
+{title:"预防措施",text:"• 保持正确坐姿（电脑屏幕与眼睛平齐）<br>• 避免低头玩手机（每15分钟活动颈椎）<br>• 使用合适的枕头（高度约为一拳）<br>• 定期做颈部肌肉放松按摩"}
+]}
+,{title:"胸椎",icon:"🫁",id:"thoracic",subs:[
+{title:"解剖",text:"胸椎12个椎骨，与肋骨形成胸廓。活动度相对受限，主要参与躯干旋转和侧屈。"},
+{title:"胸椎活动度受限",text:"<strong>判断方法：</strong>躯干旋转角度减小；胸椎节段性活动度下降；胸椎后凸角度增加。<br><strong>自测：</strong>坐位旋转时肩部与骨盆的关系（正常旋转约45°）。<br><strong>评估：</strong>胸椎活动度测量；Schobers测试。",badge:[{t:"旋转受限",c:"warning"},{t:"后凸增加",c:"warning"}]},
+{title:"康复训练",text:"• 猫牛式：四点跪位交替脊柱屈伸<br>• 胸椎旋转练习：侧卧位旋转上侧胸椎<br>• 泡沫轴胸椎伸展：仰卧泡沫轴上<br>• 门框胸椎伸展：门框中做脊柱伸展<br>• 胸椎松动术"},
+{title:"预防措施",text:"• 保持良好姿势（避免驼背）<br>• 长时间坐姿后起身活动<br>• 练习胸椎活动度<br>• 加强核心稳定训练"}
+]}
+,{title:"腰椎",icon:"�脊柱",id:"lumbar",subs:[
+{title:"解剖",text:"腰椎5个椎骨，L4-L5、L5-S1椎间盘最易突出。包含椎体、椎间盘、关节突关节、黄韧带、硬膜囊、神经根。"},
+{title:"腰椎间盘突出",text:"<strong>判断方法：</strong>腰痛伴下肢放射痛；直腿抬高试验阳性（仰卧抬腿<70°诱发疼痛）；股神经牵拉试验；神经根受压体征。<br><strong>自测：</strong>咳嗽、打喷嚏时疼痛加重；坐骨神经分布区麻木。<br><strong>评估：</strong>JOA评分、ODI功能障碍指数。",badge:[{t:"下肢放射痛",c:"danger"},{t:"直腿抬高+",c:"danger"}]},
+{title:"腰肌劳损",text:"<strong>判断方法：</strong>腰部压痛；肌肉紧张僵硬；弯腰久坐后加重；无下肢放射痛。<br><strong>自测：</strong>第三腰椎横突、骶髂关节上方压痛。",badge:[{t:"腰部压痛",c:"warning"},{t:"无下肢放射",c:"ok"}]},
+{title:"康复训练",text:"<strong>麦肯基疗法：</strong><br>• 仰卧挺腹：仰卧抬臀，膝屈曲<br>• 俯卧撑起：俯卧用手撑起上半身<br>• 弓背练习：坐位弓背<br><br><strong>核心稳定训练：</strong><br>• Dead Bug：仰卧交替伸腿<br>• Bird Dog：四点跪位交替伸展对侧手脚<br>• 平板支撑<br>• 桥式练习"},
+{title:"预防措施",text:"• 避免弯腰搬重物（屈髋屈膝）<br>• 保持正确坐姿（腰部支撑）<br>• 加强核心肌群训练<br>• 避免长时间久坐（每45分钟起身活动）"}
+]}
+,{title:"骨盆",icon:"🦴",id:"pelvis",subs:[
+{title:"解剖",text:"骨盆由髂骨、坐骨、耻骨、骶骨、尾骨组成。包含骶髂关节、耻骨联合、髋关节（与股骨头形成）。"},
+{title:"骨盆前倾",text:"<strong>判断方法：</strong>髂前上棘（ASIS）相对于耻骨联合更靠前；腰椎前凸增加；腹部前凸、臀部后翘。<br><strong>自测：</strong>靠墙站立，腰与墙的间隙——正常为1-2个手掌厚度；仰卧时腰椎贴床困难。",badge:[{t:"腰椎前凸↑",c:"danger"},{t:"ASIS前于耻骨",c:"danger"}]},
+{title:"骨盆后倾",text:"<strong>判断方法：</strong>髂前上棘与耻骨联合接近同一垂直线；腰椎前凸减少；驼背体态。<br><strong>自测：</strong>靠墙站立时整个腰椎贴墙。",badge:[{t:"腰椎前凸↓",c:"warning"},{t:"ASIS与耻骨同线",c:"warning"}]},
+{title:"骶髂关节功能障碍",text:"<strong>判断方法：</strong>骶髂关节后方压痛；FABER试验阳性（屈曲、外展、外旋时诱发疼痛）；Gaenslens试验阳性（对侧腿下垂诱发疼痛）；髂骨活动度不对称。<br><strong>自测：</strong>俯卧位下按压骶髂关节后方；坐位转体时疼痛。",badge:[{t:"FABER试验+",c:"danger"},{t:"骶髂后压痛",c:"danger"}]},
+{title:"骨盆前倾矫正",text:"<div class='guide'><div class='guide-item'><div class='num'>1</div><p><strong>髂腰肌拉伸</strong><br>弓箭步拉伸</p></div><div class='guide-item'><div class='num'>2</div><p><strong>股直肌拉伸</strong><br>跪姿拉伸股直肌</p></div><div class='guide-item'><div class='num'>3</div><p><strong>腹肌训练</strong><br>卷腹、平板支撑</p></div><div class='guide-item'><div class='num'>4</div><p><strong>臀大肌训练</strong><br>臀桥、俯卧后抬腿</p></div></div>"},
+{title:"骶髂关节康复",text:"• 骶髂关节松动术<br>• 臀中肌训练：侧卧抬腿<br>• 核心稳定训练<br>• 髂腰肌拉伸"},
+{title:"预防措施",text:"• 避免久坐（每45分钟活动）<br>• 加强臀部和核心肌群<br>• 注意站姿（重心均匀分布）<br>• 睡姿避免长期单侧"}
+]}
+,{title:"髋关节",icon:"🦿",id:"hip",subs:[
+{title:"解剖",text:"髋关节由髋臼与股骨头组成，是典型的球窝关节。活动度：前屈120°、后伸30°、外展45°、内收30°、外旋40°、内旋45°。"},
+{title:"髋关节撞击症",text:"<strong>判断方法：</strong>腹股沟区疼痛；屈髋内旋时疼痛；前撞击试验阳性（髋关节屈曲90°、内收内旋时疼痛）。<br><strong>自测：</strong>Drehmann sign（屈髋时自动外旋）；坐位穿鞋困难。<br><strong>评估：</strong>X线、MRI。",badge:[{t:"腹股沟痛",c:"danger"},{t:"前撞击+",c:"danger"}]},
+{title:"髋臼盂唇损伤",text:"<strong>判断方法：</strong>髋关节弹响；腹股沟区刺痛；盂唇试验阳性。<br><strong>自测：</strong>髋关节活动时关节内弹响感。",badge:[{t:"关节弹响",c:"warning"},{t:"盂唇试验+",c:"danger"}]},
+{title:"康复训练",text:"• 髋关节活动度练习<br>• 臀中肌训练：侧卧抬腿、蚌式开合<br>• 臀大肌训练：臀桥<br>• 髂腰肌拉伸<br>• 核心稳定训练"},
+{title:"预防措施",text:"• 避免髋关节过度屈曲（如蹲姿）<br>• 加强髋周肌群力量<br>• 运动前充分热身<br>• 控制体重减少髋关节负担"}
+]}
+,{title:"膝关节",icon:"🦵",id:"knee",subs:[
+{title:"解剖",text:"膝关节由股骨远端、胫骨近端、髌骨组成。包含前交叉韧带（ACL）、后交叉韧带（PCL）、内侧副韧带（MCL）、外侧副韧带（LCL）、内侧半月板、外侧半月板。"},
+{title:"前交叉韧带损伤",text:"<strong>判断方法：</strong>膝关节肿胀（积血）；Lachman试验阳性；前抽屉试验阳性；X线无骨折但MRI可见韧带信号。<br><strong>自测：</strong>膝关节扭伤后肿胀、活动受限。<br><strong>评估：</strong>KT-1000关节测量仪。",badge:[{t:"肿胀",c:"danger"},{t:"Lachman+",c:"danger"}]},
+{title:"半月板损伤",text:"<strong>判断方法：</strong>关节线压痛；McMurray试验阳性（屈膝旋转时弹响）；关节交锁。<br><strong>自测：</strong>下蹲时关节线疼痛；膝关节伸直受限。",badge:[{t:"关节线压痛",c:"danger"},{t:"McMurray+",c:"danger"}]},
+{title:"髌骨软化",text:"<strong>判断方法：</strong>髌骨后疼痛；髌骨研磨试验阳性；Q角增大。<br><strong>自测：</strong>上下楼梯时髌骨后疼痛；长时间屈膝疼痛。",badge:[{t:"髌骨后痛",c:"warning"},{t:"研磨试验+",c:"danger"}]},
+{title:"康复训练",text:"<strong>ACL重建术后康复分期：</strong><br><div class='phase'><strong>阶段一（0-2周）</strong><p>股四头肌等长收缩、直腿抬高、踝泵</p></div><div class='phase'><strong>阶段二（2-6周）</strong><p>被动屈膝90°、坐位垂腿</p></div><div class='phase'><strong>阶段三（6-12周）</strong><p>主动屈膝、靠墙下蹲</p></div><div class='phase'><strong>阶段四（3-6月）</strong><p>平衡训练、本体感觉</p></div><div class='phase'><strong>阶段五（6月+）</strong><p>跑跳训练</p></div><br><strong>半月板康复：</strong>股四头肌训练、关节活动度练习、髋关节力量训练<br><strong>髌骨软化康复：</strong>直腿抬高、靠墙半蹲、髂胫束拉伸"},
+{title:"预防措施",text:"• 加强股四头肌和腘绳肌力量<br>• 运动前充分热身和拉伸<br>• 佩戴护膝保护<br>• 避免跳跃后突然转向"
+]}
+,{title:"踝关节",icon:"🦶",id:"ankle",subs:[
+{title:"解剖",text:"踝关节（距小腿关节）由关节）由胫骨、腓骨、距骨组成。韧带：距腓前韧带（最易损伤）、跟腓韧带、距腓后韧带、三角韧带。"},
+{title:"踝关节扭伤",text:"<strong>判断方法：</strong>外踝前下方压痛肿胀；前抽屉试验阳性；内翻应力试验阳性。<br><strong>分级：</strong>I度（轻度拉伤）、II度（部分撕裂）、III度（完全撕裂）。<br><strong>自测：</strong>受伤踝关节肿胀、瘀斑、疼痛。",badge:[{t:"外踝压痛",c:"danger"},{t:"内翻应力+",c:"danger"}]},
+{title:"跟腱炎",text:"<strong>判断方法：</strong>跟腱止点压痛；跟腱弥漫性增粗；Thompson试验排除断裂。<br><strong>自测：</strong>踮脚尖时跟腱疼痛。",badge:[{t:"跟腱压痛",c:"danger"},{t:"踮脚痛",c:"warning"}]},
+{title:"足底筋膜炎",text:"<strong>判断方法：</strong>足底跟骨内侧结节压痛；早晨第一步疼痛；足底筋膜紧张。<br><strong>自测：</strong>足趾被动背屈时跟骨内侧疼痛。",badge:[{t:"早晨痛",c:"danger"},{t:"跟骨内侧压痛",c:"danger"}]},
+{title:"康复训练",text:"<strong>踝关节扭伤康复（RICE原则）：</strong><br>• R-Rest（休息）• I-Ice（冰敷）• C-Compression（加压）• E-Elevation（抬高）<br><br>踝泵练习<br>抗阻背屈、外翻、内翻<br>平衡训练（单腿站立）<br>跟腱拉伸<br><br><strong>跟腱炎康复：</strong>离心训练（踮脚尖缓慢下落）、跟腱拉伸<br><br><strong>足底筋膜炎康复：</strong>足底筋膜拉伸（坐位手握足趾背屈）、滚球按摩、冰敷足底、小腿三头肌拉伸"},
+{title:"预防措施",text:"• 运动前充分热身<br>• 加强踝关节力量和平衡训练<br>• 选择合适的鞋具<br>• 避免在硬地面长时间站立"
+]}
+,{title:"颞下颌关节",icon:"🦷",id:"tmj",subs:[
+{title:"解剖",text:"颞下颌关节由颞骨关节面、下颌骨髁突、关节盘组成。包含关节韧带：蝶颞韧带、颞下颌韧带、茎突下颌韧带。"},
+{title:"颞下颌关节紊乱",text:"<strong>判断方法：</strong>张口受限或偏斜；关节弹响；咀嚼肌压痛；下颌前伸、侧方运动受限。<br><strong>自测：</strong>张口度正常约3.7cm（3指）；下颌运动时关节或咀嚼肌疼痛。<br><strong>评估：</strong>开口度测量、咀嚼肌肌电图。",badge:[{t:"张口受限",c:"danger"},{t:"关节弹响",c:"warning"}]},
+{title:"康复训练",text:"• 下颌活动度练习：张口、闭口、前伸、侧方运动<br>• 咀嚼肌放松：轻柔按摩<br>• 肩颈姿势矫正<br>• 避免硬食、单侧咀嚼"},
+{title:"预防措施",text:"• 避免咬硬物<br>• 注意咀嚼习惯（两侧交替）<br>• 减少紧张性咬牙<br>• 保持良好站姿和坐姿"}
+]}
+,{title:"急性期处理",icon:"🚑",id:"acute",subs:[
+{title:"RICE/PRICE原则",text:"<div class='card'><div class='card-item'><strong>R - Rest 休息</strong><p>停止活动，避免负重</p></div><div class='card-item'><strong>I - Ice 冰敷</strong><p>15-20分钟/次，2-3小时/次</p></div><div class='card-item'><strong>C - Compression 加压</strong><p>弹力绷带包扎</p></div><div class='card-item'><strong>E - Elevation 抬高</strong><p>高于心脏水平</p></div></div>"},
+{title:"康复评定指标",text:"<div class='table'><tr><th>指标</th><th>说明</th></tr><tr><td>疼痛</td><td>VAS评分（0-10）</td></tr><tr><td>活动度</td><td>关节角度测量</td></tr><tr><td>肌力</td><td>徒手肌力分级（MMT 0-5）</td></tr><tr><td>功能</td><td>特异性功能评估量表</td></tr></div>"},
+{title:"预防通用策略",text:"1. 正确的姿势（站、坐、卧）<br>2. 运动前充分热身<br>3. 均衡的肌肉力量训练<br>4. 避免过度使用和代偿<br>5. 合适的鞋具和辅具<br>6. 充足的休息和恢复"}
+]}
+];
+
+let openParts=new Set(["shoulder","lumbar","pelvis"]);
+
+function renderNav(){
+ const nav=document.getElementById("navTabs");
+ nav.innerHTML="";
+ DATA.forEach(d=>{
+  const btn=document.createElement("button");
+  btn.textContent=(d.icon||"")+" "+d.title;
+  btn.className=openParts.has(d.id)?"active":"";
+  btn.onclick=()=>togglePart(d.id);
+  nav.appendChild(btn);
+ });
+}
+
+function renderContent(){
+ const list=document.getElementById("contentList");
+ list.innerHTML="";
+ DATA.forEach(d=>{
+  const part=document.createElement("div");
+  part.className="part"+(openParts.has(d.id)?" open":"");
+  part.id="part-"+d.id;
+  let badgeStr="";
+  if(openParts.has(d.id)){
+   let subHtml="";
+   d.subs.forEach(s=>{
+    let badges="";
+    if(s.badge){
+     badges=s.badge.map(b=>`<span class="badge badge-${b.c}">${b.t}</span>`).join("");
+    }
+    subHtml+=`<div class="section"><h4>${s.title}${badges?"<br>"+badges:""}</h4>${s.text}</div>`;
+   });
+   part.innerHTML=`<header onclick="togglePart('${d.id}')"><h2>${d.icon||""} ${d.title}</h2><span>▼</span></header><div class="content">${subHtml}</div>`;
+  }else{
+   part.innerHTML=`<header onclick="togglePart('${d.id}')"><h2>${d.icon||""} ${d.title}</h2><span>▼</span></header>`;
+  }
+  list.appendChild(part);
+ });
+}
+
+function togglePart(id){
+ if(openParts.has(id)) openParts.delete(id);
+ else openParts.add(id);
+ renderNav();
+ renderContent();
+ if(document.querySelector(".search-box input").value) filterContent(document.querySelector(".search-box input").value);
+}
+
+function filterContent(q){
+ if(!q.trim()){renderContent();return;}
+ const list=document.getElementById("contentList");
+ list.innerHTML="";
+ DATA.forEach(d=>{
+  let matchedSubs=[];
+  d.subs.forEach(s=>{
+   if(s.title.includes(q)||s.text.includes(q)) matchedSubs.push(s);
+  });
+  if(matchedSubs.length===0) return;
+  const part=document.createElement("div");
+  part.className="part open";
+  let subHtml="";
+  matchedSubs.forEach(s=>{
+   let badges="";
+   if(s.badge){
+    badges=s.badge.map(b=>`<span class="badge badge-${b.c}">${b.t}</span>`).join("");
+   }
+   subHtml+=`<div class="section"><h4>${s.title}${badges?"<br>"+badges:""}</h4>${s.text}</div>`;
+  });
+  part.innerHTML=`<header onclick="togglePart('${d.id}')"><h2>${d.icon||""} ${d.title}</h2><span>▼</span></header><div class="content">${subHtml}</div>`;
+  list.appendChild(part);
+ });
+ if(list.children.length===0){
+  list.innerHTML='<div class="empty">没有找到相关内容</div>';
+ }
+}
+
+renderNav();
+renderContent();
+</script>
+</body>
+</html>

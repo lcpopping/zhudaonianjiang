@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>运动训练 - 筑基篇</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f7f4;min-height:100vh}
+.nav{background:linear-gradient(180deg,#1b4332,#2d6a4f);color:#fff;width:200px;position:fixed;height:100vh;overflow-y:auto;flex-shrink:0}
+.nav-title{font-size:15px;font-weight:600;padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:8px}
+.nav-section{font-size:10px;color:rgba(255,255,255,0.45);padding:8px 16px 4px;text-transform:uppercase;letter-spacing:0.05em}
+.nav-item{width:100%;padding:8px 16px;background:transparent;border:none;color:rgba(255,255,255,0.8);cursor:pointer;font-size:13px;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.2s;border-left:3px solid transparent;font-family:inherit}
+.nav-item:hover{background:rgba(255,255,255,0.1);color:#fff}
+.nav-item.active{background:rgba(255,255,255,0.15);color:#fff;border-left-color:#52b788}
+.nav-tools{padding:12px 16px;border-top:1px solid rgba(255,255,255,0.1);margin-top:auto}
+.nav-tool{width:100%;padding:8px 12px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:rgba(255,255,255,0.9);cursor:pointer;font-size:12px;display:flex;align-items:center;gap:6px;margin-bottom:6px;font-family:inherit}
+.nav-tool:last-child{margin-bottom:0}
+.nav-tool:hover{background:rgba(255,255,255,0.2)}
+.main{margin-left:200px;min-height:100vh;display:flex;flex-direction:column}
+.header{background:#fff;height:52px;border-bottom:1px solid #b7e4c7;display:flex;align-items:center;padding:0 20px;position:sticky;top:0;z-index:50;flex-shrink:0}
+.header h1{font-size:15px;color:#1b4332;font-weight:600}
+.content{flex:1;padding:16px 20px;max-width:900px}
+.page{display:none}
+.page.active{display:block}
+.back-btn{background:#e2e8f0;border:none;padding:7px 14px;border-radius:6px;cursor:pointer;font-size:12px;color:#4a5568;margin-bottom:12px;font-family:inherit}
+.back-btn:hover{background:#cbd5e0}
+.card{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+.card-title{font-size:13px;font-weight:600;color:#1b4332;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:6px}
+.part-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.part-card{background:#fff;border:1px solid #b7e4c7;border-radius:12px;padding:16px 12px;cursor:pointer;transition:all 0.2s;text-align:center}
+.part-card:hover{border-color:#52b788;transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.1)}
+.part-card .icon{font-size:36px;margin-bottom:8px}
+.part-card .name{font-size:13px;font-weight:600;color:#1b4332}
+.part-card .desc{font-size:10px;color:#888;margin-top:4px}
+.section-block{background:#fff;border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+.section-hd{padding:12px 16px;background:#f8fffe;border-bottom:1px solid #b7e4c7;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
+.section-hd:hover{background:#f0fff8}
+.section-hd .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.tag-red{background:#fed7d7;color:#c53030}
+.tag-yellow{background:#fefcbf;color:#b7791f}
+.tag-green{background:#c6f6d5;color:#276749}
+.tag-blue{background:#bee3f8;color:#2b6cb0}
+.tag-purple{background:#e9d8fd;color:#6b46c1}
+.section-hd h3{font-size:13px;color:#1b4332;flex:1}
+.section-hd .arrow{color:#888;font-size:12px;transition:transform 0.2s}
+.section-hd.open .arrow{transform:rotate(180deg)}
+.section-body{padding:12px 16px;display:none}
+.section-body.open{display:block}
+.item{background:#f8fffe;border:1px solid #b7e4c7;border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.item:last-child{margin-bottom:0}
+.item h4{font-size:12px;color:#1b4332;margin-bottom:6px;font-weight:600}
+.item ul{margin:0 0 0 14px;font-size:11px;color:#555;line-height:1.9}
+.item li{margin-bottom:2px}
+.train-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.train-card{background:#fff;border:1px solid #b7e4c7;border-radius:10px;padding:12px}
+.train-card .name{font-size:12px;font-weight:600;color:#1b4332;margin-bottom:6px}
+.train-card .desc{font-size:11px;color:#666;line-height:1.6}
+.train-card .difficulty{font-size:10px;padding:2px 8px;border-radius:8px;display:inline-block;margin-top:6px}
+.diff-easy{background:#c6f6d5;color:#276749}
+.diff-medium{background:#fefcbf;color:#b7791f}
+.diff-hard{background:#fed7d7;color:#c53030}
+.empty{text-align:center;padding:40px;color:#aaa;font-size:12px}
+.empty .icon{font-size:40px;margin-bottom:10px;opacity:0.5}
+@media(max-width:700px){.nav{width:56px}.nav-title,.nav-item span,.nav-section,.nav-tools span{display:none}.nav-item{justify-content:center;padding:10px}.nav-item .icon{font-size:20px}.main{margin-left:56px}.header h1{font-size:13px}.part-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}.train-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="nav">
+<div class="nav-title">🏋️ 运动训练</div>
+<div id="navList"></div>
+<div class="nav-tools">
+<div class="nav-tool" onclick="location.href='../index.html'"><span>🏠</span><span>返回主页</span></div>
+</div>
+</div>
+<div class="main">
+<div class="header"><h1 id="headerTitle">运动训练</h1></div>
+<div class="content">
+<div id="page-home" class="page active"></div>
+<div id="page-part" class="page"></div>
+</div>
+</div>
+<script>
+var MODULES=[
+{name:"五大动作模式",icon:"🦍",category:"力量训练",
+desc:"人体基础运动模式，涵盖推、拉、蹲、弓步、搬运",
+anatomy:"动作模式是人类完成日常活动和运动的基础功能单位。",
+principles:[
+{title:"推（Push）",tag:"blue",
+types:["水平推：俯卧撑、卧推","垂直推：肩上推举、阿诺德推举"],
+points:["肩胛骨稳定","核心收紧","肘关节微屈","呼吸配合"]},
+{title:"拉（Pull）",tag:"green",
+types:["水平拉：划船、引体向上","垂直拉：下拉、高位划船"],
+points:["肩胛骨收回","背部发力","手臂引导","离心控制"]},
+{title:"蹲（Squat）",tag:"blue",
+types:["徒手深蹲","杠铃深蹲","前蹲","高脚杯蹲"],
+points:["足膝同向","膝不超过脚尖","腰背挺直","臀部后坐"]},
+{title:"弓步（Lunge）",tag:"green",
+types:["后退弓步","前进弓步","侧弓步","保加利亚 split squat"],
+points:["前后膝90°","躯干直立","重心居中","膝盖朝向"]},
+{title:"搬运（Carry）",tag:"purple",
+types:["农夫行走","单臂行走","过顶行走"," suitcase carry"],
+points:["脊柱中立","肩胛稳定","核心收紧","步伐稳健"]}
+],
+train:[
+{name:"俯卧撑",desc:"双手撑地，间距与肩同宽，下降时吸气，推起时呼气。每组10-15次，每天3组。",difficulty:"easy"},
+{name:"水平划船",desc:"弹力带或哑铃，握住把手，肩胛骨后收拉动。每组12次，每天3组。",difficulty:"easy"},
+{name:"徒手深蹲",desc:"双脚与肩同宽，臀部后坐至大腿与地面平行，膝不超过脚尖。每组15次，每天3组。",difficulty:"easy"},
+{name:"后退弓步",desc:"站立，向后迈步至前后膝均90°，交替进行。每组12次（每侧6次），每天3组。",difficulty:"medium"},
+{name:"农夫行走",desc:"双手握哑铃/壶铃，保持脊柱直立行走30米。每天3组。",difficulty:"easy"}],
+prevention:["运动前充分热身","遵循循序渐进原则","保持正确动作模式","注意恢复和休息"}),
+
+{name:"拉伸训练",icon:"🧘",category:"柔韧训练",
+desc:"改善关节活动度，减少肌肉僵硬，预防损伤",
+anatomy:"柔韧性指关节在正常范围内活动的能力，受肌肉长度、关节结构、韧带弹性影响。",
+principles:[
+{title:"静态拉伸",tag:"green",
+types:["主动拉伸","被动拉伸"],
+points:["保持30-60秒","不引发疼痛","缓慢逐渐深入","配合呼吸"]},
+{title:"动态拉伸",tag:"blue",
+types:["腿部摆动","手臂绕环","躯干旋转"],
+points:["热身时使用","重复10-15次","幅度逐渐增加","不急促用力"]},
+{title:"PNF拉伸",tag:"purple",
+types:["收缩-放松","保持-放松"],
+points:["先主动收缩","然后放松并拉伸","重复2-3次","效果更持久"]},
+{title:"筋膜释放",tag:"yellow",
+types:["泡沫轴","网球/花生球","筋膜枪"],
+points:["滚动至压痛点","保持30-60秒","不引发剧痛","配合营养水分"]}
+],
+train:[
+{name:"腘绳肌拉伸",desc:"坐姿，一腿伸直，另一腿屈膝，身体前倾伸手够脚尖。保持30秒，每侧3次。",difficulty:"easy"},
+{name:"股四头肌拉伸",desc:"站立，单手扶墙，另一手握脚踝向后拉至大腿前侧拉伸。保持30秒，每侧3次。",difficulty:"easy"},
+{name:"髂腰肌拉伸",desc:"弓步站立，后腿膝盖着地，身体向前倾感受后腿髋前侧拉伸。保持30秒，每侧3次。",difficulty:"medium"},
+{name:"胸椎旋转训练",desc:"四点支撑，一只手置于脑后，旋转胸椎看向手肘。保持10秒，每组10次。",difficulty:"easy"},
+{name:"肩部环绕",desc:"双臂做肩胛骨稳定性练习，双肩前后各绕环20次。",difficulty:"easy"}],
+prevention:["运动后进行拉伸","避免过度拉伸","保持肌肉温度","长期坚持见效"]}),
+
+{name:"体态矫正",icon:"🧍",category:"体态训练",
+desc:"改善圆肩驼背、骨盆前倾、XO型腿等常见体态问题",
+anatomy:"不良体态影响美观和功能，常见原因包括肌肉失衡、关节活动度受限、日常生活姿势。",
+principles:[
+{title:"圆肩矫正",tag:"red",
+causes:["肩胛骨前引","胸肌紧张","背肌薄弱","日常姿势"],
+assess:["侧面观察肩耳线","肩胛骨前引程度","肩关节内旋角度"],
+points:["拉伸胸肌","强化中下斜方肌","肩胛骨后收练习","注意日常姿势"]},
+{title:"驼背矫正",tag:"red",
+causes:["上背力量不足","胸椎活动度受限","头前倾姿势","日常习惯"],
+assess:["侧面观察耳肩髋线","胸椎曲度","肩胛骨位置"],
+points:["打开胸廓练习","强化上背肌群","胸椎伸展训练","减少低头时间"]},
+{title:"骨盆前倾",tag:"yellow",
+causes:["髂腰肌紧张","竖脊肌紧张","腹肌薄弱","臀部无力"],
+assess:["靠墙测试腰曲过大","Thomas试验阳性","站姿侧面观察"],
+points:["拉伸髂腰肌","拉伸竖脊肌","强化腹肌","强化臀肌"]},
+{title:"XO型腿矫正",tag:"yellow",
+causes:["膝关节内外翻","足弓问题","髋外展肌薄弱","日常步态"],
+assess:["站立正面观察","膝盖中点与踝中点连线","步态分析"],
+points:["强化臀中肌","拉伸内收肌","足弓训练","步态矫正"]}
+],
+train:[
+{name:"肩胛骨后收训练",desc:"双手弹力带握紧，肩胛骨向后夹紧，每组15次，每天3组。",difficulty:"easy"},
+{name:"YTWL训练",desc:"俯卧或俯撑位，分别做Y、T、W、L字形动作。每组每个字母10次。",difficulty:"medium"},
+{name:"胸廓打开训练",desc:"墙角面对墙，双臂撑墙，肘与肩同高，身体前倾打开胸廓。保持30秒，每天5次。",difficulty:"easy"},
+{name:"臀桥训练",desc:"仰卧屈膝，臀部发力抬起身体，锁骨至膝盖成直线。每组20次，每天3组。",difficulty:"easy"},
+{name:"侧卧蚌壳训练",desc:"侧卧屈膝，双脚靠拢，膝部分开抗阻。每组15次，每天3组。",difficulty:"medium"}],
+prevention:["保持正确站姿坐姿","每坐1小时起身活动","加强核心稳定性训练","注意睡姿和枕头高度"]}),
+
+{name:"核心训练",icon:"🔥",category:"力量训练",
+desc:"强化核心肌群，提升躯干稳定性和力量传递效率",
+anatomy:"核心包括腹横肌、多裂肌、膈肌、盆底肌，形成腹腔压力桶稳定脊柱。",
+principles:[
+{title:"核心稳定训练",tag:"green",
+types:["呼吸训练","腹部训练","脊柱中立位"],
+points:["保持脊柱中立","激活腹横肌","配合呼吸","循序渐进"]},
+{title:"抗伸展训练",tag:"blue",
+types:["平板支撑","死虫式","猎鸟狗"],
+points:["保持身体直线","不塌腰不弓背","控制呼吸","逐步增加时间"]},
+{title:"抗旋转训练",tag:"purple",
+types:["伐木动作","旋转推击","单臂负重行走"],
+points:["传递力量通过中线","保持骨盆稳定","不依赖惯性","动作控制"]}
+],
+train:[
+{name:"平板支撑",desc:"肘撑地，身体成一条直线，腹部收紧不塌腰。保持30-60秒，每组3次。",difficulty:"easy"},
+{name:"死虫式",desc:"仰卧，双手向天花板伸直，对侧手脚交替下落但不触地。每组10次，每天3组。",difficulty:"medium"},
+{name:"猎鸟狗",desc:"四点支撑，对侧手脚同时伸展，保持身体稳定。每组12次（每侧6次），每天3组。",difficulty:"medium"},
+{name:"侧桥",desc:"侧卧，单侧前臂和脚撑地，身体成一条直线。保持30秒，每侧3次。",difficulty:"medium"},
+{name:"农夫行走",desc:"双手握重物行走，保持脊柱直立，核心收紧。行走30米，每天3组。",difficulty:"easy"}],
+prevention:["保持脊柱中立位","避免憋气","循序渐进增加难度","注意恢复和营养"]}),
+
+{name:"上肢训练",icon:"💪",category:"力量训练",
+desc:"上肢推拉动作系统，强化肩、臂、背部肌群",
+anatomy:"上肢肌群分为推肌群（胸、三角肌前束、肱三头肌）和拉肌群（背阔肌、菱形肌、三角肌后束、二头肌）。",
+principles:[
+{title:"推类动作",tag:"red",
+types:["水平推：俯卧撑、卧推","垂直推：推举、阿诺德推举"],
+points:["肩胛骨稳定","肘关节微屈不锁死","力量从地面传递","呼吸配合"]},
+{title:"拉类动作",tag:"green",
+types:["水平拉：划船、引体向上","垂直拉：下拉、高位划船"],
+points:["肘关节贴近身体","肩胛骨后收下引","背部主导发力","离心控制"]},
+{title:"孤立训练",tag:"blue",
+types:["手臂弯举","三头臂屈伸","侧平举","前平举"],
+points:["固定关节角度","目标肌群发力","控制动作节奏","选择合适重量"]}
+],
+train:[
+{name:"俯卧撑",desc:"双手撑地，间距与肩同宽，下降时吸气推起时呼气。每组10-15次，每天3组。",difficulty:"easy"},
+{name:"哑铃推举",desc:"坐姿或站姿，双手持哑铃向上推举，肘微屈。每组12次，每天3组。",difficulty:"medium"},
+{name:"弹力带划船",desc:"一脚踩弹力带，双手握把手，肩胛骨后收拉动。每组15次，每天3组。",difficulty:"easy"},
+{name:"引体向上（辅助）",desc:"弹力带辅助或器械辅助，完成引体向上。每组6-10次，每天3组。",difficulty:"hard"},
+{name:"哑铃弯举",desc:"双手持哑铃，二头肌发力弯举至肩高。每组12次，每天3组。",difficulty:"easy"}],
+prevention:["训练前充分热身肩关节","注意肩胛骨稳定性","避免耸肩代偿","重量循序渐进"]}),
+
+{name:"下肢训练",icon:"🦵",category:"力量训练",
+desc:"下肢力量训练，强化髋、膝、踝三大关节肌群",
+anatomy:"下肢肌群包括髋伸肌（臀大肌、腘绳肌）、髋外展肌（臀中肌）、膝伸肌（股四头肌）、膝屈肌（腘绳肌）、踝跖屈肌（小腿三头肌）。",
+principles:[
+{title:"髋主导训练",tag:"green",
+types:["硬拉","臀桥","罗马尼亚硬拉","Hip thrust"],
+points:["髋关节铰链","腰背挺直","臀部主导发力","膝关节微屈"]},
+{title:"膝主导训练",tag:"blue",
+types:["深蹲","腿举","腿弯举","腿伸展"],
+points:["膝膝同向","膝不超过脚尖","臀部后坐","核心收紧"]},
+{title:"单腿训练",tag:"purple",
+types:["单腿深蹲","保加利亚分腿蹲","单腿臀桥","单腿提踵"],
+points:["骨盆水平","核心稳定","控制平衡","循序渐进"]}
+],
+train:[
+{name:"徒手深蹲",desc:"双脚与肩同宽，臀部后坐至大腿与地面平行。每组15次，每天3组。",difficulty:"easy"},
+{name:"臀桥",desc:"仰卧屈膝，臀部发力抬起，锁骨至膝盖成直线。每组20次，每天3组。",difficulty:"easy"},
+{name:"罗马尼亚硬拉",desc:"手持哑铃，髋关节铰链屈髋，杠铃沿腿下落，臀部后收。每组12次，每天3组。",difficulty:"medium"},
+{name:"单腿站平衡训练",desc:"单腿站立，保持平衡30秒。每天3组。",difficulty:"medium"},
+{name:"提踵训练",desc:"站立双足提踵至最高点，保持3秒缓慢下落。每组20次，每天3组。",difficulty:"easy"}],
+prevention:["运动前充分热身下肢","注意膝关节与脚尖同向","加强臀中肌训练","避免膝内扣"]}),
+
+{name:"运动处方",icon:"📋",category:"综合训练",
+desc:"科学制定个性化运动计划，涵盖FITT原则和周期化安排",
+anatomy:"运动处方是根据个体健康状况和目标，制定的系统化运动方案。",
+principles:[
+{title:"FITT原则",tag:"blue",
+types:["Frequency（频率）","Intensity（强度）","Time（时间）","Type（类型）"],
+points:["有氧：每周3-5次","力量：每周2-4次","强度：心率或RPE评估","时间：每次30-60分钟"]},
+{title:"超负荷原则",tag:"green",
+types:["渐进增加重量","增加训练次数","减少休息时间","增加动作复杂度"],
+points:["10%原则：每周增加不超过10%","记录训练数据","感受身体反馈","避免过度训练"]},
+{title:"周期化训练",tag:"purple",
+types:["准备期：基础期","比赛期：强化期","过渡期：恢复期"],
+points:["分阶段设定目标","调整训练重点","注意恢复周期","避免长期单一训练"]}
+],
+train:[
+{name:"初级增肌计划",desc:"每周3次，每次45分钟。包含上肢推、拉、下肢各2个动作，每个动作3组8-12次。",difficulty:"medium"},
+{name:"减脂计划",desc:"每周5次有氧+2次力量。每次有氧30分钟心率130-150，力量每次3个动作3组。",difficulty:"medium"},
+{name:"柔韧提升计划",desc:"每天拉伸15-20分钟，包含主要肌群静态拉伸，每个动作保持60秒。",difficulty:"easy"},
+{name:"功能性训练计划",desc:"每周3次，每次40分钟。包含核心稳定、抗旋转、平衡训练。",difficulty:"medium"},
+{name:"运动恢复计划",desc:"运动后进行泡沫轴放松和拉伸，补充蛋白质和水分，保证7-8小时睡眠。",difficulty:"easy"}],
+prevention:["运动前评估健康状况","量力而行循序渐进","注意运动后恢复","保持营养和水分"]})
+];
+
+function go(page,partName){
+var pages=document.querySelectorAll('.page');
+for(var i=0;i<pages.length;i++)pages[i].classList.remove('active');
+if(page==='part'&&partName){
+var p=null;
+for(var i=0;i<MODULES.length;i++)if(MODULES[i].name===partName){p=MODULES[i];break;}
+if(p)renderPart(p);
+document.getElementById('page-part').classList.add('active');
+document.getElementById('headerTitle').textContent=p.name;
+}else{
+document.getElementById('page-home').classList.add('active');
+document.getElementById('headerTitle').textContent='运动训练';
+if(page==='home')renderHome();
+}
+var navBtns=document.querySelectorAll('.nav-item');
+for(var i=0;i<navBtns.length;i++)navBtns[i].classList.remove('active');
+}
+
+function renderHome(){
+var html='<div class="card"><div class="card-title">🏋️ 训练模块</div><div class="part-grid">';
+for(var i=0;i<MODULES.length;i++){
+var p=MODULES[i];
+html+='<div class="part-card" onclick="go(\'part\',\''+p.name+'\')"><div class="icon">'+p.icon+'</div><div class="name">'+p.name+'</div><div class="desc">'+p.category+'</div></div>';
+}
+html+='</div></div>';
+document.getElementById('page-home').innerHTML=html;
+var navHtml='';
+var categories={};
+for(var i=0;i<MODULES.length;i++){
+var c=MODULES[i].category;
+if(!categories[c])categories[c]=[];
+categories[c].push(MODULES[i]);
+}
+var catOrder=['力量训练','柔韧训练','体态训练','综合训练'];
+for(var ci=0;ci<catOrder.length;ci++){
+var c=catOrder[ci];
+if(!categories[c])continue;
+navHtml+='<div class="nav-section">'+c+'</div>';
+for(var j=0;j<categories[c].length;j++){
+var p=categories[c][j];
+navHtml+='<div class="nav-item" onclick="go(\'part\',\''+p.name+'\')"><span>'+p.icon+'</span><span>'+p.name+'</span></div>';
+}
+}
+document.getElementById('navList').innerHTML=navHtml;
+}
+
+function renderPart(p){
+var html='<button class="back-btn" onclick="go(\'home\')">← 返回模块列表</button>';
+html+='<div class="card"><p style="font-size:12px;color:#555;line-height:1.8">'+p.desc+'</p></div>';
+html+='<div class="section-block"><div class="section-hd" onclick="toggleSection(this)"><span class="tag tag-blue">理论</span><h3>训练原则</h3><span class="arrow">▼</span></div><div class="section-body">';
+for(var i=0;i<p.principles.length;i++){
+var a=p.principles[i];
+html+='<div class="item"><h4><span class="tag tag-'+a.tag+'">'+a.tag+'</span> '+a.title+'</h4>';
+if(a.types&&a.types.length>0){
+html+='<strong style="font-size:11px;color:#1b4332">类型：</strong><ul>';
+for(var j=0;j<a.types.length;j++)html+='<li>'+a.types[j]+'</li>';
+html+='</ul>';
+}
+if(a.points&&a.points.length>0){
+html+='<strong style="font-size:11px;color:#1b4332">要点：</strong><ul>';
+for(var j=0;j<a.points.length;j++)html+='<li>'+a.points[j]+'</li>';
+html+='</ul>';
+}
+if(a.causes&&a.causes.length>0){
+html+='<strong style="font-size:11px;color:#1b4332">原因：</strong><ul>';
+for(var j=0;j<a.causes.length;j++)html+='<li>'+a.causes[j]+'</li>';
+html+='</ul>';
+}
+if(a.assess&&a.assess.length>0){
+html+='<strong style="font-size:11px;color:#1b4332">自测：</strong><ul>';
+for(var j=0;j<a.assess.length;j++)html+='<li>'+a.assess[j]+'</li>';
+html+='</ul>';
+}
+html+='</div>';
+}
+html+='</div></div>';
+html+='<div class="section-block"><div class="section-hd" onclick="toggleSection(this)"><span class="tag tag-green">训练动作</span><h3>训练动作库</h3><span class="arrow">▼</span></div><div class="section-body"><div class="train-grid">';
+for(var i=0;i<p.train.length;i++){
+var t=p.train[i];
+html+='<div class="train-card"><div class="name">'+t.name+'</div><div class="desc">'+t.desc+'</div><span class="difficulty diff-'+t.difficulty+'">'+{easy:'简单',medium:'中等',hard:'困难'}[t.difficulty]+'</span></div>';
+}
+html+='</div></div></div>';
+html+='<div class="section-block"><div class="section-hd" onclick="toggleSection(this)"><span class="tag tag-purple">注意</span><h3>注意事项</h3><span class="arrow">▼</span></div><div class="section-body"><ul>';
+for(var i=0;i<p.prevention.length;i++)html+='<li style="font-size:12px;color:#555;margin-bottom:6px;line-height:1.7">'+p.prevention[i]+'</li>';
+html+='</ul></div></div>';
+document.getElementById('page-part').innerHTML=html;
+}
+
+function toggleSection(el){
+var body=el.nextElementSibling;
+var isOpen=body.classList.contains('open');
+body.classList.toggle('open');
+el.classList.toggle('open',!isOpen);
+}
+
+renderHome();
+</script>
+</body>
+</html>

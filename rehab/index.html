@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天天向上 - 筑基篇</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f7f4;min-height:100vh}
+.nav{background:linear-gradient(180deg,#1b4332,#2d6a4f);color:#fff;width:200px;position:fixed;height:100vh;overflow-y:auto;flex-shrink:0}
+.nav-title{font-size:15px;font-weight:600;padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:8px}
+.nav-section{font-size:10px;color:rgba(255,255,255,0.45);padding:8px 16px 4px;text-transform:uppercase;letter-spacing:0.05em}
+.nav-item{width:100%;padding:8px 16px;background:transparent;border:none;color:rgba(255,255,255,0.8);cursor:pointer;font-size:13px;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.2s;border-left:3px solid transparent;font-family:inherit}
+.nav-item:hover{background:rgba(255,255,255,0.1);color:#fff}
+.nav-item.active{background:rgba(255,255,255,0.15);color:#fff;border-left-color:#52b788}
+.nav-tools{padding:12px 16px;border-top:1px solid rgba(255,255,255,0.1);margin-top:auto}
+.nav-tool{width:100%;padding:8px 12px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:rgba(255,255,255,0.9);cursor:pointer;font-size:12px;display:flex;align-items:center;gap:6px;margin-bottom:6px;font-family:inherit}
+.nav-tool:last-child{margin-bottom:0}
+.nav-tool:hover{background:rgba(255,255,255,0.2)}
+.main{margin-left:200px;min-height:100vh;display:flex;flex-direction:column}
+.header{background:#fff;height:52px;border-bottom:1px solid #b7e4c7;display:flex;align-items:center;padding:0 20px;position:sticky;top:0;z-index:50;flex-shrink:0}
+.header h1{font-size:15px;color:#1b4332;font-weight:600}
+.content{flex:1;padding:16px 20px;max-width:900px}
+.page{display:none}
+.page.active{display:block}
+.back-btn{background:#e2e8f0;border:none;padding:7px 14px;border-radius:6px;cursor:pointer;font-size:12px;color:#4a5568;margin-bottom:12px;font-family:inherit}
+.back-btn:hover{background:#cbd5e0}
+.card{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+.card-title{font-size:13px;font-weight:600;color:#1b4332;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:6px}
+.part-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+.part-card{background:#fff;border:1px solid #b7e4c7;border-radius:12px;padding:16px 12px;cursor:pointer;transition:all 0.2s;text-align:center}
+.part-card:hover{border-color:#52b788;transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.1)}
+.part-card .icon{font-size:36px;margin-bottom:8px}
+.part-card .name{font-size:13px;font-weight:600;color:#1b4332}
+.part-card .desc{font-size:10px;color:#888;margin-top:4px}
+.section-block{background:#fff;border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,0.05)}
+.section-hd{padding:12px 16px;background:#f8fffe;border-bottom:1px solid #b7e4c7;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
+.section-hd:hover{background:#f0fff8}
+.section-hd .tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600}
+.tag-red{background:#fed7d7;color:#c53030}
+.tag-yellow{background:#fefcbf;color:#b7791f}
+.tag-green{background:#c6f6d5;color:#276749}
+.tag-blue{background:#bee3f8;color:#2b6cb0}
+.tag-purple{background:#e9d8fd;color:#6b46c1}
+.section-hd h3{font-size:13px;color:#1b4332;flex:1}
+.section-hd .arrow{color:#888;font-size:12px;transition:transform 0.2s}
+.section-hd.open .arrow{transform:rotate(180deg)}
+.section-body{padding:12px 16px;display:none}
+.section-body.open{display:block}
+.item{background:#f8fffe;border:1px solid #b7e4c7;border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.item:last-child{margin-bottom:0}
+.item h4{font-size:12px;color:#1b4332;margin-bottom:6px;font-weight:600}
+.item ul{margin:0 0 0 14px;font-size:11px;color:#555;line-height:1.9}
+.item li{margin-bottom:2px}
+.train-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.train-card{background:#fff;border:1px solid #b7e4c7;border-radius:10px;padding:12px}
+.train-card .name{font-size:12px;font-weight:600;color:#1b4332;margin-bottom:6px}
+.train-card .desc{font-size:11px;color:#666;line-height:1.6}
+.train-card .difficulty{font-size:10px;padding:2px 8px;border-radius:8px;display:inline-block;margin-top:6px}
+.diff-easy{background:#c6f6d5;color:#276749}
+.diff-medium{background:#fefcbf;color:#b7791f}
+.diff-hard{background:#fed7d7;color:#c53030}
+.empty{text-align:center;padding:40px;color:#aaa;font-size:12px}
+.empty .icon{font-size:40px;margin-bottom:10px;opacity:0.5}
+@media(max-width:700px){.nav{width:56px}.nav-title,.nav-item span,.nav-section,.nav-tools span{display:none}.nav-item{justify-content:center;padding:10px}.nav-item .icon{font-size:20px}.main{margin-left:56px}.header h1{font-size:13px}.part-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}.train-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="nav">
+<div class="nav-title">💪 天天向上</div>
+<div class="nav-section">身体部位</div>
+<div id="navList"></div>
+<div class="nav-tools">
+<div class="nav-tool" onclick="location.href='../index.html'"><span>🏠</span><span>返回主页</span></div>
+</div>
+</div>
+<div class="main">
+<div class="header"><h1 id="headerTitle">天天向上</h1></div>
+<div class="content">
+<div id="page-home" class="page active"></div>
+<div id="page-part" class="page"></div>
+</div>
+</div>
+<div class="toast" id="toast" style="display:none"></div>
+<script>
+var PARTS=[
+{name:"肩关节",icon:"🦾",category:"上肢",
+anatomy:"肩关节由肱骨头与肩胛盂组成，是人体活动度最大的关节。包含肩袖肌群（冈上肌、冈下肌、小圆肌、肩胛下肌）、韧带（喙肱韧带、盂肱韧带）、滑囊、肩峰下间隙等结构。",
+assess:[
+{title:"肩周炎（粘连性肩关节囊炎）",tag:"red",
+signs:["主动和被动外展、前屈、外旋均受限","夜间疼痛明显，疼痛弧在60°-120°","三角肌止点压痛","梳头试验阳性（无法完成摸对侧耳朵）"],
+tests:["肩关节活动度测量：前屈160°/外展180°/外旋60°/内旋70°","疼痛弧测试：主动外展观察疼痛弧","neer撞击试验：肩峰前屈内旋时疼痛","Hawkins试验：屈肘90°内旋时疼痛"]},
+{title:"肩袖损伤",tag:"red",
+signs:["主动外展无力（落臂征阳性）","痛感弧在60°-120°","冈上肌/冈下肌萎缩","Lift-off试验阳性（肩胛下肌）"],
+tests:["空罐试验（Empty Can）：肩外展90°内旋30°抗阻向上","外旋抗阻试验：屈肘90°抗阻外旋无力","落臂征：无法维持外展90°位置","冈上肌MRI确认撕裂程度"]},
+{title:"肩峰下撞击综合征",tag:"yellow",
+signs:["前屈和外展末端疼痛","上举过头动作疼痛加剧","肩峰前外侧压痛"],
+tests:["Neer试验：肩峰前方撞击疼痛","Speed试验：屈肘抗阻前屈疼痛","X线：肩峰形态（II/III型）"]}
+],
+train:[
+{name:"钟摆运动",desc:"身体前倾，患侧手臂自然下垂，做小幅度画圈运动。每组30圈，每天3组。",difficulty:"easy"},
+{name:"爬墙练习",desc:"面对墙壁，手指沿墙壁向上爬，记录高度。每组10次，每天3组。",difficulty:"easy"},
+{name:"肩袖训练（弹力带）",desc:"患侧握住弹力带，抗阻外旋/内旋/外展。每组15次，每天3组。",difficulty:"medium"},
+{name:"拉伸训练",desc:"患侧手跨过身体，用另一手将患侧手臂向胸部拉伸。保持30秒，重复5次。",difficulty:"easy"}],
+prevention:["避免上举过头的重复动作","加强肩袖肌群力量训练","保持肩关节活动度","注意肩部保暖"]},
+
+{name:"肘关节",icon:"🦿",category:"上肢",
+anatomy:"肘关节由肱骨、桡骨、尺骨组成，包括肱尺关节、肱桡关节、近端尺桡关节。包含屈肌群（肱二头肌、肱肌）、伸肌群（肱三头肌）、内外侧副韧带。",
+assess:[
+{title:"网球肘（肱骨外上髁炎）",tag:"red",
+signs:["肱骨外上髁压痛","握力下降","腕伸展抗阻时疼痛（Mill's试验阳性）"],
+tests:["Mill's试验：腕掌屈、前臂旋前伸直时外上髁疼痛","中指抗阻试验：伸直中指抗阻时外上髁疼痛","握力计测试：患侧握力明显下降"]},
+{title:"高尔夫球肘（肱骨内上髁炎）",tag:"yellow",
+signs:["肱骨内上髁压痛","屈腕抗阻时疼痛","投掷动作疼痛"],
+tests:["屈腕抗阻试验：腕关节屈曲抗阻时内上髁疼痛","折腕试验：腕关节掌屈抗阻疼痛"]},
+{title:"肘关节僵硬",tag:"yellow",
+signs:["屈伸活动受限","早晨僵硬","关节周围肿胀"]}
+],
+train:[
+{name:"腕伸肌拉伸",desc:"患侧手臂伸直，掌心向下，用另一手向下按压手指。保持30秒，每天5次。",difficulty:"easy"},
+{name:"握力训练（握力球）",desc:"握住握力球并用力挤压，保持5秒。每组20次，每天3组。",difficulty:"easy"},
+{name:"肱二头肌训练",desc:"手持小哑铃（1-2kg），做屈肘运动。每组15次，每天3组。",difficulty:"medium"},
+{name:"前臂旋前/旋后训练",desc:"握住锤子或棍棒，旋转前臂进行训练。每组20次，每天3组。",difficulty:"medium"}],
+prevention:["避免手腕重复用力","正确姿势握持工具","加强前臂肌肉热身","使用护具分担压力"]},
+
+{name:"腕关节",icon:"🤚",category:"上肢",
+anatomy:"腕关节由桡骨远端、尺骨远端、八块腕骨组成。包含屈伸肌腱、正中神经、尺神经、桡动脉。常见损伤包括腕管综合征、TFCC损伤、腱鞘炎。",
+assess:[
+{title:"腕管综合征",tag:"red",
+signs:["拇指、食指、中指、环指桡侧麻木刺痛","夜间麻木加重","大鱼际肌萎缩"],
+tests:["Tinel's征：叩击腕管正中神经区域出现麻木","Phalen试验：腕关节掌屈90°30秒内出现麻木","两点辨别觉测试：>6mm异常","肌电图确认传导速度"]},
+{title:"TFCC损伤（三角纤维软骨复合体）",tag:"red",
+signs:["尺骨远端疼痛","腕关节旋转时弹响","力量下降"],
+tests:["琴键征：尺骨茎突按压疼痛","腕关节X线：尺骨变异测量","MRI：TFCC完整性评估"]},
+{title:"腱鞘炎",tag:"yellow",
+signs:["手指活动时弹响","掌侧肿块/结节的触痛","握拳时疼痛"]}
+],
+train:[
+{name:"手腕环绕运动",desc:"缓慢转动腕关节，顺时针和逆时针各10圈。每天3组。",difficulty:"easy"},
+{name:"手指伸展训练",desc:"手指套橡皮筋，做手指开合训练。每组20次，每天3组。",difficulty:"easy"},
+{name:"正中神经滑动训练",desc:"手腕中立位，屈伸手指并配合颈部侧屈。每组10次，每天3组。",difficulty:"medium"},
+{name:"握力训练",desc:"握住握力球并挤压，保持3秒。每组15次，每天3组。",difficulty:"easy"}],
+prevention:["键盘手腕垫保持中立位","避免腕关节长时间屈曲","每工作30分钟做手腕活动","手腕力量训练"]},
+
+{name:"颈椎",icon:"🗣️",category:"脊柱",
+anatomy:"颈椎由7节椎骨（C1-C7）组成，包含椎间盘、关节突关节、韧带（黄韧带、棘间韧带）、神经根（颈神经C1-C8）、脊髓、椎动脉。",
+assess:[
+{title:"颈椎病（神经根型）",tag:"red",
+signs:["颈肩部疼痛向上肢放射","手臂麻木/刺痛","肌力下降/肌肉萎缩","颈部后仰时症状加重"],
+tests:["颈椎活动度测量：前屈/后伸/侧屈/旋转","神经根牵拉试验（Spurling征）","肌力测试：逐个肌肉检查","颈椎MRI：椎间盘突出/椎管狭窄"]},
+{title:"颈型颈椎病",tag:"yellow",
+signs:["颈部酸痛僵硬","低头久坐后加重","颈椎活动度下降"],
+tests:["颈椎活动度测量","疼痛弧测试","X线：颈椎曲度变直/骨赘"]},
+{title:"颈椎挥鞭伤",tag:"red",
+signs:["外伤后颈部疼痛","头痛/头晕","上肢麻木无力","记忆注意力下降"]}
+],
+train:[
+{name:"颈椎 isometric训练",desc:"双手交叉置于枕后，向前施加阻力，颈部保持不动对抗。每组10秒，重复10次。",difficulty:"easy"},
+{name:"颈椎旋转训练",desc:"缓慢转动头部至最大角度，保持5秒，回归中立位。每组10次，每天3组。",difficulty:"easy"},
+{name:"肩部耸肩训练",desc:"双肩上耸至耳垂位置，保持3秒，然后放松。每组15次，每天3组。",difficulty:"easy"},
+{name:"胸椎扩张训练",desc:"坐在椅子上，双手置于脑后，肘向后展开，打开胸廓。保持10秒，每组10次。",difficulty:"medium"}],
+prevention:["避免长期低头","电脑屏幕与眼睛平齐","枕头高度适中（10-15cm）","每30-60分钟颈部活动"]},
+
+{name:"胸椎",icon:"🦴",category:"脊柱",
+anatomy:"胸椎由12节椎骨（T1-T12）组成，与肋骨形成胸廓。包含胸椎间盘、关节突关节、韧带、背阔肌、斜方肌、菱形肌。",
+assess:[
+{title:"胸椎功能紊乱",tag:"yellow",
+signs:["胸背部疼痛/僵硬","前屈/后伸/旋转受限","疼痛随呼吸加重","肋间神经痛"],
+tests:["胸椎活动度测量","坐姿前屈测试","FABER试验（排除髋关节）","X线：椎体曲度/旋转半脱位"]},
+{title:"胸廓出口综合征",tag:"red",
+signs:["上肢麻木/发凉","手臂疲劳","锁骨上窝压痛","Adson's试验阳性"],
+tests:["Adson's试验：伸颈深吸气桡动脉搏动减弱","Wright试验：手臂外展时脉搏消失","Roos试验：举手握拳开合60秒内出现症状","锁骨上窝TOS超声"]},
+{title:"肌筋膜疼痛综合征",tag:"yellow",
+signs:["背部肌肉压痛结节","疼痛点按压复制","疼痛放射至肩胛区","夜间疼痛明显"]}
+],
+train:[
+{name:"胸椎旋转训练",desc:"坐姿，骨盆固定，身体向一侧旋转，保持10秒。每组10次，每天3组。",difficulty:"easy"},
+{name:"猫牛式脊柱活动",desc:"四点支撑位，脊柱逐节屈曲和伸展，缓慢流畅。每组10次，每天3组。",difficulty:"easy"},
+{name:"泡沫轴胸椎放松",desc:"仰卧，泡沫轴置于胸椎下方，轻轻上下滚动。每天5分钟。",difficulty:"easy"},
+{name:"墙壁天使训练",desc:"背靠墙壁，双臂贴墙做上下滑动，保持腰曲。每天3组，每组10次。",difficulty:"medium"}],
+prevention:["避免久坐驼背","定时站立伸展","睡姿避免俯卧","核心肌群训练"]},
+
+{name:"腰椎",icon:"🧍",category:"脊柱",
+anatomy:"腰椎由5节椎骨（L1-L5）组成，是躯干承重的主要结构。包含椎间盘（髓核、纤维环）、关节突关节、黄韧带、棘间韧带、神经根（L3-S1）、骶棘肌。",
+assess:[
+{title:"腰椎间盘突出症",tag:"red",
+signs:["下腰痛向下肢放射（坐骨神经痛）","疼痛随咳嗽/用力加重","直腿抬高试验阳性","肌力下降/感觉减退"],
+tests:["直腿抬高试验（SLR）：抬高30-70°出现疼痛","加强试验（Bragard）：踝背屈时疼痛加重","肌力测试：踮脚/脚跟行走","腰椎MRI：突出物大小/位置/神经根压迫"]},
+{title:"腰肌劳损",tag:"yellow",
+signs:["腰部酸痛僵硬","久坐久站后加重","休息后减轻","骶棘肌压痛"],
+tests:["腰部活动度测量","Schober试验：前屈时腰椎活动度","俯卧位触诊压痛点","X线排除腰椎病变"]},
+{title:"腰椎管狭窄症",tag:"red",
+signs:["间歇性跛行（行走距离受限）","后伸时症状加重","前屈下蹲缓解","骑车姿势舒适"],
+tests:["行走测试：记录跛行距离","俯卧位试验：屈髋屈膝缓解","CT/MRI：椎管面积<100mm²"]},
+{title:"骶髂关节功能障碍",tag:"yellow",
+signs:["腰骶部疼痛","臀部疼痛","步行时疼痛","单侧负重疼痛"],
+tests:["FABER试验：屈髋90°外展外旋时骶髂疼痛","骨盆挤压试验","Gaenslen's试验","骶髂关节X线"]}
+],
+train:[
+{name:"麦肯基训练（McKenzie）",desc:"俯卧位，用手撑起上半身，腰部放松下沉。保持5分钟，每天3次。",difficulty:"easy"},
+{name:"猫牛式",desc:"四点支撑位，脊柱逐节屈曲和伸展。每组10次，每天3组。",difficulty:"easy"},
+{name:"骨盆后倾训练",desc:"仰卧屈膝，腹肌发力将腰部压向地面，保持5秒。每组15次，每天3组。",difficulty:"easy"},
+{name:"核心稳定训练（死虫式）",desc:"仰卧，双手向天花板伸直，对侧手脚交替下落但不触地。每组10次，每天3组。",difficulty:"medium"},
+{name:"臀桥训练",desc:"仰卧屈膝，臀部发力将髋部抬起，锁骨至膝盖成一直线。每组20次，每天3组。",difficulty:"easy"}],
+prevention:["避免久坐，每坐1小时起身活动","保持正确站姿坐姿","加强核心肌群训练","睡硬板床，避免俯卧"]},
+
+{name:"骨盆",icon:"🦴",category:"骨盆髋",
+anatomy:"骨盆由髂骨、坐骨、耻骨、骶骨、尾骨组成，包含骶髂关节、耻骨联合、髋关节。肌肉包括髂腰肌、臀肌、内收肌群、腹横肌。",
+assess:[
+{title:"骨盆前倾",tag:"yellow",
+signs:["腰部过度弓背（腰曲过大）","臀部明显后凸","腹部隆起","膝关节过伸"],
+tests:["靠墙测试：腰与墙之间距离超过一掌","Thomas试验：髋屈肌紧张","观察站姿侧面观","骨盆X线：两侧闭孔不对称"]},
+{title:"骨盆后倾",tag:"yellow",
+signs:["腰曲变直或反弓","臀部扁平","含胸驼背姿态"],
+tests:["靠墙测试：腰与墙之间无缝隙或紧贴","观察站姿侧面观","Thomas试验"]},
+{title:"骶髂关节炎",tag:"red",
+signs:["骶髂关节处疼痛","臀部疼痛","单侧或双侧","晨僵>30分钟"],
+tests:["FABER试验","骨盆挤压试验","Gaenslen's试验","HLA-B27/骶髂关节MRI"]}
+],
+train:[
+{name:"骨盆后倾训练",desc:"仰卧，腹肌收缩将腰压向地面，保持10秒。每组15次，每天3组。",difficulty:"easy"},
+{name:"臀桥训练",desc:"仰卧屈膝，臀部发力抬起，锁骨至膝盖成直线。每组20次，每天3组。",difficulty:"easy"},
+{name:"髂腰肌拉伸",desc:"弓步站立，后腿膝盖着地，身体向前倾。保持30秒，每侧5次。",difficulty:"medium"},
+{name:"内收肌训练",desc:"仰卧，双膝夹球（瑜伽球），做内收动作。每组15次，每天3组。",difficulty:"medium"}],
+prevention:["避免长期单侧负重","穿高跟鞋时注意骨盆平衡","加强核心和臀肌训练","注意正确坐姿"]},
+
+{name:"髋关节",icon:"🦵",category:"骨盆髋",
+anatomy:"髋关节由股骨头与髋臼组成，是人体最稳定的关节。包含髋关节囊、韧带（髂股韧带、耻股韧带、坐股韧带）、髋臼唇。肌肉包括髂腰肌、臀中肌、臀小肌、梨状肌。",
+assess:[
+{title:"髋关节骨关节炎",tag:"red",
+signs:["腹股沟区疼痛","髋关节活动受限","晨僵<30分钟","行走距离下降"],
+tests:["髋关节活动度测量：屈曲120°/伸展10°/外展40°/内旋30°","Thomas试验排除髋屈曲挛缩","X线：关节间隙变窄/骨赘","MRI：软骨损伤评估"]},
+{title:"髋关节撞击症（FAI）",tag:"yellow",
+signs:["髋关节前方疼痛","屈髋内旋/外旋疼痛","盘腿坐疼痛","活动后疼痛"],
+tests:["前撞击试验：屈髋90°内旋时疼痛","后撞击试验：伸髋外旋时疼痛","Dunn位X线：α角>60°","MRI：盂唇损伤"]},
+{title:"梨状肌综合征",tag:"yellow",
+signs:["臀部深处疼痛","坐位疼痛加重","疼痛向腿后放射","骶髂关节区域压痛"],
+tests:["梨状肌 stretch试验","FAIR试验：患侧卧位屈髋抗阻外旋疼痛","直腿抬高试验排除腰椎病因","梨状肌MRI"]}
+],
+train:[
+{name:"髋关节活动度训练",desc:"仰卧，双手抱膝向胸部运动，缓慢增加活动度。每组10次，每天3组。",difficulty:"easy"},
+{name:"臀中肌训练（侧卧抬腿）",desc:"侧卧，患侧腿向上抬起30°，保持3秒。每组15次，每天3组。",difficulty:"easy"},
+{name:"蚌壳训练（弹力带）",desc:"侧卧屈膝，双脚靠拢，膝部分开抗阻。每组15次，每天3组。",difficulty:"medium"},
+{name:"髋外展训练（站立位）",desc:"站立，患侧腿向外抬起，保持骨盆水平。每组15次，每天3组。",difficulty:"easy"}],
+prevention:["避免长时间蹲位","减轻体重减少髋关节负荷","加强髋周肌肉力量","避免盘腿坐"]},
+
+{name:"膝关节",icon:"🦵",category:"下肢",
+anatomy:"膝关节由股骨、胫骨、髌骨组成，包含半月板（内/外侧）、前交叉韧带（ACL）、后交叉韧带（PCL）、内侧副韧带（MCL）、外侧副韧带（LCL）、关节软骨。",
+assess:[
+{title:"前交叉韧带（ACL）损伤",tag:"red",
+signs:["外伤后膝关节肿胀","膝关节不稳定（打软腿）","Pivot shift阳性","不能完成跳跃落地"],
+tests:["Lachman试验：前抽屉阳性","前抽屉试验：胫骨前移>5mm","Pivot Shift试验：旋转不稳定","MRI：ACL信号中断"]},
+{title:"半月板损伤",tag:"red",
+signs:["关节线压痛","交锁/卡住症状","McMurray试验阳性","下蹲时疼痛"],
+tests:["McMurray试验：旋转膝关节时弹响/疼痛","关节线压痛点","Apley研磨试验","MRI：半月板信号/形态异常"]},
+{title:"膝关节骨关节炎",tag:"yellow",
+signs:["膝关节疼痛（活动加重，休息减轻）","关节僵硬（<30分钟）","骨擦音","关节肿胀"],
+tests:["Kellgren-Lawrence分级（X线）","膝关节活动度测量","肌力测试","MRI：软骨缺损程度"]},
+{title:"髌腱炎（跳跃膝）",tag:"yellow",
+signs:["髌骨下方疼痛","跳跃落地时疼痛","髌腱压痛","股四头肌无力"],
+tests:["髌腱触诊压痛","单腿跳跃测试","膝关节X线排除其他病变","超声：髌腱钙化/增厚"]}
+],
+train:[
+{name:"股四头肌等长收缩",desc:"仰卧，患侧腿伸直，股四头肌发力压向地面，保持5秒。每组20次，每天3组。",difficulty:"easy"},
+{name:"直腿抬高训练",desc:"仰卧，患侧腿伸直抬起30°，保持3秒。每组15次，每天3组。",difficulty:"easy"},
+{name:"蚌壳训练（弹力带）",desc:"侧卧，双膝夹弹力带，膝部分开抗阻。每组15次，每天3组。",difficulty:"medium"},
+{name:"单腿站平衡训练",desc:"患侧腿单腿站立，保持平衡30秒。每天3组。",difficulty:"medium"},
+{name:"靠墙静蹲",desc:"背靠墙，屈膝下蹲至大腿与地面平行，保持30秒。每组5次，每天3组。",difficulty:"medium"}],
+prevention:["运动前充分热身","加强股四头肌和腘绳肌力量","使用护膝增强稳定性","避免跳跃着地时膝内扣"]},
+
+{name:"踝关节",icon:"🦶",category:"下肢",
+anatomy:"踝关节（距小腿关节）由）由胫骨、腓骨、距骨组成。包含三角韧带（内踝）、距腓前韧带（外踝）、跟腱、踝管。足部包括足舟骨、楔骨、跖骨、趾骨。",
+assess:[
+{title:"踝关节扭伤（外侧）",tag:"yellow",
+signs:["外踝肿胀疼痛","48小时内肿胀加重","瘀斑","站立行走困难"],
+tests:["前抽屉试验：距骨前移","距腓前韧带压痛","X线排除骨折","MRI：韧带损伤程度"]},
+{title:"跟腱断裂",tag:"red",
+signs:["外伤史（听到断裂声）","跟腱处凹陷","提踵无力","Thompson试验阳性"],
+tests:["Thompson试验：俯卧位挤压小腿无踝跖屈","MRI：跟腱连续性中断","触诊跟腱缺损"]},
+{title:"踝关节不稳定",tag:"yellow",
+signs:["反复扭伤","行走时踝关节“打软”","外侧韧带松弛","距骨倾斜试验阳性"],
+tests:["前抽屉试验","距骨倾斜试验","单腿站平衡测试","MRI：韧带松弛/瘢痕"]},
+{title:"足底筋膜炎",tag:"yellow",
+signs:["足跟底部疼痛","早晨第一步疼痛","久站后加重","足底筋膜压痛"],
+tests:["足底筋膜触诊","X线：足跟骨刺","足部活动度测量","超声：足底筋膜增厚"]}
+],
+train:[
+{name:"踝泵训练",desc:"坐位或卧位，踝关节背屈跖屈交替，每组30次，每天3组。",difficulty:"easy"},
+{name:"提踵训练",desc:"站立位，双脚提踵至最高点，保持3秒，缓慢下落。每组15次，每天3组。",difficulty:"easy"},
+{name:"平衡板训练",desc:"患侧腿站立在平衡板上，保持平衡30秒。每天3组。",difficulty:"medium"},
+{name:"小腿拉伸（毛巾法）",desc:"坐位，用毛巾套住前脚掌，向身体方向拉伸。保持30秒，每组5次。",difficulty:"easy"},
+{name:"足趾抓毛巾训练",desc:"坐位，用足趾抓放毛巾，锻炼足内在肌。每组10次，每天3组。",difficulty:"easy"}],
+prevention:["运动前小腿拉伸","穿支撑性鞋子","避免不平地面奔跑","加强踝周肌肉力量"]},
+
+{name:"颞下颌关节",icon:"😁",category:"其他",
+anatomy:"颞下颌关节（TMJ）由颞骨关节窝、下颌骨髁突、关节盘组成。包含关节盘、关节囊、韧带（颞下颌韧带、蝶下颌韧带）。肌肉包括咬肌、颞肌、翼内肌、外翼肌。",
+assess:[
+{title:"颞下颌关节紊乱（TMD）",tag:"yellow",
+signs:["张口受限/张口偏斜","关节弹响","下颌运动时疼痛","面部肌肉压痛"],
+tests:["张口度测量：<35mm为受限","下颌前伸/侧方运动测量","关节区触诊压痛","MRI：关节盘位置/形态"]},
+{title:"咬肌痉挛/肌痛",tag:"yellow",
+signs:["面部侧面疼痛","咬合无力","晨起牙关紧","咬肌肥大/压痛"],
+tests:["咬肌触诊压痛点","咬合力测试","牙科检查排除其他病因","超声：肌肉血流评估"]},
+{title:"关节盘移位",tag:"red",
+signs:["张口闭口弹响","绞锁（突然卡住）","下颌偏斜","疼痛张口"],
+tests:["开闭口弹响记录","MRI：关节盘可复性/不可复性前移位","下颌运动轨迹分析","X线排除关节骨病变"]}
+],
+train:[
+{name:"张口训练",desc:"轻度张口，保持5秒，然后放松。每组10次，每天3组。",difficulty:"easy"},
+{name:"下颌前伸训练",desc:"缓慢将下颌前伸至最大位置，保持3秒。每组10次，每天3组。",difficulty:"easy"},
+{name:"咬肌放松训练",desc:"舌尖抵上腭，松弛咬肌，保持呼吸。每组5分钟，每天3次。",difficulty:"easy"},
+{name:"咀嚼肌拉伸",desc:"用手轻轻按摩咬肌和颞肌，从轻到重。每次5分钟，每天3次。",difficulty:"easy"}],
+prevention:["避免咬硬物","保持正确咬合位","减少紧咬牙习惯","避免长时间张口（如看牙医）"]}
+];
+
+function go(page,partName){
+var pages=document.querySelectorAll('.page');
+for(var i=0;i<pages.length;i++)pages[i].classList.remove('active');
+if(page==='part'&&partName){
+var p=null;
+for(var i=0;i<PARTS.length;i++)if(PARTS[i].name===partName){p=PARTS[i];break;}
+if(p)renderPart(p);
+document.getElementById('page-part').classList.add('active');
+document.getElementById('headerTitle').textContent=p.name;
+}else{
+document.getElementById('page-home').classList.add('active');
+document.getElementById('headerTitle').textContent='天天向上';
+if(page==='home')renderHome();
+}
+var navBtns=document.querySelectorAll('.nav-item');
+for(var i=0;i<navBtns.length;i++)navBtns[i].classList.remove('active');
+}
+
+function renderHome(){
+var html='<div class="card"><div class="card-title">🦴 身体部位</div><div class="part-grid">';
+for(var i=0;i<PARTS.length;i++){
+var p=PARTS[i];
+html+='<div class="part-card" onclick="go(\'part\',\''+p.name+'\')"><div class="icon">'+p.icon+'</div><div class="name">'+p.name+'</div><div class="desc">'+p.category+'</div></div>';
+}
+html+='</div></div>';
+document.getElementById('page-home').innerHTML=html;
+var navHtml='';
+var categories={};
+for(var i=0;i<PARTS.length;i++){
+var c=PARTS[i].category;
+if(!categories[c])categories[c]=[];
+categories[c].push(PARTS[i]);
+}
+var catOrder=['上肢','脊柱','骨盆髋','下肢','其他'];
+for(var ci=0;ci<catOrder.length;ci++){
+var c=catOrder[ci];
+if(!categories[c])continue;
+navHtml+='<div class="nav-section">'+c+'</div>';
+for(var j=0;j<categories[c].length;j++){
+var p=categories[c][j];
+navHtml+='<div class="nav-item" onclick="go(\'part\',\''+p.name+'\')"><span>'+p.icon+'</span><span>'+p.name+'</span></div>';
+}
+}
+document.getElementById('navList').innerHTML=navHtml;
+}
+
+function renderPart(p){
+var html='<button class="back-btn" onclick="go(\'home\')">← 返回部位列表</button>';
+html+='<div class="section-block"><div class="section-hd" onclick="toggleSection(this)"><span class="tag tag-blue">解剖</span><h3>解剖结构</h3><span class="arrow">▼</span></div><div class="section-body"><p style="font-size:12px;color:#555;line-height:1.8">'+p.anatomy+'</p></div></div>';
+html+='<div class="section-block"><div class="section-hd" onclick="toggleSection(this)"><span class="tag tag-red">评估</span><h3>常见问题与判断</h3><span class="arrow">▼</span></div><div class="section-body">';
+for(var i=0;i<p.assess.length;i++){
+var a=p.assess[i];
+html+='<div class="item"><h4><span class="tag tag-'+a.tag+'">'+a.tag+'</span> '+a.title+'</h4>';
+if(a.signs&&a.signs.length>0){
+html+='<strong style="font-size:11px;color:#1b4332">自测指征：</strong><ul>';
+for(var j=0;j<a.signs.length;j++)html+='<li>'+a.signs[j]+'</li>';
+html+='</ul>';
+}
+if(a.tests&&a.tests.length>0){
+html+='<strong style="font-size:11px;color:#1b4332">检查方法：</strong><ul>';
+for(var j=0;j<a.tests.length;j++)html+='<li>'+a.tests[j]+'</li>';
+html+='</ul>';
+}
+html+='</div>';
+}
+html+='</div></div>';
+html+='<div class="section-block"><div class="section-hd" onclick="toggleSection(this)"><span class="tag tag-green">训练</span><h3>康复训练动作</h3><span class="arrow">▼</span></div><div class="section-body"><div class="train-grid">';
+for(var i=0;i<p.train.length;i++){
+var t=p.train[i];
+html+='<div class="train-card"><div class="name">'+t.name+'</div><div class="desc">'+t.desc+'</div><span class="difficulty diff-'+t.difficulty+'">'+{easy:'简单',medium:'中等',hard:'困难}[t.difficulty]+'</span></div>';
+}
+html+='</div></div></div>';
+html+='<div class="section-block"><div class="section-hd" onclick="toggleSection(this)"><span class="tag tag-purple">预防</span><h3>预防措施</h3><span class="arrow">▼</span></div><div class="section-body"><ul>';
+for(var i=0;i<p.prevention.length;i++)html+='<li style="font-size:12px;color:#555;margin-bottom:6px;line-height:1.7">'+p.prevention[i]+'</li>';
+html+='</ul></div></div>';
+document.getElementById('page-part').innerHTML=html;
+}
+
+function toggleSection(el){
+var body=el.nextElementSibling;
+var isOpen=body.classList.contains('open');
+body.classList.toggle('open');
+el.classList.toggle('open',!isOpen);
+}
+
+renderHome();
+</script>
+</body>
+</html>
