@@ -47,9 +47,6 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f7f4;m
 .tag-yy2{background:#f6ffed;color:#52c41a}
 .tag-wl{background:#fff1f0;color:#ff4d4f}
 .tag-hx{background:#f9f0ff;color:#722ed1}
-.tag-ls{background:#fffbe6;color:#fa8c16}
-.tag-dl{background:#f6ffed;color:#52c41a}
-.tag-zz{background:#e6f7ff;color:#1890ff}
 .know-card h3{font-size:14px;color:#1b4332;margin-bottom:8px}
 .know-card p{font-size:12px;color:#666;line-height:1.7}
 .know-card .points{margin-top:8px;font-size:11px;color:#888}
@@ -58,8 +55,6 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f7f4;m
 .tab-btn{padding:8px 16px;border:1px solid #b7e4c7;border-radius:20px;background:#fff;cursor:pointer;font-size:12px;color:#555;transition:all 0.2s;font-family:inherit}
 .tab-btn:hover{border-color:#52b788}
 .tab-btn.active{background:#2d6a4f;color:#fff;border-color:#2d6a4f}
-.section-title{font-size:15px;font-weight:600;color:#1b4332;margin:16px 0 10px;padding-bottom:6px;border-bottom:2px solid #b7e4c7}
-.section-title:first-child{margin-top:0}
 .textbook-content{background:#fff;border-radius:12px;padding:20px;margin-bottom:12px;line-height:2;font-size:14px;color:#333}
 .textbook-content h3{font-size:16px;color:#1b4332;margin:16px 0 10px}
 .textbook-content p{margin-bottom:12px;text-indent:2em}
@@ -75,7 +70,7 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f7f4;m
 .practice-item .q{font-size:13px;color:#333;margin-bottom:8px}
 .practice-item .opts{display:flex;flex-direction:column;gap:4px}
 .practice-option{display:flex;align-items:center;padding:6px 10px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;cursor:pointer;font-size:12px;transition:all 0.2s}
-.practice-option:hover{border-color:#52b788;background:#f0fff8}
+.practice-option:hover{border-color:#52b787;background:#f0fff8}
 .practice-option.selected{border-color:#2d6a4f;background:#ebf8ff}
 .practice-option.correct{border-color:#52c41a;background:#f6ffed}
 .practice-option.wrong{border-color:#ff4d4f;background:#fff1f0}
@@ -145,228 +140,720 @@ var KNOWLEDGE={
 "语文-小学":[
 {title:"汉语拼音",tag:"yy",tagName:"语文",desc:"声母、韵母、整体认读音节",
 textbook:"<h3>【课文】</h3><p>汉语拼音用处大，识字读书需要它。说好普通话，全靠它帮助我们。</p><p>声母一共23个，发音要准确。韵母24个，搭配声母能拼读。整体认读音节16个，直接读出不需拼。</p><p><span class='emphasis'>学习拼音要诀：</span>多读、多拼、多练习，见到生字就拼读。</p><div class='highlight'>小朋友们，学好拼音就能自己读书看报啦！</div>",
-examples:[{q:"拼读：b-a→？",a:"bā（八）"},{q:"拼读：p-é→？",a:"péi（陪）"},{q:"整体认读：zhi读作？",a:"zhī（知）"}],
-practices:[{q:"声母有几个？",o:["21个","22个","23个","24个"],a:2},{q:"'妈妈'的拼音是？",o:["mā ma","mà ma","mámā","māmā"],a:3},{q:"下列哪个是复韵母？",o:["a","ai","zh","sh"],a:1}],
-intensive:[{q:"'学习'的正确拼读是？",o:["xué xí","xúe xí","xuē xī","xué xī"],a:3},{q:"整体认读音节共有多少个？",o:["14个","15个","16个","17个"],a:2}]},
+examples:[
+{q:"拼读：b-a→？",a:"bā（八）"},
+{q:"拼读：p-é→？",a:"péi（陪）"},
+{q:"拼读：m-ǎ→？",a:"mǎ（马）"},
+{q:"拼读：d-u→？",a:"dū（都）"},
+{q:"拼读：l-i→？",a:"lǐ（里）"},
+{q:"拼读：h-uó→？",a:"huó（活）"},
+{q:"拼读：j-iā→？",a:"jiā（家）"},
+{q:"拼读：q-ié→？",a:"qié（茄）"},
+{q:"拼读：x-ǔ→？",a:"xǔ（许）"},
+{q:"拼读：zh-uáng→？",a:"zhuáng（庄）"},
+{q:"拼读：ch-uáng→？",a:"chuáng（床）"},
+{q:"拼读：sh-uān→？",a:"shuān（栓）"},
+{q:"整体认读：zhi读作？",a:"zhī（知）"},
+{q:"整体认读：chi读作？",a:"chī（吃）"},
+{q:"整体认读：shi读作？",a:"shī（师）"},
+{q:"整体认读：ri读作？",a:"rì（日）"},
+{q:"整体认读：zi读作？",a:"zī（资）"},
+{q:"整体认读：ci读作？",a:"cī（刺）"},
+{q:"整体认读：si读作？",a:"sī（思）"},
+{q:"整体认读：yi读作？",a:"yī（衣）"}
+],
+practices:[
+{q:"声母有几个？",o:["21个","22个","23个","24个"],a:2},
+{q:"'妈妈'的拼音是？",o:["mā ma","mà ma","mámā","māmā"],a:3},
+{q:"下列哪个是复韵母？",o:["a","ai","zh","sh"],a:1},
+{q:"'学习'的正确拼读是？",o:["xué xí","xúe xí","xuē xī","xué xī"],a:3},
+{q:"整体认读音节共有多少个？",o:["14个","15个","16个","17个"],a:2},
+{q:"韵母'é'属于哪一类？",o:["单韵母","复韵母","鼻韵母","特殊韵母"],a:0},
+{q:"'b'和'd'的区别是什么？",o:["发音相同","发音不同，形状不同","形状相同","都是唇音"],a:1}
+],
+intensive:[
+{q:"'uang'这个韵母可以和哪些声母相拼？（至少举3个）",o:["b、p、m、f、d、t、n、l、g、k、h","只有b、p、m、f","只有d、t、n、l","只有g、k、h"],a:0},
+{q:"给汉字注音：鹅（）",o:["é","wǒ","éi","ě"],a:0}
+]},
 {title:"识字写字",tag:"yy",tagName:"语文",desc:"象形字、形声字、形近字",
 textbook:"<h3>【课文】</h3><p>汉字真是有趣，字形字义有联系。象形字，像图画，一看就能认识它。</p><p>日、月、水、火、山、石、田、木，这些字都是象形字，像实物的形状。</p><p>形声字，真巧妙，一边表意一边表音。清、晴、情、请，都是形声字，记住偏旁很重要。</p><div class='highlight'>学习生字要仔细观察，观察偏旁、笔画、位置，就能记得牢！</div>",
-examples:[{q:"'清'是什么结构的字？",a:"左形右声，氵表意，青表音"},{q:"'目'字像什么？",a:"像眼睛的形状"}],
-practices:[{q:"'河'的偏旁是？",o:["氵","火","木","石"],a:0},{q:"下列哪个是象形字？",o:["清","明","日","蚂"],a:2}],
-intensive:[{q:"形声字'村'的偏旁和声旁分别是？",o:["木+寸","氵+寸","土+寸","木+分"],a:0}]},
+examples:[
+{q:"'清'是什么结构的字？",a:"左形右声，氵表意，青表音"},
+{q:"'目'字像什么？",a:"像眼睛的形状"},
+{q:"'休'字是什么结构？",a:"左形右声，亻表意，木表音"},
+{q:"'爸'字是什么结构？",a:"上形下声，父表意，巴表音"},
+{q:"'花'字是什么结构？",a:"上形下声，艹表意，化表音"},
+{q:"'草'字是什么结构？",a:"上形下声，艹表意，早表音"},
+{q:"'村'字是什么结构？",a:"左形右声，木表意，寸表音"},
+{q:"比较：'已'和'己'有什么区别？",a:"已：己经的已，第三笔不封口；己：自己的己，第三笔封口"},
+{q:"比较：'末'和'未'有什么区别？",a:"末：末端的末，第二笔是横；未：未来的未，第二笔是撇"},
+{q:"'日'字和'目'字有什么区别？",a:"日：太阳，形状扁宽，两横不穿过；目：眼睛，形状窄长，两横穿过"}
+],
+practices:[
+{q:"'河'的偏旁是？",o:["氵","火","木","石"],a:0},
+{q:"下列哪个是象形字？",o:["清","明","日","蚂"],a:2},
+{q:"'树'字是什么结构？",a:["左形右声","上形下声","外形内声","内形外声"],a:0},
+{q:"'星'字是什么结构？",a:["上形下声","下形上声","左形右声","右形左声"],a:0}
+],
+intensive:[
+{q:"形声字'吐'，氵表意，'土'表音，'土'在这里的读音和'吐'的读音关系是什么？",o:["完全相同","完全不相同","声母相同韵母不同","韵母相同声母不同"],a:0}
+]},
 {title:"阅读理解",tag:"yy",tagName:"语文",desc:"找中心句、理解词语、段落大意",
 textbook:"<h3>【课文】</h3><p>读书要仔细，理解很重要。找中心句，就能明白段落讲什么。</p><p><span class='emphasis'>找中心句的方法：</span></p><p>1. 看段落开头，往往是总起句</p><p>2. 看段落结尾，往往是总结句</p><p>3. 看段落中间，往往是承上启下</p><p>理解词语有妙招：联系上下文，拆字来理解，近义词替换。</p>",
-examples:[{q:"'五彩缤纷'是什么意思？",a:"指各种颜色鲜艳繁多，非常好看"},{q:"'得意洋洋'形容什么心情？",a:"形容非常得意、满足的样子"}],
-practices:[{q:"概括段意的方法有几种？",o:["1种","2种","3种","4种"],a:2}],
-intensive:[{q:"阅读短文《春天的公园》应重点找什么句？",o:["中心句","比喻句","拟人句","感叹句"],a:0}]}
+examples:[
+{q:"'五彩缤纷'是什么意思？",a:"指各种颜色鲜艳繁多，非常好看"},
+{q:"'得意洋洋'形容什么心情？",a:"形容非常得意、满足的样子"},
+{q:"'四面八方'是指哪些方向？",a:"东、南、西、北、东北、东南、西北、西南"},
+{q:"'春暖花开'描写的是哪个季节？",a:"春天"},
+{q:"'烈日炎炎'描写的是什么天气？",a:"夏天太阳很烈的天气"},
+{q:"'金风送爽'描写的是什么季节？",a:"秋天"}
+],
+practices:[
+{q:"概括段意的方法有几种？",o:["1种","2种","3种","4种"],a:2},
+{q:"阅读短文《春天的公园》应重点找什么句？",o:["中心句","比喻句","拟人句","感叹句"],a:0},
+{q:"'高耸入云'形容什么？",o:["山或建筑物很高","云很多","天气很高","树木很高"],a:0}
+],
+intensive:[
+{q:"阅读理解：'小明高兴地跑回家，因为他的考试得了100分。'这段话主要写什么？",o:["小明跑回家","小明考试得100分","小明高兴的原因和结果","小明家在哪里"],a:2}
+]},
+{title:"看图写话",tag:"yy",tagName:"语文",desc:"时间地点人物、观察顺序、写作要素",
+textbook:"<h3>【课文】</h3><p>看图写话真有趣，四要素要记心里：时间、地点、人物、事情。</p><p><span class='emphasis'>观察顺序：</span>从上到下、从远到近、从整体到局部</p><p><span class='emphasis'>写作要点：</span></p><p>1. 图上有什么？什么时候？在哪里？</p><p>2. 谁在做什么？结果怎样？</p><p>3. 用上好词好句，让句子更生动！</p>",
+examples:[
+{q:"看图：图上有一个小男孩在踢足球。描述时间地点。",a:"一个阳光明媚的下午，小明在学校的操场上踢足球。"},
+{q:"看图：图上有一只小猫在追蝴蝶。描述小猫和蝴蝶。",a:"一只毛茸茸的小猫正在草丛里追一只美丽的蝴蝶，蝴蝶扇动着翅膀飞舞。"},
+{q:"看图：图上小朋友在扶老奶奶过马路。",a:"放学回家的路上，小红看见一位老奶奶想过马路，她连忙跑过去扶着老奶奶安全地走过马路。"}
+],
+practices:[
+{q:"看图写话：图上有什么？（多选题）",o:["人物","景物","颜色","天气"],a:0},
+{q:"'蓝蓝的天空飘着几朵白云'，这句话描写的是什么？",o:["天空","白云","天空和白云","天气"],a:2}
+],
+intensive:[
+{q:"看图写话练习：图上小朋友在植树，日期是3月12日（植树节），请写一段话",o:["3月12日是植树节，小明和小红一起来到山坡上种树。","今天天气很好，小明去种树了。","小朋友们在玩。","植树节是节日。"],a:0}
+]},
+{title:"古诗背诵",tag:"yy",tagName:"语文",desc:"常见古诗、理解记忆、诗意表达",
+textbook:"<h3>【课文】</h3><p>古诗是中华文化的瑰宝，多读多背好处多。</p><p><span class='emphasis'>背诵方法：</span></p><p>1. 先读熟，理解诗意</p><p>2. 想象画面，记忆更深</p><p>3. 掌握节奏，有感情朗读</p><p><span class='emphasis'>常见题材：</span></p><p>思乡诗：静夜思、春晓</p><p>田园诗：悯农、咏鹅</p><p>送别诗：登鹳雀楼</p>",
+examples:[
+{q:"《静夜思》作者是谁？",a:"李白（唐）"},
+{q:"《静夜思》中'举头望明月'的上一句是？",a:"举头望明月，低头思故乡"},
+{q:"《悯农》告诉我们什么道理？",a:"粮食来之不易，要珍惜粮食，不能浪费。"},
+{q:"《咏鹅》的作者是谁？",a:"骆宾王（唐）"},
+{q:"《登鹳雀楼》中'欲穷千里目'的下一句是？",a:"更上一层楼"},
+{q:"《春晓》'处处闻啼鸟'的上一句是？",a:"春眠不觉晓"}
+],
+practices:[
+{q:"《静夜思》作者是？",o:["李白","杜甫","王维","白居易"],a:0},
+{q:"下列哪首是思乡诗？",o:["《静夜思》","《咏鹅》","《悯农》","《咏柳》"],a:0},
+{q:"'锄禾日当午'的下一句是？",o:["汗滴禾下土","粒粒皆辛苦","谁知盘中餐","春种一粒粟"],a:0}
+],
+intensive:[
+{q:"理解诗意：'春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。'这首诗表达了诗人什么样的感情？",o:["赞美春天景色","思念家乡","悲伤自己年老","高兴地游玩"],a:0}
+]},
+{title:"量词运用",tag:"yy",tagName:"语文",desc:"常用量词、搭配规律",
+textbook:"<h3>【课文】</h3><p>量词表示人或物的数量，用对了才正确。</p><p><span class='emphasis'>常用量词：</span></p><p>个：一（个）人、一（个）苹果</p><p>只：一（只）鸟、一（只）兔子</p><p>条：一（条）鱼、一（条）小路</p><p>朵：一（朵）花、一（朵）云</p><p>匹：一（匹）马、一（匹）布</p><p>头：一（头）牛、一（头）猪</p>",
+examples:[
+{q:"一（）书包，填量词",a:"个"},
+{q:"一（）小河，填量词",a:"条"},
+{q:"一（）白鹅，填量词",a:"只/头"},
+{q:"一（）白兔，填量词",a:"只"},
+{q:"一（）白帆，填量词",a:"片"},
+{q:"一（）红日，填量词",a:"轮/个"}
+],
+practices:[
+{q:"一（）书",o:["本","个","条","只"],a:0},
+{q:"一（）小鸟",o:["只","条","个","头"],a:0},
+{q:"一（）大树",o:["棵","个","只","条"],a:0}
+],
+intensive:[
+{q:"选择正确的量词：一（）清泉",o:["眼","条","个","朵"],a:0}
+]}
 ],
 "数学-小学":[
 {title:"20以内加减法",tag:"sx",tagName:"数学",desc:"凑十法、破十法、竖式计算",
 textbook:"<h3>【课文】</h3><p>计算20以内加减法，有小妙招。凑十法，让计算变得又快又准。</p><p><span class='emphasis'>凑十法口诀：</span></p><p>看大数，拆小数，凑成十，算得数。</p><p>9加几，凑成十，把小数拆成1和几。</p><p>8加几，凑成十，把小数拆成2和几。</p><p>减法用破十：大数分出十，减小数，加剩数。</p><div class='highlight'>小技巧：记住凑十歌，运算快又准！</div>",
-examples:[{q:"9+6=？用凑十法",a:"9+1=10，10+5=15"},{q:"15-8=？用破十法",a:"15-5=10，10-3=7"}],
-practices:[{q:"8+7=？",o:["13","14","15","16"],a:2},{q:"14-6=？",o:["6","7","8","9"],a:2}],
-intensive:[{q:"9+5+1=？",o:["14","15","16","17"],a:1},{q:"17-9-1=？",o:["6","7","8","9"],a:1}]},
+examples:[
+{q:"9+6=？用凑十法",a:"9+1=10，10+5=15"},
+{q:"15-8=？用破十法",a:"15-5=10，10-3=7"},
+{q:"8+7=？用凑十法",a:"8+2=10，10+5=15"},
+{q:"13-6=？用破十法",a:"13-3=10，10-3=7"},
+{q:"9+8=？用凑十法",a:"9+1=10，10+7=17"},
+{q:"14-7=？用破十法",a:"14-4=10，10-3=7"},
+{q:"7+5=？用凑十法",a:"7+3=10，10+2=12"},
+{q:"16-9=？用破十法",a:"16-6=10，10-3=7"}
+],
+practices:[
+{q:"8+7=？",o:["13","14","15","16"],a:2},
+{q:"14-6=？",o:["6","7","8","9"],a:2},
+{q:"9+5=？",o:["13","14","15","16"],a:1},
+{q:"12-4=？",o:["6","7","8","9"],a:2}
+],
+intensive:[
+{q:"9+5+1=？",o:["14","15","16","17"],a:1},
+{q:"17-9-1=？",o:["6","7","8","9"],a:1},
+{q:"8+8-6=？",o:["8","9","10","11"],a:2}
+]},
 {title:"认识图形",tag:"sx",tagName:"数学",desc:"平面图形、立体图形",
 textbook:"<h3>【课文】</h3><p>生活中有很多图形，有平面图形和立体图形。</p><p><span class='emphasis'>平面图形：</span></p><p>正方形：4条边一样长，4个角都是直角。</p><p>长方形：相对的边一样长，4个角都是直角。</p><p>三角形：有3条边，3个角。</p><p>圆形：没有角，边缘光滑。</p><p><span class='emphasis'>立体图形：</span></p><p>长方体：有6个面，相对的面一样大。</p><p>正方体：有6个面，每个面都一样大。</p><p>圆柱：上下两个圆面，中间是曲面。</p><p>球：没有平面，可以向各个方向滚动。</p>",
-examples:[{q:"正方形的4条边有什么关系？",a:"4条边都相等"},{q:"长方体有几个面？",a:"6个面"}],
-practices:[{q:"下列哪个是立体图形？",o:["正方形","长方形","圆形","正方体"],a:3},{q:"三角形有几个角？",o:["2个","3个","4个","5个"],a:1}],
-intensive:[{q:"一个正方体切一刀，最多能切成几个面？",o:["2个平面","3个平面","4个平面","无法确定"],a:1}]},
+examples:[
+{q:"正方形的4条边有什么关系？",a:"4条边都相等"},
+{q:"长方体有几个面？",a:"6个面"},
+{q:"正方体和长方体的相同点和不同点是什么？",a:"相同：都有6个面、8个顶点、12条棱；不同：正方体所有面都相等，长方体相对的面相等"},
+{q:"圆柱和球的区别是什么？",a:"圆柱有平面（上下两个圆面）和曲面；球只有曲面"},
+{q:"正方形有几个角？都是什么角？",a:"4个角，都是直角"},
+{q:"三角形的内角和是多少度？",a:"180度"}
+],
+practices:[
+{q:"下列哪个是立体图形？",o:["正方形","长方形","圆形","正方体"],a:3},
+{q:"三角形有几个角？",o:["2个","3个","4个","5个"],a:1},
+{q:"长方形的对边是什么关系？",o:["相等","垂直","平行","不确定"],a:0}
+],
+intensive:[
+{q:"用3根小棒能摆成三角形吗？摆成三角形的条件是什么？",o:["能，三边长度要满足两边之和大于第三边","能，随便3根都可以","不能，需要4根","不能，需要6根"],a:0}
+]},
 {title:"认识人民币",tag:"sx",tagName:"数学",desc:"元角分、换算、购物",
 textbook:"<h3>【课文】</h3><p>人民币，按元、角、分来算。1元=10角，1角=10分。</p><p><span class='emphasis'>换算方法：</span></p><p>大钱换小钱，数变大，单位变小。</p><p>5元 = 50角 = 500分</p><p>小钱换大钱，数变小，单位变大。</p><p>300分 = 3元</p><div class='highlight'>购物计算时，先把元角分对齐，再从低位算起！</div>",
-examples:[{q:"3元5角=？角",a:"35角"},{q:"买一个2元3角的本子，付5元，应找多少钱？",a:"5元-2元3角=2元7角"}],
-practices:[{q:"1元=？分",o:["10分","100分","1000分","1分"],a:1},{q:"5元可以换几张1角？",o:["5张","10张","50张","5张"],a:2}],
-intensive:[{q:"小明有10元，想买3元5角的铅笔，他还能剩多少钱？",o:["6元5角","7元5角","6元","7元"],a:0}]},
+examples:[
+{q:"3元5角=？角",a:"35角"},
+{q:"买一个2元3角的本子，付5元，应找多少钱？",a:"5元-2元3角=2元7角"},
+{q:"12角=？元？角",a:"1元2角"},
+{q:"78分=？元？角？分",a:"0元7角8分"},
+{q:"小明有5元，想买1元5角的糖，应找回多少钱？",a:"5元-1元5角=3元5角"},
+{q:"一副羽毛球拍12元，小红付了20元，应找回多少元？",a:"20-12=8元"}
+],
+practices:[
+{q:"1元=？分",o:["10分","100分","1000分","1分"],a:1},
+{q:"5元可以换几张1角？",o:["5张","10张","50张","5张"],a:2},
+{q:"2元3角+1元4角=？",o:["3元7角","4元7角","3元8角","4元8角"],a:0}
+],
+intensive:[
+{q:"小明有10元，想买3元5角的铅笔，他还能剩多少钱？",o:["6元5角","7元5角","6元","7元"],a:0}
+]},
 {title:"乘法初步",tag:"sx",tagName:"数学",desc:"乘法意义、乘法口诀",
 textbook:"<h3>【课文】</h3><p>乘法是求几个相同加数的和的简便运算。</p><p>3×4表示：3个4相加，或者4个3相加。</p><p>3×4=4+4+4=12</p><p><span class='emphasis'>乘法口诀：</span></p><p>一九得九，二九十八，三九二十七...</p><p>一一得一，一二得二，二二得四...</p><p>背熟乘法口诀，计算又快又准！</p><div class='highlight'>小技巧：竖着背、橫着背、拐弯背，多种方式记得牢！</div>",
-examples:[{q:"5×6=？",a:"30（六五三十）"},{q:"7×8=？",a:"56（七七四十九，八七五十六）"}],
-practices:[{q:"4×7=？",o:["24","28","32","36"],a:1},{q:"9×9=？",o:["72","81","90","99"],a:1}],
-intensive:[{q:"6个8相加，写成乘法是？",o:["6×8或8×6","6×6","8×8","6+8"],a:0}]}
+examples:[
+{q:"5×6=？",a:"30（六五三十）"},
+{q:"7×8=？",a:"56（七七四十九，八七五十六）"},
+{q:"3×9=？",a:"27（三九二十七）"},
+{q:"6×6=？",a:"36（六六三十六）"},
+{q:"4×8=？",a:"32（四八三十二）"},
+{q:"7×7=？",a:"49（七七四十九）"},
+{q:"9×8=？",a:"72（九九八十一）"}
+],
+practices:[
+{q:"4×7=？",o:["24","28","32","36"],a:1},
+{q:"9×9=？",o:["72","81","90","99"],a:1},
+{q:"6×8=？",o:["42","48","54","60"],a:1},
+{q:"8×7=？",o:["48","56","64","72"],a:1}
+],
+intensive:[
+{q:"6个8相加，写成乘法是？",o:["6×8或8×6","6×6","8×8","6+8"],a:0},
+{q:"□×7=42，□=？",o:["5","6","7","8"],a:1}
+]},
+{title:"除法初步",tag:"sx",tagName:"数学",desc:"除法意义、平均分、倍的认识",
+textbook:"<h3>【课文】</h3><p>除法是乘法的逆运算，表示把一个数平均分成几份，或者求一个数里有几个另一个数。</p><p><span class='emphasis'>除法算式：</span>被除数÷除数=商</p><p><span class='emphasis'>乘法口诀也能算除法：</span></p><p>12÷3=？想：三（三）十二，商是4</p><p>24÷6=？想：四（六）二十四，商是4</p>",
+examples:[
+{q:"12÷3=？",a:"4（想：三四十二，商是4）"},
+{q:"24÷6=？",a:"4（想：四六二十四，商是4）"},
+{q:"35÷5=？",a:"7（想：五七三十五，商是7）"},
+{q:"56÷7=？",a:"8（想：七八五十六，商是8）"},
+{q:"18÷2=？",a:"9（想：二九十八，商是9）"},
+{q:"32÷8=？",a:"4（想：四八三十二，商是4）"}
+],
+practices:[
+{q:"36÷9=？",o:["3","4","5","6"],a:1},
+{q:"72÷8=？",o:["8","9","10","11"],a:1},
+{q:"45÷5=？",o:["7","8","9","10"],a:2}
+],
+intensive:[
+{q:"□÷8=7，□=？",o:["54","56","63","64"],a:1}
+]},
+{title:"认识时钟",tag:"sx",tagName:"数学",desc:"整点、半点、钟面读写",
+textbook:"<h3>【课文】</h3><p>认识时钟和钟面，时间观念早养成。</p><p><span class='emphasis'>钟面组成：</span></p><p>1. 12个数字（1-12）</p><p>2. 时针（短针，走得慢）</p><p>3. 分针（长针，走得快）</p><p><span class='emphasis'>整点：</span>分针指向12，时针指向几就是几点</p><p><span class='emphasis'>半点：</span>分针指向6，时针在两个数中间</p>",
+examples:[
+{q:"时钟显示3点整，时针和分针分别指向哪里？",a:"时针指向3，分针指向12"},
+{q:"时钟显示5点半，时针和分针分别指向哪里？",a:"分针指向6，时针在5和6之间"},
+{q:"3:00再过2小时是几点？",a:"5:00"},
+{q:"8:30再过半小时是几点？",a:"9:00"},
+{q:"从12:00到3:00，经过了几个小时？",a:"3个小时"}
+],
+practices:[
+{q:"分针走一圈，时针走几个数字？",o:["1个","5个","12个","60个"],a:0},
+{q:"半小时=多少分钟？",o:["30分钟","60分钟","15分钟","45分钟"],a:0}
+],
+intensive:[
+{q:"小红早上7:00起床，8:00上学，中间间隔多长时间？",o:["1小时","2小时","30分钟","90分钟"],a:0}
+]}
 ],
 "英语-小学":[
 {title:"26个字母",tag:"yy2",tagName:"英语",desc:"字母分类、书写",
-textbook:"<h3>【课文】Textbook】</h3><p>English has 26 letters. There are 5 vowels and 21 consonants.</p><p><span class='emphasis'>Vowels (元音字母):</span> A, E, I, O, U</p><p><span class='emphasis'>Consonants (辅音字母):</span> the rest 21 letters</p><p>Letter writing is important! Capital letters are tall, small letters have different forms:</p><p>b, d, h, i, k, l, t — tall letters (上中格)</p><p>a, c, e, m, n, o, r, s, u, v, w, x, z — middle letters (中格)</p><p>g, p, q, y — bottom letters (下中格)</p>",
-examples:[{q:"How many vowels are there in English?",a:"5 (A, E, I, O, U)"},{q:"Which group do 'b, d, h' belong to?",a:"Tall letters (上中格)"}],
-practices:[{q:"Which is a vowel letter?",o:["B","C","D","E"],a:3},{q:"'f' belongs to which group?",o:["上中格","中格","下中格","以上都不是"],a:0}],
-intensive:[{q:"Arrange letters in alphabetical order: C, A, B",o:["ABC","ACB","BAC","CAB"],a:0}]},
+textbook:"<h3>【课文】</h3><p>English has 26 letters. There are 5 vowels and 21 consonants.</p><p><span class='emphasis'>Vowels (元音字母):</span> A, E, I, O, U</p><p><span class='emphasis'>Consonants (辅音字母):</span> the rest 21 letters</p><p>Letter writing is important! Capital letters are tall, small letters have different forms:</p><p>b, d, h, i, k, l, t — tall letters (上中格)</p><p>a, c, e, m, n, o, r, s, u, v, w, x, z — middle letters (中格)</p><p>g, p, q, y — bottom letters (下中格)</p>",
+examples:[
+{q:"How many vowels are there in English?",a:"5 (A, E, I, O, U)"},
+{q:"Which group do 'b, d, h' belong to?",a:"Tall letters (上中格)"},
+{q:"Is 'F' a vowel letter?",a:"No, it's a consonant. A, E, I, O, U are vowels."},
+{q:"Which letter is '上中格' (tall letter)?",a:"b, d, h, i, k, l, t"},
+{q:"Which letter belongs to '中格' (middle letter)?",a:"a, c, e, m, n, o, r, s, u, v, w, x, z"},
+{q:"Write the letter before 'D' in alphabet.",a:"C"},
+{q:"How many letters are there between A and E (not including A and E)?",a:"B, C, D — 3 letters"}
+],
+practices:[
+{q:"Which is a vowel letter?",o:["B","C","D","E"],a:3},
+{q:"'f' belongs to which group?",o:["上中格","中格","下中格","以上都不是"],a:0},
+{q:"Arrange letters in alphabetical order: C, A, B",o:["ABC","ACB","BAC","CAB"],a:0},
+{q:"Which of these is NOT a vowel?",o:["A","E","G","I"],a:2}
+],
+intensive:[
+{q:"What is the 5th letter of the alphabet?",o:["E","D","F","G"],a:0}
+]},
 {title:"基础词汇",tag:"yy2",tagName:"英语",desc:"颜色、数字、家庭、动物",
 textbook:"<h3>【课文】</h3><p>Let's learn some basic English words!</p><p><span class='emphasis'>Colors (颜色):</span></p><p>red, blue, green, yellow, orange, purple, white, black, pink, brown</p><p><span class='emphasis'>Numbers (数字):</span></p><p>one, two, three, four, five | six, seven, eight, nine, ten</p><p>eleven, twelve, thirteen... twenty</p><p><span class='emphasis'>Family (家庭):</span></p><p>father, mother, brother, sister, grandfather, grandmother</p><p><span class='emphasis'>Animals (动物):</span></p><p>cat, dog, bird, fish, rabbit, panda, tiger, elephant</p>",
-examples:[{q:"What's the color of the sky?",a:"Blue (蓝色)"},{q:"How do you say '十二' in English?",a:"Twelve"}],
-practices:[{q:"'绿色'用英语怎么说？",o:["Red","Green","Blue","Yellow"],a:1},{q:"爷爷用英语怎么说？",o:["Father","Mother","Grandfather","Brother"],a:2}],
-intensive:[{q:"What is one + two + three?",o:["Five","Six","Seven","Eight"],a:1}]}
+examples:[
+{q:"What's the color of the sky?",a:"Blue"},
+{q:"How do you say '十二' in English?",a:"Twelve"},
+{q:"'爷爷' in English?",a:"Grandfather"},
+{q:"What number comes after 'nineteen'?",a:"Twenty"},
+{q:"What is '九' in English?",a:"Nine"},
+{q:"What animal says 'woof woof' in English?",a:"Dog"},
+{q:"How many letters are in 'apple'?",a:"5 letters"}
+],
+practices:[
+{q:"'绿色'用英语怎么说？",o:["Red","Green","Blue","Yellow"],a:1},
+{q:"爷爷用英语怎么说？",o:["Father","Mother","Grandfather","Brother"],a:2},
+{q:"What is one + two + three?",o:["Five","Six","Seven","Eight"],a:1},
+{q:"What animal can fly?",o:["Bird","Dog","Fish","Cat"],a:0}
+],
+intensive:[
+{q:"Write the numbers: 1, 2, 3, 4, 5 in English.",o:["one, two, three, four, five","One Two Three Four Five","ONE TWO THREE FOUR FIVE","first second third fourth fifth"],a:0}
+]},
+{title:"问候与介绍",tag:"yy2",tagName:"英语",desc:"打招呼、自我介绍、告别",
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>Greetings (问候):</span></p><p>Hello! / Hi! 你好！</p><p>Good morning! / Good afternoon! / Good evening!</p><p>How are you? I'm fine, thank you.</p><p><span class='emphasis'>Self-introduction (自我介绍):</span></p><p>What's your name? My name is...</p><p>How old are you? I am ... years old.</p><p><span class='emphasis'>Farewell (告别):</span></p><p>Goodbye! / Bye! / See you!</p>",
+examples:[
+{q:"How do you greet someone in the morning?",a:"Good morning!"},
+{q:"Someone asks 'How are you?' What's the answer?",a:"I'm fine, thank you. / Very well, thanks."},
+{q:"Ask a friend 'What's your name?'",a:"My name is Lily. / I'm Lily."},
+{q:"Say '再见' in English.",a:"Goodbye! / Bye! / See you!"},
+{q:"How old are you? (when you're 8)",a:"I am eight years old."}
+],
+practices:[
+{q:"Morning greeting is:",o:["Good morning","Good afternoon","Good evening","Good night"],a:0},
+{q:"Your Chinese name is 'Li Ming', how do you introduce yourself?",o:["I'm Li Ming","My am Li Ming","I Li Ming","Name is Li Ming"],a:0}
+],
+intensive:[
+{q:"Complete: 'Nice to _____ you.'",o:["meet","seeing","saw","see"],a:0}
+]},
+{title:"食物与饮料",tag:"yy2",tagName:"英语",desc:"常见食物、表达喜好",
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>Food (食物):</span></p><p>rice, noodles, bread, egg, meat, fish, chicken, vegetable</p><p>apple, banana, orange, grape, watermelon</p><p><span class='emphasis'>Drinks (饮料):</span></p><p>water, milk, juice, tea, coffee</p><p><span class='emphasis'>Like and Dislike (喜好):</span></p><p>I like ... / I don't like ...</p><p>Do you like ...? Yes, I do. / No, I don't.</p>",
+examples:[
+{q:"Do you like apples? (肯定回答)",a:"Yes, I do. / Yes, I like apples."},
+{q:"I don't like _____ (milk/water/juice).",a:"I don't like milk."},
+{q:"What do you like to drink?",a:"I like water / juice / milk."},
+{q:"How do you say '我不喜欢鱼肉'?",a:"I don't like fish."}
+],
+practices:[
+{q:"I like _____ (apple/banana/orange).",o:["apples","apple","an apple","appleses"],a:0},
+{q:"Do you like rice?",o:["Yes, I do","Yes, I does","No, I don't","Both A and C"],a:2}
+],
+intensive:[
+{q:"What do you usually have for breakfast? (用英语回答)",o:["I have bread and milk for breakfast.","I like rice.","I don't like eggs.","Breakfast is important."],a:0}
+]}
 ],
 "语文-初中":[
 {title:"字词积累",tag:"yy",tagName:"语文",desc:"多音字、同义词、成语典故",
-textbook:"<h3>【课文】</h3><p>汉字是世界上最古老的文字之一，形、音、义三位一体。学习汉字要注意多音字、同义词和成语的积累。</p><p><span class='emphasis'>一、多音字辨析</span></p><p>行 xíng（行走、运动）：人行道上走路。</p><p>行 háng（行列、行业）：银行里存钱。</p><p>长 zhǎng（生长、成长）：我长大了。</p><p>长 cháng（长度、长久）：这条路很长。</p><p><span class='emphasis'>二、同义词辨析</span></p><p>勉励vs鼓励：勉励多用于上对下的教导，鼓励可用于平辈或上对下。</p><p>精密vs细致：精密侧重于精确细致，细致侧重于精细周密。</p><p><span class='emphasis'>三、常用成语典故</span></p><p>守株待兔：比喻死守狭隘经验，不知变通。</p><p>画蛇添足：比喻做了多余的事，反而不好。</p><p>亡羊补牢：比喻出了问题后及时补救，还不算晚。</p>",
-examples:[{q:"'行'在'银行'中读什么？",a:"háng（第二声）"},{q:"'亡羊补牢'的近义词是什么？",a:"贼去关门（事后补救）"}],
-practices:[{q:"下列词语中，'长'读cháng的是？",o:["长大","生长","校长","长辈"],a:3},{q:"'画蛇添足'比喻？",o:["做事认真","做事多余","做事马虎","做事成功"],a:1}],
-intensive:[{q:"选择正确读音：他朝（zhāo/cháo）着朝阳（zhāo/cháo）走去。",o:["zhāo zhāo","cháo zhāo","zhāo cháo","cháo cháo"],a:0}]},
+textbook:"<h3>【课文】</h3><p>汉字是世界上最古老的文字之一，形、音、义三位一体。学习汉字要注意多音字、同义词和成语的积累。</p><p><span class='emphasis'>一、多音字辨析</span></p><p>行 xíng（行走、运动）vs 行 háng（行列、行业）</p><p>长 zhǎng（生长、成长）vs 长 cháng（长度、长久）</p><p><span class='emphasis'>二、同义词辨析</span></p><p>勉励vs鼓励、精密vs细致</p><p><span class='emphasis'>三、常用成语典故</span></p><p>守株待兔、画蛇添足、亡羊补牢</p>",
+examples:[
+{q:"'行'在'银行'中读什么？",a:"háng（第二声）"},
+{q:"'亡羊补牢'的近义词是什么？",a:"贼去关门（事后补救）"},
+{q:"'长'在'长大'中读什么？",a:"zhǎng（第三声）"},
+{q:"'朝'在'朝向'中读什么？",a:"cháo（第二声）"},
+{q:"'降'在'降落'中读什么？",a:"jiàng（第四声）"},
+{q:"'降'在'投降'中读什么？",a:"xiáng（第二声）"},
+{q:"'得'在'得到'中读什么？",a:"dé（第二声）"},
+{q:"'得'在'跑得很快'中读什么？",a:"de（轻声）"},
+{q:"'教'在'教室'中读什么？",a:"jiào（第四声）"},
+{q:"'教'在'教书的先生'中读什么？",a:"jiāo（第一声）"}
+],
+practices:[
+{q:"下列词语中，'长'读cháng的是？",o:["长大","生长","校长","长辈"],a:3},
+{q:"'画蛇添足'比喻？",o:["做事认真","做事多余","做事马虎","做事成功"],a:1},
+{q:"'守株待兔'比喻？",o:["等待成功","死守经验不知变通","认真工作","有耐心"],a:1}
+],
+intensive:[
+{q:"选择正确读音：他朝（zhāo/cháo）着朝阳（zhāo/cháo）走去。",o:["zhāo zhāo","cháo zhāo","zhāo cháo","cháo cháo"],a:0},
+{q:"'参差不齐'中'参差'读音是？",o:["cēn cī","cān chā","cǎn cī","cēn chā"],a:0}
+]},
 {title:"语法基础",tag:"yy",tagName:"语文",desc:"词性、短语、句子成分",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、词性分类</span></p><p>实词：名词、动词、形容词、数词、量词、代词（能单独回答问题）</p><p>虚词：副词、介词、连词、助词、叹词（不能单独回答问题）</p><p><span class='emphasis'>二、短语类型</span></p><p>主谓短语：太阳升（名+动）</p><p>动宾短语：吃饭（动+名）</p><p>偏正短语：美丽花园（形+名）</p><p>并列短语：爸爸妈妈（名+名）</p><p>补充短语：洗干净（动+补）</p><p><span class='emphasis'>三、句子成分</span></p><p>主语 + 谓语 + 宾语</p><p>定语 + 主语 + 状语 + 谓语 + 补语 + 定语 + 宾语</p><p>例：我们（主）认真（状）学习（谓）语文（宾）。</p>",
-examples:[{q:"'科学技术'是什么短语？",a:"并列短语（名+名）"},{q:"'跑得快'是什么短语？",a:"补充短语（动+补）"}],
-practices:[{q:"下列哪个是实词？",o:["的","了","在","书"],a:3},{q:"'忽然'是什么词性？",o:["名词","动词","形容词","副词"],a:3}],
-intensive:[{q:"分析句子'聪明的他迅速地完成了作业'的成分",o:["主谓宾","定语+主语+状语+谓语+补语+定语+宾语","主语+状语+谓语+宾语","定语+主语+谓语+宾语"],a:1}]},
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、词性分类</span></p><p>实词：名词、动词、形容词、数词、量词、代词</p><p>虚词：副词、介词、连词、助词、叹词</p><p><span class='emphasis'>二、短语类型</span></p><p>主谓短语、动宾短语、偏正短语、并列短语、补充短语</p><p><span class='emphasis'>三、句子成分</span></p><p>主语 + 谓语 + 宾语</p>",
+examples:[
+{q:"'科学技术'是什么短语？",a:"并列短语（名+名）"},
+{q:"'跑得快'是什么短语？",a:"补充短语（动+补）"},
+{q:"'认真研究'是什么短语？",a:"偏正短语（状+动）"},
+{q:"'喜欢读书'是什么短语？",a:"动宾短语（动+名）"},
+{q:"'天气晴朗'是什么短语？",a:"主谓短语（名+形）"},
+{q:"'我的书包'是什么短语？",a:"偏正短语（定+名）"},
+{q:"'又快又好'是什么短语？",a:"并列短语（形+形）"},
+{q:"'坐在椅子上'是什么短语？",a:"补充短语（动+补+介词短语）"}
+],
+practices:[
+{q:"下列哪个是实词？",o:["的","了","在","书"],a:3},
+{q:"'忽然'是什么词性？",o:["名词","动词","形容词","副词"],a:3},
+{q:"'因为...所以...'是什么关系的关联词？",o:["因果关系","转折关系","递进关系","条件关系"],a:0}
+],
+intensive:[
+{q:"分析句子'聪明的他迅速地完成了作业'的成分",o:["主谓宾","定语+主语+状语+谓语+补语+定语+宾语","主语+状语+谓语+宾语","定语+主语+谓语+宾语"],a:1}
+]},
 {title:"阅读理解",tag:"yy",tagName:"语文",desc:"记叙文、说明文、议论文",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、记叙文</span></p><p>六要素：时间、地点、人物、起因、经过、结果</p><p>叙述顺序：顺叙、倒叙、插叙</p><p>修辞手法：比喻（打比方）、拟人（把物当人写）、排比（三个以上相同句式）、夸张（夸大或缩小）</p><p><span class='emphasis'>二、说明文</span></p><p>说明方法：举例子、列数字、作比较、打比方、分类别</p><p>说明顺序：时间顺序、空间顺序、逻辑顺序</p><p><span class='emphasis'>三、议论文</span></p><p>三要素：论点（证明什么）、论据（用什么证明）、论证（怎样证明）</p><p>论证方法：举例论证、道理论证、对比论证、比喻论证</p>",
-examples:[{q:"'他的脸红得像苹果'是什么修辞？",a:"比喻（明喻）"},{q:"说明'鲸鱼很大'，体重用数字怎么说？",a:"一条成年鲸鱼体重可达100多吨"}],
-practices:[{q:"记叙文的六要素不包括？",o:["时间","地点","议论","结果"],a:2},{q:"'世界上最大的动物是鲸鱼，最大的陆地动物是大象'用了什么说明方法？",o:["举例子","列数字","作比较","打比方"],a:2}],
-intensive:[{q:"阅读题：文中画线句'天气炎热，如同蒸笼'用了什么修辞？作用是什么？",o:["比喻，生动形象写出天气热","拟人，写出天气闷","夸张，突出天气热","排比，突出天气变化"],a:0}]},
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、记叙文</span></p><p>六要素：时间、地点、人物、起因、经过、结果</p><p>叙述顺序：顺叙、倒叙、插叙</p><p>修辞手法：比喻、拟人、排比、夸张</p><p><span class='emphasis'>二、说明文</span></p><p>说明方法：举例子、列数字、作比较、打比方</p><p><span class='emphasis'>三、议论文</span></p><p>三要素：论点、论据、论证</p>",
+examples:[
+{q:"'他的脸红得像苹果'是什么修辞？",a:"比喻（明喻）"},
+{q:"说明'鲸鱼很大'，体重用数字怎么说？",a:"一条成年鲸鱼体重可达100多吨"},
+{q:"'风像母亲的手抚摸着你'是什么修辞？",a:"比喻（明喻）"},
+{q:"'太阳出来了'是什么描写方法？",a:"拟人"},
+{q:"'飞流直下三千尺'是什么修辞？",a:"夸张"},
+{q:"'学而不厌，诲人不倦'是什么修辞？",a:"对偶"}],
+practices:[
+{q:"记叙文的六要素不包括？",o:["时间","地点","议论","结果"],a:2},
+{q:"'世界上最大的动物是鲸鱼，最大的陆地动物是大象'用了什么说明方法？",o:["举例子","列数字","作比较","打比方"],a:2}
+],
+intensive:[
+{q:"阅读题：文中画线句'天气炎热，如同蒸笼'用了什么修辞？作用是什么？",o:["比喻，生动形象写出天气热","拟人，写出天气闷","夸张，突出天气热","排比，突出天气变化"],a:0}
+]},
 {title:"文言文入门",tag:"yy",tagName:"语文",desc:"实词虚词、古今异义、翻译技巧",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、重点实词</span></p><p>之：①的（肉之味）②去、往（送孟浩然之广陵）③它（学而时习之）</p><p>其：①他的（其名曰智）②其中（其余观测）</p><p>以：①因为（不以物喜）②用来（以备不时之需）</p><p>于：①在（生于忧患）②比（大于泰山）</p><p><span class='emphasis'>二、虚词用法</span></p><p>而：表转折（然而）、表递进（而且）、表修饰（地）、表承接（然后）</p><p>则：表承接（则成）、表转折（则败）</p><p><span class='emphasis'>三、古今异义</span></p><p>妻子（古：妻和子 → 今：丈夫对配偶的称呼）</p><p>卑鄙（古：地位低微 → 今：品质恶劣）</p><p>虽然（古：虽然这样 → 今：转折连词）</p>",
-examples:[{q:"'学而时习之'中'之'指代什么？",a:"学过的知识"},{q:"'于'在'生于忧患'中是什么意思？",a:"在"}],
-practices:[{q:"'而'表转折的是？",o:["取而代之","三思而后行","环而不舍","学而不思则罔"],a:3},{q:"古今异义'妻子'今义是指？",o:["老婆","妻和子","儿子的老婆","成年女子"],a:0}],
-intensive:[{q:"翻译'虽然受地，不能用，定诸为同一体者，须有因荷得坐，余不复论之矣'",o:["虽然受到（好的）对待，但没能起作用","虽然接受了官职，但不能胜任","虽然受委屈，但依然坚持","虽然地处偏远，但风景优美"],a:1}]}
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、重点实词</span></p><p>之、其、以、于、而、则、乃、且、所</p><p><span class='emphasis'>二、虚词用法</span></p><p>而：表转折、表递进、表修饰、表承接</p><p><span class='emphasis'>三、古今异义</span></p><p>妻子（古：妻和子 → 今：妻子）</p><p>卑鄙（古：地位低微 → 今：品质恶劣）</p>",
+examples:[
+{q:"'学而时习之'中'之'指代什么？",a:"学过的知识"},
+{q:"'于'在'生于忧患'中是什么意思？",a:"在"},
+{q:"'而'在'学而不思则罔'中是什么意思？",a:"但是（表转折）"},
+{q:"'其'在'其名曰智'中是什么意思？",a:"它的"},
+{q:"'以'在'不以物喜'中是什么意思？",a:"因为"},
+{q:"'之'在'送孟浩然之广陵'中是什么意思？",a:"到、往"},
+{q:"'者'在'作者'中是什么意思？",a:"...的人"},
+{q:"'是'在古汉语中的意思通常是？",a:"这、这个"}],
+practices:[
+{q:"'而'表转折的是？",o:["取而代之","三思而后行","环而不舍","学而不思则罔"],a:3},
+{q:"古今异义'妻子'今义是指？",o:["老婆","妻和子","儿子的老婆","成年女子"],a:0}
+],
+intensive:[
+{q:"翻译'虽然受地，不能用，定诸为同一体者，须有因荷得坐，余不复论之矣'",o:["虽然受到对待但没能起作用","虽然接受官职但不能胜任","虽然受委屈但依然坚持","虽然地处偏远但风景优美"],a:1}
+]},
+{title:"病句修改",tag:"yy",tagName:"语文",desc:"常见病句类型、修改方法",
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>常见病句类型：</span></p><p>1. 成分残缺：缺少主语、谓语、宾语</p><p>2. 搭配不当：主谓搭配不当、动宾搭配不当</p><p>3. 语序不当：词语顺序不对</p><p>4. 重复啰嗦：相同意思的词重复使用</p><p>5. 用词不当：词义不符或感情色彩不对</p><p><span class='emphasis'>修改方法：</span></p><p>增（增加成分）、删（删除多余）、换（换用恰当词语）、调（调整语序）</p>",
+examples:[
+{q:"修改病句：'春天的景色真美丽啊！'",a:"这句话没有病句，句子完整通顺。"},
+{q:"修改病句：'我终于顺利地完成了这次考试。'",a:"这句话没有病句。"},
+{q:"修改病句：'在这次运动会上，得到了第一名。'",a:"缺少主语，改为：'在这次运动会上，小明得到了第一名。'"},
+{q:"修改病句：'我们要学习刻苦钻研的精神。'",a:"'钻研'和'学习'搭配不当，改为：'我们要培养刻苦钻研的精神。'"},
+{q:"修改病句：'昨天的天气非常美丽。'",a:"'天气'不能说'美丽'，改为：'昨天的天气非常晴朗。'或'昨天的景色非常美丽。'"}
+],
+practices:[
+{q:"下列哪个不是病句？",o:["我爱你中国。","我爱你中国啊。","我爱你啊中国。","我中国爱你。"],a:0},
+{q:"'我们要努力取得好成绩。'是什么病句？",o:["搭配不当","语序不当","成分残缺","没有病句"],a:3}
+],
+intensive:[
+{q:"修改：'他完成了作业后，然后才去睡觉。'",o:["删除'后'或'然后'，改为'他完成作业后才去睡觉。'","改为'他完成了作业后就去睡觉。'","改为'然后他完成了作业才去睡觉。'","改为'他然后完成了作业后去睡觉。'"],a:0}
+]}
 ],
 "数学-初中":[
 {title:"有理数与整式",tag:"sx",tagName:"数学",desc:"数轴、相反数、绝对值",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、有理数的分类</span></p><p>整数：正整数、0、负整数</p><p>分数：正分数、负分数</p><p>整数和分数统称有理数。</p><p><span class='emphasis'>二、数轴</span></p><p>数轴三要素：原点、正方向、单位长度</p><p>数轴上的点与有理数一一对应。</p><p>在数轴上，右边的数比左边的数大。</p><p><span class='emphasis'>三、相反数与绝对值</span></p><p>相反数：a的相反数是-a，且a + (-a) = 0</p><p>绝对值：|a| = a（a≥0）；|a| = -a（a<0）</p><p>绝对值表示距离，所以是非负数。</p>",
-examples:[{q:"数轴上距离原点3个单位的点有几个？表示什么数？",a:"2个，表示+3和-3"},{q:"|−5| + |3| = ?",a:"5 + 3 = 8"}],
-practices:[{q:"下列各数中，绝对值最小的是？",o:["0","1","-1","2"],a:0},{q:"-3的相反数是？",o:["3","-3","1/3","-1/3"],a:0}],
-intensive:[{q:"若|a| = 5，且a < 0，则a = ?",o:["5","-5","5或-5","无法确定"],a:1}]},
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、有理数的分类</span></p><p>整数：正整数、0、负整数</p><p>分数：正分数、负分数</p><p><span class='emphasis'>二、数轴</span></p><p>数轴三要素：原点、正方向、单位长度</p><p><span class='emphasis'>三、相反数与绝对值</span></p><p>相反数：a的相反数是-a</p><p>绝对值：|a| = a（a≥0）；|a| = -a（a<0）</p>",
+examples:[
+{q:"数轴上距离原点3个单位的点有几个？表示什么数？",a:"2个，表示+3和-3"},
+{q:"|−5| + |3| = ?",a:"5 + 3 = 8"},
+{q:"比较大小：-5和-3，哪个更大？",a:"-3更大（因为在数轴上-3在-5右边）"},
+{q:"-2的相反数是多少？",a:"2"},
+{q:"绝对值最小的整数是？",a:"0"},
+{q:"若|x|=7，则x=？",a:"7或-7"},
+{q:"-1.5的相反数是多少？",a:"1.5"},
+{q:"|−π|等于多少？（π≈3.14）",a:"π≈3.14（绝对值是非负数）"}
+],
+practices:[
+{q:"下列各数中，绝对值最小的是？",o:["0","1","-1","2"],a:0},
+{q:"-3的相反数是？",o:["3","-3","1/3","-1/3"],a:0},
+{q:"比较：-8和-5的大小关系是？",o:["-8 > -5","-8 < -5","-8 = -5","无法比较"],a:1}
+],
+intensive:[
+{q:"若|a| = 5，且a < 0，则a = ?",o:["5","-5","5或-5","无法确定"],a:1},
+{q:"计算：|−3| − |−5| + |0|",o:["-2","2","8","-8"],a:1}
+]},
 {title:"一元一次方程",tag:"sx",tagName:"数学",desc:"等式性质、解方程、应用",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、等式的基本性质</span></p><p>性质1：等式两边同时加（或减）同一个数，等式仍成立。</p><p>性质2：等式两边同时乘（或除以）同一个数（不为0），等式仍成立。</p><p><span class='emphasis'>二、解一元一次方程的步骤</span></p><p>① 去括号（注意去括号的符号规则）</p><p>② 移项（从一边移到另一边要变号）</p><p>③ 合并同类项</p><p>④ 系数化为1（两边同时除以或乘以系数）</p><p><span class='emphasis'>三、列方程解应用题的步骤</span></p><p>审题 → 设未知数 → 找等量关系 → 列出方程 → 解方程 → 检验作答</p>",
-examples:[{q:"解方程：2x + 5 = 13",a:"2x = 13 - 5 = 8，x = 4"},{q:"解方程：3(x - 2) = 12",a:"x - 2 = 4，x = 6"}],
-practices:[{q:"方程x + 3 = 7的解是？",o:["x = 4","x = 10","x = 3","x = 21"],a:0},{q:"若2x = 6，则x = ?",o:["3","4","2","12"],a:0}],
-intensive:[{q:"某数x的3倍减5等于10，列方程为？",o:["3x - 5 = 10","3x + 5 = 10","5x - 3 = 10","5x + 3 = 10"],a:0}]},
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、等式的基本性质</span></p><p>性质1：等式两边同时加（或减）同一个数，等式仍成立。</p><p>性质2：等式两边同时乘（或除以）同一个数（不为0），等式仍成立。</p><p><span class='emphasis'>二、解一元一次方程的步骤</span></p><p>去括号 → 移项 → 合并同类项 → 系数化为1</p>",
+examples:[
+{q:"解方程：2x + 5 = 13",a:"2x = 13 - 5 = 8，x = 4"},
+{q:"解方程：3(x - 2) = 12",a:"x - 2 = 4，x = 6"},
+{q:"解方程：5x - 3 = 2x + 6",a:"5x - 2x = 6 + 3，3x = 9，x = 3"},
+{q:"解方程：7x + 2 = 4x + 11",a:"7x - 4x = 11 - 2，3x = 9，x = 3"},
+{q:"x = ? 时，x + 5 = 12",a:"x = 7（因为7 + 5 = 12）"},
+{q:"解方程：2(x + 3) = 14",a:"x + 3 = 7，x = 4"}
+],
+practices:[
+{q:"方程x + 3 = 7的解是？",o:["x = 4","x = 10","x = 3","x = 21"],a:0},
+{q:"若2x = 6，则x = ?",o:["3","4","2","12"],a:0},
+{q:"解方程：3x = 15",o:["x = 3","x = 4","x = 5","x = 12"],a:2}
+],
+intensive:[
+{q:"某数x的3倍减5等于10，列方程为？",o:["3x - 5 = 10","3x + 5 = 10","5x - 3 = 10","5x + 3 = 10"],a:0},
+{q:"x = 2是方程ax = 6的解，则a = ?",o:["3","4","5","6"],a:0}
+]},
 {title:"几何图形",tag:"sx",tagName:"数学",desc:"相交线、平行线、三角形",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、相交线</span></p><p>对顶角相等。</p><p>邻补角互补（相加等于180°）。</p><p><span class='emphasis'>二、平行线</span></p><p>同位角相等 → 两直线平行</p><p>内错角相等 → 两直线平行</p><p>同旁内角互补 → 两直线平行</p><p><span class='emphasis'>三、三角形</span></p><p>内角和：180°</p><p>三边关系：两边之和大于第三边</p><p>全等三角形的判定：SAS、ASA、SSS、AAS</p><p>等腰三角形：两腰相等，两底角相等</p><p>等边三角形：三边相等，三角都等于60°</p>",
-examples:[{q:"等腰三角形顶角是40°，底角是多少？",a:"(180° - 40°) ÷ 2 = 70°"},{q:"判定：两边及其夹角分别相等的两个三角形是否全等？",a:"SAS，全等"}],
-practices:[{q:"三角形的内角和是？",o:["90°","180°","270°","360°"],a:1},{q:"等边三角形每个角是多少度？",o:["45°","60°","90°","120°"],a:1}],
-intensive:[{q:"一个三角形的三边长分别是3、4、5，这是哪种三角形？",o:["锐角三角形","直角三角形","钝角三角形","等腰三角形"],a:1}]},
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、相交线</span></p><p>对顶角相等；邻补角互补</p><p><span class='emphasis'>二、平行线</span></p><p>同位角相等 → 两直线平行</p><p><span class='emphasis'>三、三角形</span></p><p>内角和：180°；三边关系：两边之和大于第三边</p>",
+examples:[
+{q:"等腰三角形顶角是40°，底角是多少？",a:"(180° - 40°) ÷ 2 = 70°"},
+{q:"判定：两边及其夹角分别相等的两个三角形是否全等？",a:"SAS，全等"},
+{q:"三角形两边分别为3和5，第三边可能是多少？（取整数）",a:"3 < 第三边 < 8，所以可能是4、5、6、7"},
+{q:"等边三角形的每个内角是多少度？",a:"60°"},
+{q:"一个三角形三个内角的比是2:3:5，三个角分别是多少度？",a:"2x + 3x + 5x = 180°，10x = 180°，x = 18°；角为36°、54°、90°"}
+],
+practices:[
+{q:"三角形的内角和是？",o:["90°","180°","270°","360°"],a:1},
+{q:"等边三角形每个角是多少度？",o:["45°","60°","90°","120°"],a:1},
+{q:"三角形两边分别为2和4，第三边不能是？",o:["2","3","4","5"],a:0}
+],
+intensive:[
+{q:"一个三角形的三边长分别是3、4、5，这是哪种三角形？",o:["锐角三角形","直角三角形","钝角三角形","等腰三角形"],a:1}
+]},
 {title:"一次函数",tag:"sx",tagName:"数学",desc:"平面直角坐标系、一次函数",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、平面直角坐标系</span></p><p>x轴（横轴）、y轴（纵轴），交点为原点O(0,0)</p><p>四个象限：Ⅰ象限(+,+)、Ⅱ象限(-,+)、Ⅲ象限(-,-)、Ⅳ象限(+,-)</p><p>坐标表示：点P的坐标为(x, y)，x是横坐标，y是纵坐标。</p><p><span class='emphasis'>二、一次函数</span></p><p>定义：y = kx + b（k、b为常数，k≠0）</p><p>图象：一条直线</p><p>k>0，b>0：直线经过第一、二、三象限</p><p>k>0，b<0：直线经过第一、三、四象限</p><p>k<0，b>0：直线经过第一、二、四象限</p><p><span class='emphasis'>三、正比例函数</span></p><p>y = kx（b=0），图象经过原点。</p>",
-examples:[{q:"函数y = 2x + 3，k和b分别是多少？",a:"k = 2，b = 3"},{q:"点(3, -2)在第几象限？",a:"第四象限（Ⅳ）"}],
-practices:[{q:"y = 3x - 5，x=2时，y=？",o:["1","-1","6","-6"],a:0},{q:"正比例函数的表达式是？",o:["y = kx","y = kx + b","y = k/x","y = kx²"],a:0}],
-intensive:[{q:"一次函数y = -2x + 4，当x>2时，y的取值范围是？",o:["y > 0","y < 0","y > 4","y < 4"],a:1}]}
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、平面直角坐标系</span></p><p>x轴（横轴）、y轴（纵轴），交点为原点O(0,0)</p><p>四个象限：Ⅰ(+,+)、Ⅱ(-,+)、Ⅲ(-,-)、Ⅳ(+,-)</p><p><span class='emphasis'>二、一次函数</span></p><p>y = kx + b（k≠0）</p>",
+examples:[
+{q:"函数y = 2x + 3，k和b分别是多少？",a:"k = 2，b = 3"},
+{q:"点(3, -2)在第几象限？",a:"第四象限（Ⅳ）"},
+{q:"点(-1, 4)在第几象限？",a:"第二象限（Ⅱ）"},
+{q:"当x = -1时，y = 3x - 2的值是多少？",a:"y = 3×(-1) - 2 = -3 - 2 = -5"},
+{q:"函数y = -x + 5，当x增大时，y怎么变化？",a:"y减小（因为k = -1 < 0）"}
+],
+practices:[
+{q:"y = 3x - 5，x=2时，y=？",o:["1","-1","6","-6"],a:0},
+{q:"正比例函数的表达式是？",o:["y = kx","y = kx + b","y = k/x","y = kx²"],a:0},
+{q:"原点(0,0)在第几象限？",o:["不属于任何象限","第一象限","第二象限","同时属于四个象限"],a:0}
+],
+intensive:[
+{q:"一次函数y = -2x + 4，当x>2时，y的取值范围是？",o:["y > 0","y < 0","y > 4","y < 4"],a:1}
+]},
+{title:"二元一次方程组",tag:"sx",tagName:"数学",desc:"代入法、加减法解方程组",
+textbook:"<h3>【课文】</h3><p>二元一次方程组由两个方程组成，有两种基本解法：</p><p><span class='emphasis'>代入法：</span>用一个未知数表示另一个未知数，代入第二个方程</p><p><span class='emphasis'>加减法：</span>让两个方程中某个未知数系数相同，相加减消元</p>",
+examples:[
+{q:"解方程组：x + y = 5，x - y = 1",a:"两式相加：2x = 6，x = 3；代入：3 + y = 5，y = 2；解为x=3, y=2"},
+{q:"解方程组：2x + y = 7，x + y = 4",a:"相减：x = 3；代入：3 + y = 4，y = 1；解为x=3, y=1"},
+{q:"用代入法解：y = 2x，x + y = 9",a:"代入：x + 2x = 9，3x = 9，x = 3，y = 6"}
+],
+practices:[
+{q:"方程组x + y = 3，x - y = 1的解是？",o:["x=2, y=1","x=1, y=2","x=3, y=0","x=4, y=-1"],a:0}
+],
+intensive:[
+{q:"方程组2x + 3y = 12，x + y = 4的解是？",o:["x=3, y=1","x=0, y=4","x=4, y=0","x=2, y=2"],a:0}
+]}
 ],
 "英语-初中":[
 {title:"词汇积累",tag:"yy2",tagName:"英语",desc:"词性转换、词根词缀、短语动词",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、词性转换</span></p><p>quick（adj.快的）→ quickly（adv.快地）→ quickness（n.快捷）</p><p>happy（adj.幸福的）→ happily（adv.幸福地）→ happiness（n.幸福）</p><p>die（v.死）→ dead（adj.死的）→ death（n.死亡）</p><p>beauty（n.美）→ beautiful（adj.美丽的）→ beautifully（adv.美丽地）</p><p><span class='emphasis'>二、词根词缀</span></p><p>un-（否定）：unhappy（不高兴的）、unfair（不公平的）、undo（撤销）</p><p>re-（重复/再）：rewrite（重写）、return（回来）、review（复习）</p><p>-tion（名词后缀）：education（教育）、relation（关系）、information（信息）</p><p><span class='emphasis'>三、短语动词</span></p><p>take: take off（脱下/起飞）、take up（占据/开始学习）、take care of（照顾）</p><p>put: put off（推迟）、put away（收拾）、put out（熄灭）</p><p>get: get up（起床）、get along with（与...相处）</p>",
-examples:[{q:"'careful'的副词形式是？",a:"carefully"},{q:"'unhappy'的反义词是？",a:"happy"}],
-practices:[{q:"'develop'的名词形式是？",o:["develope","development","developing","developed"],a:1},{q:"短语'起飞'用英语怎么说？",o:["take off","take up","take away","take in"],a:0}],
-intensive:[{q:"The children are looking forward to _____ the new teacher. (meet)",o:["meet","meets","meeting","met"],a:2}]},
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、词性转换</span></p><p>quick（adj）→ quickly（adv）→ quickness（n）</p><p>happy（adj）→ happily（adv）→ happiness（n）</p><p><span class='emphasis'>二、词根词缀</span></p><p>un-（否定）：unhappy、unfair</p><p>re-（重复）：rewrite、return</p><p><span class='emphasis'>三、短语动词</span></p><p>take: take off、take up、take care of</p>",
+examples:[
+{q:"'careful'的副词形式是？",a:"carefully"},
+{q:"'unhappy'的反义词是？",a:"happy"},
+{q:"'develop'的名词形式是？",a:"development"},
+{q:"短语'起飞'用英语怎么说？",a:"take off"},
+{q:"'rewrite'中're-'的意思是？",a:"重写、再来（repeat）"},
+{q:"'beautiful'的副词形式是？",a:"beautifully"},
+{q:"'education'去掉'-tion'加'adjust'变成新词，意思是？",a:"重新调整（adjust again）"},
+{q:"'care'加后缀'ful'变成什么词？",a:"careful（形容词，认真的）"}
+],
+practices:[
+{q:"'develop'的名词形式是？",o:["develope","development","developing","developed"],a:1},
+{q:"短语'起飞'用英语怎么说？",o:["take off","take up","take away","take in"],a:0},
+{q:"'happy'的副词形式是？",o:["happily","happiness","happyly","happied"],a:0}
+],
+intensive:[
+{q:"The children are looking forward to _____ the new teacher. (meet)",o:["meet","meets","meeting","met"],a:2},
+{q:"The book is _____ (interest). We all like it.",o:["interesting","interested","interestingly","interests"],a:0}
+]},
 {title:"时态系统",tag:"yy2",tagName:"英语",desc:"现在时、过去时、将来时",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、一般现在时</span></p><p>结构：主语 + 动词原形（第三人称单数加s/es）</p><p>用法：习惯经常发生的动作、客观事实、普遍真理</p><p>标志词：always、usually、often、every day</p><p>例：He plays football every Sunday. | Water boils at 100°C.</p><p><span class='emphasis'>二、现在进行时</span></p><p>结构：be (am/is/are) + V-ing</p><p>用法：正在进行的动作</p><p>标志词：now、at present、look、listen</p><p>例：She is reading a book now.</p><p><span class='emphasis'>三、一般过去时</span></p><p>结构：主语 + 动词过去式</p><p>标志词：yesterday、last week、ago、in 2020</p><p>例：They visited Beijing last year.</p><p><span class='emphasis'>四、一般将来时</span></p><p>结构：will + 动词原形 / be going to + 动词原形</p><p>will：临时决定、预测、承诺</p><p>be going to：计划打算、有迹象表明</p><p>例：I will call you tomorrow. | She is going to study medicine.</p>",
-examples:[{q:"He usually _____ (go) to school by bike.",a:"goes（一般现在时，第三人称单数）"},{q:"Look! The children _____ (play) on the playground.",a:"are playing（现在进行时）"}],
-practices:[{q:"My mother _____ (cook) dinner at home every evening.",o:["cook","cooks","is cooking","cooked"],a:1},{q:"We _____ a party next Saturday. (hold)",o:["hold","holds","will hold","are holding"],a:2}],
-intensive:[{q:"选择正确的时态：When I _____ (arrive) home, my mother _____ (cook).",o:["arrived / was cooking","arrived / cooked","arrive / cooks","arrive / is cooking"],a:0}]},
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、一般现在时</span></p><p>结构：主语 + 动词原形（主三单加s/es）</p><p><span class='emphasis'>二、现在进行时</span></p><p>结构：be + V-ing</p><p><span class='emphasis'>三、一般过去时</span></p><p>结构：主语 + 动词过去式</p><p><span class='emphasis'>四、一般将来时</span></p><p>结构：will + 动词原形 / be going to + 动词原形</p>",
+examples:[
+{q:"He usually _____ (go) to school by bike.",a:"goes（一般现在时，第三人称单数）"},
+{q:"Look! The children _____ (play) on the playground.",a:"are playing（现在进行时）"},
+{q:"My mother _____ (cook) dinner at home every evening.",a:"cooks（一般现在时，第三人称单数）"},
+{q:"We _____ a party next Saturday. (hold)",a:"will hold / are going to hold（一般将来时）"},
+{q:"She _____ (study) English for three years.",a:"has studied / has been studying（现在完成时）"},
+{q:"If it _____ (rain) tomorrow, I will stay home.",a:"rains（一般现在时表将来）"},
+{q:"The baby _____ (sleep) when I came in.",a:"was sleeping（过去进行时）"}
+],
+practices:[
+{q:"My mother _____ (cook) dinner at home every evening.",o:["cook","cooks","is cooking","cooked"],a:1},
+{q:"We _____ a party next Saturday. (hold)",o:["hold","holds","will hold","are holding"],a:2},
+{q:"选择正确的时态：When I _____ (arrive) home, my mother _____ (cook).",o:["arrived / was cooking","arrived / cooked","arrive / cooks","arrive / is cooking"],a:0}
+],
+intensive:[
+{q:"By the time I got home, she _____ (leave).",o:["had left","has left","left","was leaving"],a:0}
+]},
 {title:"从句",tag:"yy2",tagName:"英语",desc:"宾语从句、状语从句、定语从句",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、宾语从句</span></p><p>结构：主句 + 连接词 + 从句</p><p>连接词：</p><p>that（无含义，只起连接作用）</p><p>if/whether（是否）</p><p>what/who/whom/which（什么/谁/谁/哪个）</p><p>where/when/why/how（在哪里/什么时候/为什么/怎样）</p><p>例：I think that he is right. | Can you tell me where he lives?</p><p><span class='emphasis'>二、状语从句</span></p><p>时间：when/while/as（当...时）、before/after、since</p><p>条件：if/unless（除非）</p><p>原因：because、since、as（因为）</p><p>让步：although/though（虽然）、even if（即使）</p><p>例：I will call you when I arrive. | If it rains, I will stay home.</p><p><span class='emphasis'>三、定语从句</span></p><p>修饰名词或代词，放在被修饰词之后。</p><p>关系代词：who（指人）、whom（指人，宾格）、which（指物）、that（指人或物）</p><p>关系副词：where（地点）、when（时间）、why（原因）</p><p>例：The boy who is playing football is my brother.</p>",
-examples:[{q:"I don't know _____ she will come tomorrow.",a:"whether/if（是否）"},{q:"This is the school _____ I studied three years ago.",a:"where（定语从句，先行词是school，表地点）"}],
-practices:[{q:"Can you tell me _____?",o:["where does he live","where he lives","he lives where","does he live where"],a:1},{q:"I'll help you _____ I am free.",o:["if","although","because","so"],a:0}],
-intensive:[{q:"The man _____ talked to me just now is our teacher.",o:["who","which","that","where"],a:0}]}
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、宾语从句</span></p><p>连接词：that、if/whether、what/who/which、where/when/why/how</p><p><span class='emphasis'>二、状语从句</span></p><p>时间：when/while/before/after；条件：if/unless；原因：because/since/as</p><p><span class='emphasis'>三、定语从句</span></p><p>关系代词：who/whom/which/that；关系副词：where/when/why</p>",
+examples:[
+{q:"I don't know _____ she will come tomorrow.",a:"whether/if（是否）"},
+{q:"This is the school _____ I studied three years ago.",a:"where（定语从句，先行词是school，表地点）"},
+{q:"Can you tell me _____?",o:["where he lives","where does he live","he lives where","does he live where"],a:0},
+{q:"I'll help you _____ I am free.",o:["if","although","because","so"],a:0},
+{q:"The man _____ talked to me just now is our teacher.",o:["who","which","that","where"],a:0},
+{q:"I still remember the day _____ we first met.",a:"when（定语从句，先行词是day，表时间）"},
+{q:"The reason _____ he was late is that he missed the bus.",a:"why（定语从句，先行词是reason，表原因）"}
+],
+practices:[
+{q:"This is the best movie _____ I've ever seen.",o:["which","that","who","whom"],a:1},
+{q:"I don't know _____ he will come tomorrow.",o:["that","whether","which","what"],a:1},
+{q:"He is the student _____ camera was lost.",o:["whose","who","which","that"],a:0}
+],
+intensive:[
+{q:"_____ the students were tired, _____ they went on learning.",o:["Though / yet","Although / still","Both A and B","Neither A nor B"],a:2}
+]},
+{title:"被动语态",tag:"yy2",tagName:"英语",desc:"被动语态构成、各时态被动语态",
+textbook:"<h3>【课文】</h3><p>被动语态表示主语是动作的承受者。</p><p><span class='emphasis'>构成：be + 过去分词</span></p><p>一般现在时：am/is/are + done</p><p>一般过去时：was/were + done</p><p>一般将来时：will be + done</p><p>现在完成时：has/have been + done</p>",
+examples:[
+{q:"改写成被动：Active: They build this house. Passive:",a:"This house is built by them."},
+{q:"改写成被动：Active: She wrote a letter. Passive:",a:"A letter was written by her."},
+{q:"改写成被动：Active: We will finish the work. Passive:",a:"The work will be finished by us."},
+{q:"改写成主动：Passive: English is spoken in many countries.",a:"People speak English in many countries."}
+],
+practices:[
+{q:"The letter _____ by Tom yesterday.",o:["was written","is written","will be written","writes"],a:0},
+{q:"Football _____ in many countries.",o:["is played","played","is playing","plays"],a:0}
+],
+intensive:[
+{q:"The work _____ by them tomorrow.",o:["will be done","will do","is done","does"],a:0}
+]},
+{title:"情态动词",tag:"yy2",tagName:"英语",desc:"can/may/must/should的用法",
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>can：能够、会（能力）</span></p><p>I can swim.（我会游泳）</p><p><span class='emphasis'>may：可以、也许（允许/可能性）</span></p><p>You may go now.（你现在可以走了）</p><p><span class='emphasis'>must：必须（主观必要性）</span></p><p>We must work hard.（我们必须努力工作）</p><p><span class='emphasis'>should：应该（建议/责任）</span></p><p>You should study more.（你应该多学习）</p>",
+examples:[
+{q:"You _____ swim in the river. It's dangerous.",o:["mustn't","can't","could","shouldn't"],a:0},
+{q:"_____ I help you with this?",a:"Can / May（我可以帮你吗？）"},
+{q:"It _____ rain tomorrow. I'm not sure.",o:["may","must","can","should"],a:0},
+{q:"You _____ finish your homework first.",o:["must","can","may","could"],a:0},
+{q:"Children _____ obey their parents.",o:["should","can","may","mustn't"],a:0}
+],
+practices:[
+{q:"You _____ be late for school.",o:["mustn't","can't","could","must"],a:0},
+{q:"_____ I use your pen?",o:["May / Can","Must","Should","Need"],a:0}
+],
+intensive:[
+{q:"He looks tired. He _____ have stayed up late last night.",o:["may","must","should","can"],a:1}
+]}
 ],
 "物理-初中":[
-{title:"声与光",tag:"wl",tagName:"物理",desc:"声音特性、光的传播与反射",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、声音的产生与传播</span></p><p>声音由物体振动产生。振动停止，声音也停止。</p><p>声音的传播需要介质：固体、液体、气体都能传播声音，真空不能传声。</p><p>声音在15°C空气中传播速度约为340 m/s。</p><p><span class='emphasis'>二、声音的三要素</span></p><p>音调：声音的高低，由发声体振动频率决定。频率越高，音调越高。</p><p>响度：声音的强弱，由振幅决定。振幅越大，响度越大。</p><p>音色：声音的特色，由发声体的材料和结构决定。</p><p><span class='emphasis'>三、光的传播</span></p><p>光在同种均匀介质中沿直线传播。</p><p>光速：3×10⁸ m/s</p><p><span class='emphasis'>四、光的反射与折射</span></p><p>反射定律：反射光线、入射光线和法线在同一平面内，反射角等于入射角。</p><p>折射规律：光从空气斜射入水或玻璃时，折射角小于入射角。</p>",
-examples:[{q:"声音在钢铁中传播比在空气中快吗？为什么？",a:"是，因为固体也能传播声音，且传播速度更快"},{q:"入射角为30°，反射角为多少度？",a:"30°（反射角等于入射角）"}],
-practices:[{q:"声音是由什么产生的？",o:["振动","温度","压力","密度"],a:0},{q:"光在什么中沿直线传播？",o:["同种均匀介质","不同介质","真空","以上都不对"],a:0}],
-intensive:[{q:"一个人对着高山喊话，4秒后听到回声，高山距离大约多少米？（声音速度340m/s）",o:["680m","1360m","340m","136m"],a:0}]},
+{title:"声与光",tag:"wl",tagName:"物理",desc:"声音特性，光的传播与反射",
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、声音的产生与传播</span></p><p>声音由物体振动产生。声音的传播需要介质，真空不能传声。</p><p><span class='emphasis'>二、声音的三要素</span></p><p>音调（频率）、响度（振幅）、音色</p><p><span class='emphasis'>三、光的传播与反射/折射</span></p><p>光在同种均匀介质中沿直线传播。反射角=入射角；光从空气斜射入水/玻璃时，折射角<入射角。</p>",
+examples:[
+{q:"声音在钢铁中传播比在空气中快吗？为什么？",a:"是，因为固体也能传播声音，且传播速度更快"},
+{q:"入射角为30°，反射角为多少度？",a:"30°（反射角等于入射角）"},
+{q:"一个同学对着墙壁喊话，2秒后听到回声，同学距墙壁多少米？（声音速度340m/s）",a:"距离 = 340m/s × 2s ÷ 2 = 340m ÷ 2 = 170m"},
+{q:"光线从空气斜射入水中，折射角和入射角哪个更大？",a:"入射角更大（因为光从光疏介质进入光密介质，折射角小于入射角）"},
+{q:"用放大镜看物体，是什么光学现象？",a:"光的折射（凸透镜成像）"},
+{q:"为什么天空是蓝色的？",a:"大气层对阳光中蓝光的散射作用最强"}],
+practices:[
+{q:"声音是由什么产生的？",o:["振动","温度","压力","密度"],a:0},
+{q:"光在什么中沿直线传播？",o:["同种均匀介质","不同介质","真空","以上都不对"],a:0},
+{q:"一个同学距墙壁170米，喊话后几秒听到回声？（声音速度340m/s）",o:["1秒","2秒","3秒","4秒"],a:1}
+],
+intensive:[
+{q:"一个人对着高山喊话，4秒后听到回声，高山距离大约多少米？（声音速度340m/s）",o:["680m","1360m","340m","136m"],a:0}
+]},
 {title:"力与运动",tag:"wl",tagName:"物理",desc:"重力、弹力、摩擦力、二力平衡",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、力的作用效果</span></p><p>1. 改变物体的运动状态（速度大小或方向改变）</p><p>2. 使物体发生形变（形状或体积改变）</p><p><span class='emphasis'>二、重力</span></p><p>由于地球的吸引而使物体受到的力叫做重力。</p><p>重力的方向：竖直向下</p><p>重力与质量的关系：G = mg</p><p>g = 9.8 N/kg，表示质量为1kg的物体受到的重力为9.8N</p><p><span class='emphasis'>三、弹力与摩擦力</span></p><p>弹力：物体发生弹性形变时产生的力。</p><p>摩擦力：f = μN（μ为摩擦系数，N为支持力）</p><p>类型：静摩擦、滑动摩擦、滚动摩擦</p><p><span class='emphasis'>四、二力平衡</span></p><p>条件：作用在同一物体上、同一直线上、大小相等、方向相反</p><p>平衡力与相互作用力的区别：平衡力作用在同一物体上，相互作用力作用在两个不同物体上。</p>",
-examples:[{q:"质量为5kg的物体受到的重力是多少？",a:"G = mg = 5kg × 9.8N/kg = 49N"},{q:"二力平衡的条件是什么？",a:"同体、等大、反向、共线（同物、等大、反向、共线）"}],
-practices:[{q:"重力方向是？",o:["垂直向下","竖直向下","水平方向","无法确定"],a:1},{q:"物体在水平面上滑动，摩擦力f = μN，其中N是？",o:["物体重力","物体质量","支持力","压力"],a:2}],
-intensive:[{q:"一个物体受到的重力为100N，其质量约为多少kg？（g=10N/kg）",o:["10kg","100kg","1000kg","1kg"],a:0}]},
-{title:"压强浮力",tag:"wl",tagName:"物理",desc:"固体液体压强、大气压、浮力",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、固体压强</span></p><p>压强表示压力产生的效果。压强 = 压力 ÷ 受力面积</p><p>p = F/S</p><p>压力越大、受力面积越小，压强越大。</p><p><span class='emphasis'>二、液体压强</span></p><p>液体压强只与液体密度和深度有关，与液体质量和体积无关。</p><p>p = ρgh（ρ为液体密度，h为深度，g=9.8N/kg）</p><p><span class='emphasis'>三、大气压强</span></p><p>马德堡半球实验证明了大气压的存在。</p><p>托里拆利实验测出了大气压的值。</p><p>标准大气压：1.01×10⁵ Pa（约760mm汞柱）</p><p><span class='emphasis'>四、浮力</span></p><p>浮力方向：竖直向上</p><p>阿基米德原理：浮力等于物体排开液体的重力</p><p>F浮 = G排 = ρ液gV排</p>",
-examples:[{q:"一块砖平放和竖放在地面上，对地面的压力相同吗？压强呢？",a:"压力相同；竖放时受力面积小，压强更大"},{q:"一个物体漂浮在水中，排开水的体积为0.001m³，受到的浮力是多少？（ρ水=1000kg/m³，g=10N/kg）",a:"F浮 = ρ水gV排 = 1000 × 10 × 0.001 = 10N"}],
-practices:[{q:"增大压强的方法是？",o:["增大压力或增大受力面积","减小压力或减小受力面积","增大压力或减小受力面积","减小压力或增大受力面积"],a:2},{q:"浸在液体中的物体，受到的浮力方向是？",o:["竖直向上","竖直向下","水平方向","任意方向"],a:0}],
-intensive:[{q:"一个物体重10N，浸在水中排开水的重力为8N，物体的浮力是多少？物体是上浮还是下沉？",o:["8N，上浮","8N，下沉","10N，上浮","10N，下沉"],a:1}]}
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、力的作用效果</span></p><p>1. 改变物体的运动状态</p><p>2. 使物体发生形变</p><p><span class='emphasis'>二、重力</span></p><p>G = mg，方向竖直向下</p><p><span class='emphasis'>三、摩擦力</span></p><p>f = μN</p><p><span class='emphasis'>四、二力平衡</span></p><p>同物、等大、反向、共线</p>",
+examples:[
+{q:"质量为5kg的物体受到的重力是多少？",a:"G = mg = 5kg × 9.8N/kg = 49N"},
+{q:"二力平衡的条件是什么？",a:"同体、等大，反向、共线"},
+{q:"一个物体重100N，它的质量是多少？（g=10N/kg）",a:"m = G/g = 100N ÷ 10N/kg = 10kg"},
+{q:"在平直公路上匀速行驶的汽车，受到的摩擦力f和牵引力F的关系是？",a:"F = f（因为匀速行驶时二力平衡）"},
+{q:"增大摩擦力的方法有哪些？",a:"增大压力、增大接触面粗糙程度、加粗糙鞋底"},
+{q:"减小摩擦力的方法有哪些？",a:"减小压力、减小接触面粗糙程度、使用滚动轴承、加润滑油"}
+],
+practices:[
+{q:"重力方向是？",o:["垂直向下","竖直向下","水平方向","无法确定"],a:1},
+{q:"物体在水平面上滑动，摩擦力f = μN，其中N是？",o:["物体重力","物体质量","支持力","压力"],a:2},
+{q:"一个物体受到的重力为100N，其质量约为多少kg？（g=10N/kg）",o:["10kg","100kg","1000kg","1kg"],a:0}
+],
+intensive:[
+{q:"一个木块在水平面上做匀速直线运动，受到的拉力为10N，摩擦力是多少？",o:["10N","20N","5N","无法确定"],a:0}
+]},
+{title:"压强浮力",tag:"wl",tagName:"物理",desc:"固体液体压强，大气压、浮力",
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、固体压强</span></p><p>p = F/S</p><p><span class='emphasis'>二、液体压强</span></p><p>p = ρgh</p><p><span class='emphasis'>三、浮力</span></p><p>F浮 = G排 = ρ液gV排（阿基米德原理）</p>",
+examples:[
+{q:"一块砖平放和竖放在地面上，对地面的压力相同吗？压强呢？",a:"压力相同；竖放时受力面积小，压强更大"},
+{q:"一个物体漂浮在水中，排开水的体积为0.001m³，受到的浮力是多少？（ρ水=1000kg/m³，g=10N/kg）",a:"F浮 = ρ水gV排 = 1000 × 10 × 0.001 = 10N"},
+{q:"一艘轮船从河流驶入大海，它受到的浮力怎么变？排开水的体积怎么变？",a:"浮力不变（因为船仍漂浮，F浮=G）；海水密度更大，所以V排变小（海水排水量更少）"},
+{q:"潜水艇能够上浮和下沉是利用什么原理？",a:"改变自身重力（通过吸水/排水改变重力）"},
+{q:"密度计放在不同液体中，液体的密度越大，密度计浸入的体积怎么变？",a:"变小（因为F浮=G不变，ρ液V排g=G，所以V排与ρ液成反比）"}
+],
+practices:[
+{q:"增大压强的方法是？",o:["增大压力或增大受力面积","减小压力或减小受力面积","增大压力或减小受力面积","减小压力或增大受力面积"],a:2},
+{q:"浸在液体中的物体，受到的浮力方向是？",o:["竖直向上","竖直向下","水平方向","任意方向"],a:0},
+{q:"一个物体重10N，浸在水中排开水的重力为8N，物体的浮力是多少？物体是上浮还是下沉？",o:["8N，上浮","8N，下沉","10N，上浮","10N，下沉"],a:1}
+],
+intensive:[
+{q:"一木块漂浮在水面上，露出水面的体积是总体积的1/5，则木块的密度是多少？（ρ水=1g/cm³）",o:["0.8g/cm³","0.6g/cm³","0.5g/cm³","0.4g/cm³"],a:0}
+]}
 ],
 "化学-初中":[
 {title:"物质构成",tag:"hx",tagName:"化学",desc:"分子原子、元素、化学式",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、分子与原子</span></p><p>分子是保持物质化学性质的最小粒子。</p><p>原子是化学变化中的最小粒子。</p><p>分子由原子构成。化学变化中，分子分成原子，原子重新组合成新分子。</p><p><span class='emphasis'>二、原子结构</span></p><p>原子 = 原子核（质子+中子）+ 核外电子</p><p>质子数 = 核电荷数 = 核外电子数（原子）</p><p>质子数决定元素种类。</p><p>在化学反应中，原子核不变，只有核外电子发生转移。</p><p><span class='emphasis'>三、元素</span></p><p>具有相同核电荷数（即质子数）的一类原子的总称。</p><p>元素符号：H He Li Be B C N O F Ne...</p><p><span class='emphasis'>四、化学式</span></p><p>用元素符号和数字表示物质组成的式子。</p><p>H₂O表示一个水分子含2个氢原子和1个氧原子。</p>",
-examples:[{q:"水通电分解为氢气和氧气，说明什么？",a:"水分子分解成氢原子和氧原子，原子重新组合成氢气分子和氧气分子"},{q:"CO₂中C、O的原子个数比和质量比分别是？",a:"个数比C:O = 1:2；质量比C:O = 12:32 = 3:8"}],
-practices:[{q:"化学变化中的最小粒子是？",o:["分子","原子","质子","电子"],a:1},{q:"决定元素种类的是？",o:["电子数","中子数","质子数","核外电子总数"],a:2}],
-intensive:[{q:"铁丝在氧气中燃烧，生成四氧化三铁。则铁、氧气、四氧化三铁的质量比？",o:["21:8:29","3:2:5","1:1:2","无法确定"],a:0}]},
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、分子与原子</span></p><p>分子是保持物质化学性质的最小粒子；原子是化学变化中的最小粒子</p><p><span class='emphasis'>二、元素</span></p><p>具有相同核电荷数的一类原子的总称</p><p><span class='emphasis'>三、化学式</span></p><p>用元素符号和数字表示物质组成。如：H₂O</p>",
+examples:[
+{q:"水通电分解为氢气和氧气，说明什么？",a:"水分子分解成氢原子和氧原子，原子重新组合成氢气分子和氧气分子"},
+{q:"CO₂中C、O的原子个数比和质量比分别是？",a:"个数比C:O = 1:2；质量比C:O = 12:32 = 3:8"},
+{q:"H₂SO₄的相对分子质量是多少？（H=1, S=32, O=16）",a:"1×2 + 32 + 16×4 = 2 + 32 + 64 = 98"},
+{q:"2H₂O表示什么含义？",a:"2个水分子"},
+{q:"铁丝在氧气中燃烧的化学方程式是什么？",a:"3Fe + 2O₂ =点燃= Fe₃O₄"}
+],
+practices:[
+{q:"化学变化中的最小粒子是？",o:["分子","原子","质子","电子"],a:1},
+{q:"决定元素种类的是？",o:["电子数","中子数","质子数","核外电子总数"],a:2},
+{q:"下列物质由分子构成的是？",o:["铁（Fe）","水（H₂O）","氯化钠（NaCl）","金刚石（C）"],a:1}
+],
+intensive:[
+{q:"铁丝在氧气中燃烧，生成四氧化三铁。则铁、氧气、四氧化三铁的质量比？",o:["21:8:29","3:2:5","1:1:2","无法确定"],a:0}
+]},
 {title:"化学用语",tag:"hx",tagName:"化学",desc:"化合价、化学方程式",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、化合价</span></p><p>化合价表示原子之间相互化合的数目。</p><p>规律：</p><p>一价氢氯钾钠银</p><p>二价氧钙钡镁锌</p><p>三铝四硅五价磷</p><p>二三铁、二四碳</p><p>莫忘单质都为零</p><p>化合物中化合价代数和为零。</p><p><span class='emphasis'>二、化学方程式</span></p><p>书写原则：以客观事实为依据，遵循质量守恒定律。</p><p>配平方法：最小公倍数法、奇数配偶法、观察法</p><p>质量守恒定律：化学反应前后原子种类、数目、质量不变。</p><p><span class='emphasis'>三、化学方程式读法</span></p><p>2H₂ + O₂ =点燃= 2H₂O</p><p>每2个氢分子和1个氧分子在点燃条件下生成2个水分子。</p><p>每4份质量的氢和32份质量的氧在点燃条件下生成36份质量的水。</p>",
-examples:[{q:"配平：Fe + O₂ → Fe₂O₃",a:"4Fe + 3O₂ =点燃= 2Fe₂O₃"},{q:"计算：2H₂O =电解= 2H₂↑ + O₂↑，生成4g氢气，同时生成多少氧气？",a:"32g（质量比H₂:O₂ = 4:32 = 1:8）"}],
-practices:[{q:"在化合物中，氧通常显多少价？",o:["-1","-2","-3","-4"],a:1},{q:"质量守恒定律适用于？",o:["仅物理变化","仅化学变化","两者都适用","两者都不适用"],a:2}],
-intensive:[{q:"将10g碳酸钙加热分解，完全反应后剩余固体质量为5.6g，则生成二氧化碳多少克？",o:["3.1g","4.4g","5.6g","10g"],a:1}]},
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、化合价</span></p><p>一价氢氯钾钠银，二价氧钙钡镁锌</p><p>化合物中化合价代数和为零</p><p><span class='emphasis'>二、化学方程式</span></p><p>遵循质量守恒定律；配平方法：最小公倍数法等</p>",
+examples:[
+{q:"配平：Fe + O₂ → Fe₂O₃",a:"4Fe + 3O₂ =点燃= 2Fe₂O₃"},
+{q:"配平：H₂ + O₂ → H₂O",a:"2H₂ + O₂ =点燃= 2H₂O"},
+{q:"计算：2H₂O =电解= 2H₂↑ + O₂↑，生成4g氢气，同时生成多少氧气？",a:"32g（质量比H₂:O₂ = 4:32 = 1:8）"},
+{q:"用化合价规律检验：Al₂O₃是否正确？（Al化合价+3，O化合价-2）",a:"2×(+3) + 3×(-2) = 6 - 6 = 0，正确"},
+{q:"书写：磷在氧气中燃烧生成五氧化二磷",a:"4P + 5O₂ =点燃= 2P₂O₅"}
+],
+practices:[
+{q:"在化合物中，氧通常显多少价？",o:["-1","-2","-3","-4"],a:1},
+{q:"质量守恒定律适用于？",o:["仅物理变化","仅化学变化","两者都适用","两者都不适用"],a:2},
+{q:"下列化学方程式书写正确的是？",o:["2H₂ + O₂ = 2H₂O","2H₂ + O₂ =点燃= 2H₂O","2H₂ + O₂ → 2H₂O","2H₂ + O₂ = 2H₂O"],a:1}
+],
+intensive:[
+{q:"将10g碳酸钙加热分解，完全反应后剩余固体质量为5.6g，则生成二氧化碳多少克？",o:["3.1g","4.4g","5.6g","10g"],a:1}
+]},
 {title:"溶液",tag:"hx",tagName:"化学",desc:"溶解度、浓度计算",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、溶液的组成</span></p><p>溶液 = 溶质 + 溶剂</p><p>溶质：被溶解的物质</p><p>溶剂：能溶解其他物质的物质</p><p>水是最常见的溶剂。溶液中通常把量多的叫溶剂。</p><p><span class='emphasis'>二、溶解度</span></p><p>溶解度表示在一定温度下，100g溶剂中达到饱和状态时所溶解的最大质量。</p><p>固体溶解度受温度影响（大多数温度越高，溶解度越大）</p><p>气体溶解度受温度和压强影响（温度越高，压强越小，溶解度越小）</p><p><span class='emphasis'>三、浓度表示法</span></p><p>质量分数 = (溶质质量 / 溶液质量) × 100%</p><p>溶液质量 = 溶质质量 + 溶剂质量</p>",
-examples:[{q:"20°C时，100g水中最多溶解36g氯化钠，则氯化钠的溶解度是？",a:"36g（因为溶解度是100g溶剂中溶解的质量）"},{q:"50g水中加入10g食盐，溶液质量分数是？",a:"10g/(50g+10g) × 100% = 16.7%"}],
-practices:[{q:"影响固体溶解度的因素是？",o:["温度","压强","溶剂多少","搅拌快慢"],a:0},{q:"配制500g质量分数为10%的氯化钠溶液，需要氯化钠多少克？",o:["50g","10g","100g","5g"],a:0}],
-intensive:[{q:"将100g 20%的溶液稀释为10%的溶液，需要加水多少克？",o:["100g","200g","50g","150g"],a:0}]}
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、溶液的组成</span></p><p>溶液 = 溶质 + 溶剂</p><p><span class='emphasis'>二、溶解度</span></p><p>在一定温度下，100g溶剂中达到饱和状态时所溶解的质量</p><p><span class='emphasis'>三、浓度</span></p><p>质量分数 = (溶质质量 / 溶液质量) × 100%</p>",
+examples:[
+{q:"20°C时，100g水中最多溶解36g氯化钠，则氯化钠的溶解度是？",a:"36g"},
+{q:"50g水中加入10g食盐，溶液质量分数是？",a:"10g/(50g+10g) × 100% = 16.7%"},
+{q:"配制200g 10%的氯化钠溶液，需要氯化钠多少克？水多少克？",a:"氯化钠20g，水180g"},
+{q:"将100g 20%的溶液稀释为10%的溶液，需要加水多少克？",a:"100g（加100g水稀释后，溶质质量不变为20g，溶液质量变为200g）"}
 ],
-"语文-高中":[
-{title:"现代文阅读",tag:"yy",tagName:"语文",desc:"小说、散文、论述文阅读技巧",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、小说阅读</span></p><p>三要素：人物、情节、环境</p><p>人物塑造方法：</p><p>· 语言描写：展现人物性格</p><p>· 动作描写：体现人物习惯</p><p>· 心理描写：揭示内心世界</p><p>· 神态描写：反映情绪变化</p><p>· 外貌描写：勾画人物特征</p><p>情节推进：开端 → 发展 → 高潮 → 结局</p><p><span class='emphasis'>二、散文阅读</span></p><p>特点：形散神聚</p><p>表现手法：托物言志、借景抒情、动静结合、虚实相生</p><p><span class='emphasis'>三、论述文阅读</span></p><p>三要素：论点（观点）、论据（材料）、论证（方法）</p><p>论证方法：举例论证、道理论证、对比论证、比喻论证、引用论证</p>",
-examples:[{q:"小说《孔乙己》中'排出九文大钱'的动作描写作用是什么？",a:"表现孔乙己穷酸却要面子的性格特点"},{q:"论述文'学而不思则罔，思而不学则殆'用了什么论证方法？",a:"道理论证（引用名言）"}],
-practices:[{q:"小说的三要素不包括？",o:["人物","情节","环境","议论"],a:3},{q:"'托物言志'是指？",o:["借景物抒发感情","借事物说明道理","借物体表达志向","借物体描写人物"],a:2}],
-intensive:[{q:"阅读鲁迅《故乡》，分析'闰土'人物形象及其作用。",o:["揭示辛亥革命后农村经济凋敝","展现农民生活的艰辛","反映封建礼教对人的毒害","以上都是"],a:3}]},
-{title:"文言文精讲",tag:"yy",tagName:"语文",desc:"实词虚词、词类活用、翻译技巧",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、重点实词（120个核心词）</span></p><p>之、其、以、于、而、则、乃、且、所、为、者、而、于、以、因、乎、则、莫、焉、诸</p><p><span class='emphasis'>二、虚词用法</span></p><p>而：表转折（然而）、表递进（而且）、表修饰（地）、表承接（然后/就）</p><p>以：表原因（因为）、表方式（用来）、表时间（在）</p><p>于：表地点（在）、表比较（比）、表对象（给/对）</p><p><span class='emphasis'>三、词类活用</span></p><p>名词作动词：假舟楫者，非能水也（水：游泳）</p><p>名词作状语：有狼恒入口（从口里）</p><p>意动用法：孔子登泰山而小鲁（小鲁：认为鲁国小）</p><p>使动用法：可烧而走也（走：使...败退）</p><p><span class='emphasis'>四、翻译技巧</span></p><p>留：人名、地名、官职名</p><p>换：古今异义词、通假字</p><p>补：省略句的省略成分</p><p>删：无意义虚词助词</p>",
-examples:[{q:"'小鲁''大小 GNU'是什么用法？",a:"意动用法，认为...小"},{q:"翻译'环而攻之而不胜'",a:"包围并攻打却不能取胜（环：包围；攻：攻打；而：却；胜：取胜）"}],
-practices:[{q:"'乃'表承接时意思是？",o:["于是","竟然","才","你的"],a:2},{q:"'吾师道也'中'师'是什么用法？",o:["名词作动词","名词作状语","意动用法","使动用法"],a:0}],
-intensive:[{q:"阅读《赤壁赋》节选，回答：文中'舞幽壑之潜蛟，泣孤舟之嫠妇'用了什么修辞和手法？",o:["对偶、夸张","对偶、拟人","排比、夸张","对偶、比喻"],a:1}]},
-{title:"古诗文鉴赏",tag:"yy",tagName:"语文",desc:"表达技巧、意象、情感主旨",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、表达技巧</span></p><p>修辞手法：比喻、拟人、夸张、对偶、排比、互文、借代</p><p>表现手法：借景抒情、托物言志、对比反衬、卒章显志、埋伏笔、照应、过渡</p><p><span class='emphasis'>二、常见意象分类</span></p><p>思乡类：月亮、鸿雁、捣衣、莼羹鲈脍</p><p>离别类：折柳、长亭、南浦、酒</p><p>高洁类：梅花、菊花、莲花、松柏、竹</p><p>战争类：烽火、硝烟、将军、长城、刀剑</p><p>愁苦类：梧桐、芭蕉、杜鹃、鹧鸪</p><p><span class='emphasis'>三、情感主旨类型</span></p><p>忧国忧民 | 建功立业 | 寄情山水 | 羁旅思乡</p><p>离愁别绪 | 怀才不遇 | 田园情趣 | 哲理感悟</p>",
-examples:[{q:"'明月松间照，清泉石上流'用了什么手法？",a:"动静结合（静景：松、明月；动景：泉流）"},{q:"'仍怜故乡水，万里送行舟'抒发了什么感情？",a:"思乡之情（借故乡水送行表达对故乡的眷恋）"}],
-practices:[{q:"'折柳'常用来表达什么情感？",o:["思乡","离别","战争","田园"],a:1},{q:"'梅'在诗歌中常象征什么？",o:["战争","思乡","高洁","送别"],a:2}],
-intensive:[{q:"分析《念奴娇·赤壁怀古》中'大江东去，浪淘尽，千古风流人物'的开篇作用。",o:["点明主题，为下文怀古做铺垫","借长江写出时间流逝","为英雄人物出场做铺垫","以上都是"],a:3}]}
+practices:[
+{q:"影响固体溶解度的因素是？",o:["温度","压强","溶剂多少","搅拌快慢"],a:0},
+{q:"配制500g质量分数为10%的氯化钠溶液，需要氯化钠多少克？",o:["50g","10g","100g","5g"],a:0},
+{q:"把100g 20%的蔗糖溶液稀释成10%的溶液，需要加水的质量是？",o:["100g","50g","200g","150g"],a:0}
 ],
-"数学-高中":[
-{title:"函数",tag:"sx",tagName:"数学",desc:"函数概念、性质、基本函数",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、函数概念</span></p><p>函数：对于每一个x，都有唯一的y与之对应，记作y = f(x)</p><p>定义域：x的取值范围</p><p>值域：y的取值范围</p><p>对应关系：每一个x对应唯一的y</p><p><span class='emphasis'>二、函数性质</span></p><p>单调性：增函数（x₁ < x₂ → f(x₁) < f(x₂)）；减函数（x₁ < x₂ → f(x₁) > f(x₂)）</p><p>奇偶性：偶函数f(-x)=f(x)（关于y轴对称）；奇函数f(-x)=-f(x)（关于原点对称）</p><p>周期性：f(x+T)=f(x)，T为周期</p><p><span class='emphasis'>三、基本函数</span></p><p>一次函数：y = kx + b（k≠0）</p><p>二次函数：y = ax² + bx + c（a≠0）</p><p>指数函数：y = aˣ（a>0且a≠1）</p><p>对数函数：y = logₐx（a>0且a≠1）</p><p>三角函数：y = sinx, cosx, tanx</p>",
-examples:[{q:"判断f(x)=x³的奇偶性",a:"奇函数（因为f(-x)=-x³=-f(x)）"},{q:"求f(x)=2x+1在x=3处的函数值",a:"f(3)=2×3+1=7"}],
-practices:[{q:"下列函数是奇函数的是？",o:["f(x)=x²","f(x)=x³","f(x)=|x|","f(x)=2"],a:1},{q:"指数函数y=aˣ，当a>1时，函数单调性是？",o:["递增","递减","先增后减","先减后增"],a:0}],
-intensive:[{q:"已知f(x)是奇函数，且f(2)=3，则f(-2)=？",o:["3","-3","0","无法确定"],a:1}]},
-{title:"导数",tag:"sx",tagName:"数学",desc:"导数公式、几何意义、应用",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、导数定义</span></p><p>导数描述函数在某一点的变化率。</p><p>f'(x) = lim(Δx→0) [f(x+Δx) - f(x)] / Δx</p><p><span class='emphasis'>二、求导公式</span></p><p>(xⁿ)' = nxⁿ⁻¹</p><p>(sinx)' = cosx | (cosx)' = -sinx</p><p>(eˣ)' = eˣ | (lnx)' = 1/x</p><p>(aˣ)' = aˣlna | (logₐx)' = 1/(x·lna)</p><p><span class='emphasis'>三、导数的四则运算</span></p><p>(u±v)' = u'±v'</p><p>(uv)' = u'v + uv'</p><p>(u/v)' = (u'v - uv')/v²</p><p><span class='emphasis'>四、导数的几何意义</span></p><p>导数 = 函数在该点的切线斜率</p><p>切线方程：y - f(x₀) = f'(x₀)(x - x₀)</p><p><span class='emphasis'>五、导数应用</span></p><p>判断函数单调性：f'(x)>0 → 增；f'(x)<0 → 减</p><p>求极值：令f'(x)=0，求出临界点</p><p>求最值：比较极值点和端点值</p>",
-examples:[{q:"求f(x)=x³在x=2处的导数",a:"f'(x)=3x²，f'(2)=3×4=12"},{q:"求曲线y=x²在点(1,1)处的切线方程",a:"y-1=2(x-1)，即y=2x-1"}],
-practices:[{q:"(x⁵)'=？",o:["5x⁴","5x⁵","x⁴","4x⁵"],a:0},{q:"函数f(x)在x₀处取得极大值的条件是？",o:["f'(x₀)=0且f''(x₀)>0","f'(x₀)=0且f''(x₀)<0","f'(x₀)>0","f'(x₀)<0"],a:1}],
-intensive:[{q:"求函数f(x)=x³-3x²+2的极值",o:["极大值2，极小值-2","极大值0，极小值-4","极大值2，极小值-4","极大值4，极小值0"],a:0}]},
-{title:"数列",tag:"sx",tagName:"数学",desc:"等差数列、等比数列",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、等差数列</span></p><p>定义：从第2项起，每一项与前一项的差等于同一个常数d</p><p>通项公式：aₙ = a₁ + (n-1)d</p><p>前n项和：Sₙ = n(a₁ + aₙ)/2 = na₁ + n(n-1)d/2</p><p>中项：aₙ = (aₙ₋₁ + aₙ₊₁)/2</p><p><span class='emphasis'>二、等比数列</span></p><p>定义：从第2项起，每一项与前一项的比等于同一个常数q</p><p>通项公式：aₙ = a₁qⁿ⁻¹</p><p>前n项和：Sₙ = a₁(1-qⁿ)/(1-q)（q≠1）</p><p>当q=1时，Sₙ = na₁</p><p>中项：aₙ = √(aₙ₋₁ × aₙ₊₁)（等比中项）</p><p><span class='emphasis'>三、递推数列</span></p><p>累加法：aₙ = a₁ + Σ(从2到n的差)</p><p>累乘法：aₙ = a₁ × Π(从2到n的商)</p>",
-examples:[{q:"等差数列1,3,5,7,...的通项公式和第20项",a:"aₙ=2n-1，a₂₀=39"},{q:"等比数列2,4,8,16,...的前10项和",a:"S₁₀=2(2¹⁰-1)/(2-1)=2046"}],
-practices:[{q:"等差数列中，a₁=3,d=2，则a₁₀=？",o:["21","23","25","27"],a:0},{q:"等比数列中，a₁=2,q=3，则a₄=？",o:["18","27","54","81"],a:2}],
-intensive:[{q:"等差数列前n项和为Sₙ=2n²+n，则aₙ=？",o:["4n-1","4n+1","2n+1","2n-1"],a:0}]}
+intensive:[
+{q:"将100g 20%的溶液稀释为10%的溶液，需要加水多少克？",o:["100g","200g","50g","150g"],a:0}
+]},
+{title:"酸碱盐",tag:"hx",tagName:"化学",desc:"酸的通性、碱的通性、盐的性质",
+textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、酸的通性（5条）</span></p><p>1. 与指示剂反应（石蕊变红）</p><p>2. 与活泼金属反应生成氢气</p><p>3. 与碱反应生成盐和水（中和反应）</p><p>4. 与金属氧化物反应生成盐和水</p><p>5. 与盐反应生成新酸新盐</p><p><span class='emphasis'>二、碱的通性（4条）</span></p><p>1. 与指示剂反应（石蕊变蓝，酚酞变红）</p><p>2. 与非金属氧化物反应生成盐和水</p><p>3. 与酸反应生成盐和水</p><p>4. 与盐反应生成新碱新盐</p>",
+examples:[
+{q:"写出盐酸与氢氧化钠反应的化学方程式",a:"HCl + NaOH = NaCl + H₂O"},
+{q:"写出稀硫酸与氧化铁反应的化学方程式",a:"Fe₂O₃ + 3H₂SO₄ = Fe₂(SO₄)₃ + 3H₂O"},
+{q:"写出锌与稀盐酸反应的化学方程式",a:"Zn + 2HCl = ZnCl₂ + H₂↑"},
+{q:"如何检验氧气？",a:"用带火星的木条伸入集气瓶，木条复燃则证明是氧气"},
+{q:"写出氢氧化钙与二氧化碳反应的化学方程式",a:"Ca(OH)₂ + CO₂ = CaCO₃↓ + H₂O"}
 ],
-"英语-高中":[
-{title:"非谓语动词",tag:"yy2",tagName:"英语",desc:"动名词、分词、不定式",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、动名词（v-ing作名词用）</span></p><p>作主语：Seeing is believing. = To see is to believe.</p><p>作宾语：I enjoy reading. | He suggested going there.</p><p>作表语：My job is teaching English.</p><p><span class='emphasis'>二、分词（v-ing/v-ed作形容词用）</span></p><p>现在分词（v-ing）：表示主动、正在进行</p><p>过去分词（v-ed）：表示被动、完成</p><p>作定语：a sleeping baby = a baby who is sleeping</p><p>作状语：Seeing the teacher, the students stopped talking.</p><p>作宾补：I heard him singing. | He had his hair cut.</p><p><span class='emphasis'>三、不定式（to do）</span></p><p>作主语：To learn English is important.</p><p>作宾语：I want to help you.</p><p>作目的状语：I came here to study.</p><p>作宾补：I want you to go.</p><p>作结果状语：He got up only to find the door locked.</p>",
-examples:[{q:"_____ the window, he found it was broken. (break)",a:"Breaking或Having broken（现在分词表主动）"},{q:"The news _____ us _____ surprised. (make)",a:"made / surprised（过去分词作宾补，表状态）"}],
-practices:[{q:"_____ is a good way to learn English.",o:["Read","Reading","To reading","Being read"],a:1},{q:"I saw him _____ basketball on the playground.",o:["play","plays","playing","played"],a:2}],
-intensive:[{q:"With the problem _____, they felt relieved.",o:["solved","solving","to solve","having solved"],a:0}]},
-{title:"从句",tag:"yy2",tagName:"英语",desc:"名词性从句、定语从句、状语从句",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、名词性从句</span></p><p>主语从句：That he will come is certain.</p><p>宾语从句：I don't know where he lives.</p><p>表语从句：The question is whether we can finish it.</p><p>同位语从句：The fact that he succeeded inspired us.</p><p>连接词：that（无含义）、if/whether（是否）、what/who/which（什么/谁/哪个）、where/when/why/how（地点/时间/原因/方式）</p><p><span class='emphasis'>二、定语从句</span></p><p>关系代词：who（人，主格）、whom（人，宾格）、which（物）、that（人/物，主宾格都行）、whose（所有格）</p><p>关系副词：where（地点）、when（时间）、why（原因）</p><p>只用that的情况：序数词/最高级/the only/the very/the same/既有who又有which时</p><p><span class='emphasis'>三、状语从句</span></p><p>时间：when/while/as（当...时）、before/after、since、once</p><p>条件：if/unless（除非）、as long as（只要）</p><p>原因：because、since、as（因为）</p><p>让步：although/though/even if/no matter what</p>",
-examples:[{q:"This is the school _____ I studied three years ago.",a:"where（在定语从句中作状语，先行词school表示地点）"},{q:"The problem _____ is about environment.",o:["which we discussed yesterday（定语从句，修饰problem）"],a:0}],
-practices:[{q:"I don't know _____ he will come tomorrow.",o:["that","whether","which","what"],a:1},{q:"This is the best movie _____ I've ever seen.",o:["which","that","who","whom"],a:1}],
-intensive:[{q:"_____ the students were tired, _____ they went on learning.",o:["Though / yet","Although / still","Both A and B","Neither A nor B"],a:2}]},
-{title:"虚拟语气",tag:"yy2",tagName:"英语",desc:"与现在/过去/将来相反的虚拟",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、与现在相反的虚拟</span></p><p>结构：从句用过去时（be用were），主句用would/could/might + 动词原形</p><p>If I were you, I would take this job.</p><p><span class='emphasis'>二、与过去相反的虚拟</span></p><p>结构：从句用过去完成时（had + done），主句用would/could/might + have + 过去分词</p><p>If I had studied hard, I would have passed the exam.</p><p><span class='emphasis'>三、与将来相反的虚拟</span></p><p>结构：从句用过去时（were to do 或 should do），主句用would/could/might + 动词原形</p><p>If it should rain tomorrow, I would stay home.</p><p><span class='emphasis'>四、wish后的虚拟语气</span></p><p>wish + were/did（与现在相反）</p><p>wish + had done（与过去相反）</p><p>wish + would + 动词原形（与将来相反，表示愿望）</p><p><span class='emphasis'>五、含蓄虚拟语气</span></p><p>Without your help, I would fail. = If you didn't help me, I would fail.</p>",
-examples:[{q:"If he _____ (be) here, he would help us.",a:"were（与现在相反的虚拟，be用were）"},{q:"I wish I _____ (know) the answer yesterday.",a:"had known（与过去相反的虚拟，wish后用过去完成时）"}],
-practices:[{q:"If I _____ you, I would accept the offer.",o:["am","was","were","had been"],a:2},{q:"If she had taken my advice, she _____ it better.",o:["could have done","can do","could do","must do"],a:0}],
-intensive:[{q:"Without air and water, nothing _____.",o:["would exist","would have existed","existed","exists"],a:0}]}
+practices:[
+{q:"下列金属中，能与盐酸反应生成氢气的是？",o:["Fe、Zn、Mg","Cu、Ag、Au","Na、K、Ca","Pt、Au、Hg"],a:0},
+{q:"能共存的一组物质是？",o:["NaCl和HCl","NaOH和HCl","AgNO₃和NaCl","CaCO₃和HCl"],a:1},
+{q:"下列气体中，能使澄清石灰水变浑浊的是？",o:["O₂","CO₂","H₂","N₂"],a:1}
 ],
-"物理-高中":[
-{title:"力学",tag:"wl",tagName:"物理",desc:"运动学、动力学、能量、动量",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、运动学</span></p><p>匀变速直线运动公式：</p><p>v = v₀ + at</p><p>s = v₀t + ½at²</p><p>v² - v₀² = 2as</p><p>自由落体：v₀=0，a=g=9.8m/s²</p><p><span class='emphasis'>二、动力学</span></p><p>牛顿第一定律：一切物体保持匀速直线运动或静止状态</p><p>牛顿第二定律：F = ma</p><p>牛顿第三定律：作用力与反作用力大小相等、方向相反、作用在同一直线上</p><p><span class='emphasis'>三、能量</span></p><p>动能：Ek = ½mv²</p><p>重力势能：Ep = mgh</p><p>动能定理：W = ΔEk</p><p>机械能守恒：只有重力或弹力做功时，机械能守恒</p><p><span class='emphasis'>四、动量</span></p><p>动量：p = mv</p><p>动量定理：I = Δp</p><p>动量守恒：m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'</p>",
-examples:[{q:"汽车以10m/s匀速行驶，刹车后加速度大小为5m/s²，刹车距离是多少？",a:"s = v²/(2a) = 100/10 = 10m"},{q:"弹性碰撞中，甲球质量2kg速度3m/s，乙球质量1kg速度0m/s，碰撞后各自速度？",a:"v₁' = 1m/s，v₂' = 4m/s"}],
-practices:[{q:"物体质量为5kg，受到10N的力，加速度是多少？",o:["2m/s²","5m/s²","50m/s²","0.5m/s²"],a:0},{q:"动量守恒的条件是？",o:["合外力为零","合外力不为零","系统内力","外力做功为零"],a:0}],
-intensive:[{q:"从10m高处自由下落的物体，着地时速度为？（g=10m/s²）",o:["10m/s","14m/s","20m/s","100m/s"],a:1}]},
-{title:"电磁学",tag:"wl",tagName:"物理",desc:"电场、电路、磁场、电磁感应",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、电场</span></p><p>库仑定律：F = kq₁q₂/r²（k=9×10⁹N·m²/C²）</p><p>电场强度：E = F/q（单位：N/C或V/m）</p><p>电场线：始于正电荷，止于负电荷</p><p>电势：φ = Ep/q（标量）</p><p><span class='emphasis'>二、电路</span></p><p>欧姆定律：I = U/R</p><p>串联电路：I₁=I₂=...，U=U₁+U₂+...</p><p>并联电路：U₁=U₂=...，I=I₁+I₂+...</p><p>电功率：P = UI = I²R = U²/R</p><p><span class='emphasis'>三、磁场</span></p><p>安培力：F = BIL（B⊥I）</p><p>洛伦兹力：F = qvB（v⊥B）</p><p>左手定则：判断安培力或洛伦兹力方向</p><p><span class='emphasis'>四、电磁感应</span></p><p>法拉第电磁感应定律：E = nΔΦ/Δt</p><p>楞次定律：感应电流的磁场阻碍原磁场变化（增反减同、来拒去留）</p>",
-examples:[{q:"两个点电荷q₁=2μC，q₂=3μC，相距0.1m，它们之间的库仑力是？",a:"F = 9×10⁹×2×10⁻⁶×3×10⁻⁶/0.01 = 5.4×10⁻³N"},{q:"闭合线圈在匀强磁场中平动，是否产生感应电流？",a:"否（磁通量不变），切割磁感线才会产生感应电动势"}],
-practices:[{q:"真空中两点电荷距离减半，库仑力变为原来的几倍？",o:["2倍","4倍","1/2倍","1/4倍"],a:1},{q:"感应电流产生的磁场总是？",o:["与原磁场方向相同","与原磁场方向相反","阻碍原磁场变化","增强原磁场"],a:2}],
-intensive:[{q:"导体棒在匀强磁场中匀速切割磁感线，是否属于电磁感应现象？",o:["是，产生感应电动势","否，需要闭合电路","是，产生感应电流","以上都不对"],a:0}]}
-],
-"化学-高中":[
-{title:"物质结构",tag:"hx",tagName:"化学",desc:"原子结构、化学键、分子结构",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、原子结构</span></p><p>原子核（质子+中子）+ 核外电子</p><p>核外电子排布规律：</p><p>每层最多2n²个电子</p><p>最外层不超过8个电子</p><p>次外层不超过18个电子</p><p>原子序数 = 质子数 = 核电荷数 = 核外电子数</p><p><span class='emphasis'>二、化学键</span></p><p>离子键：阴阳离子间通过静电作用结合</p><p>共价键：原子间通过共用电子对结合</p><p>极性键：共用电子对偏向一方（非金属间）</p><p>非极性键：共用电子对不偏移（同种原子间）</p><p>配位键：共用电子对由一方单独提供</p><p><span class='emphasis'>三、分子结构</span></p><p>VSEPR模型：判断分子空间构型</p><p>杂化轨道：sp（直线形）、sp²（平面三角形）、sp³（四面体形）</p><p>氢键：F、O、N与H形成的弱键，影响沸点、溶解度</p>",
-examples:[{q:"NH₃分子的空间构型是什么？中心原子N的杂化类型？",a:"三角锥形，sp³杂化"},{q:"比较HF、HCl、HBr、HI的沸点高低，并说明原因",a:"HF > HCl > HBr > HI；HF因存在氢键沸点异常高"}],
-practices:[{q:"下列化合物中，只含离子键的是？",o:["NaCl","NaOH","H₂O","NH₄Cl"],a:0},{q:"分子间存在氢键的是？",o:["CH₄","NH₃","CO₂","H₂"],a:1}],
-intensive:[{q:"判断下列分子中心原子杂化类型：SO₂、CCl₄、BF₃",o:["sp²、sp³、sp²","sp²、sp³、sp²","sp³、sp²、sp³","sp、sp²、sp³"],a:0}]},
-{title:"反应原理",tag:"hx",tagName:"化学",desc:"反应速率、化学平衡、水溶液",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、化学反应速率</span></p><p>v = Δc/Δt（单位：mol/(L·s)）</p><p>影响因素：</p><p>浓度：反应物浓度越大，反应速率越快</p><p>温度：温度升高，反应速率加快（通常每升高10℃，速率增2-4倍）</p><p>压强：对于气体反应，压强增大，速率加快</p><p>催化剂：改变化学反应速率（正催化剂加快）</p><p>接触面积：固体颗粒越小，表面积越大，反应越快</p><p><span class='emphasis'>二、化学平衡</span></p><p>平衡常数：K = [C]ᶜ[D]ᵈ / [A]ᵃ[B]ᵇ（温度一定时为常数）</p><p>勒夏特列原理：平衡向减弱改变的方向移动</p><p>转化率 = 反应物转化的量 / 反应物起始的量 × 100%</p><p><span class='emphasis'>三、水溶液</span></p><p>pH = -lg[H⁺]</p><p>酸碱指示剂：石蕊（酸红碱蓝）、酚酞（碱红酸无色）</p><p>盐类水解：强酸弱碱盐呈酸性，强碱弱酸盐呈碱性</p>",
-examples:[{q:"反应2NO + O₂ = 2NO₂，初始浓度c(NO)=0.1mol/L，5秒后浓度为0.02mol/L，求反应速率v(NO₂)",a:"v(NO)=Δc/Δt=0.08/5=0.016mol/(L·s)，v(NO₂)=v(NO)=0.016mol/(L·s)"},{q:"0.1mol/L HCl溶液的pH",a:"pH = -lg(0.1) = 1"}],
-practices:[{q:"对于反应C(s) + CO₂(g) = 2CO(g)，下列条件使平衡右移的是？",o:["升温","加压","加催化剂","增加C的量"],a:0},{q:"pH=3的盐酸稀释100倍后，pH变为？",o:["5","3","7","1"],a:0}],
-intensive:[{q:"在某温度下，反应N₂ + 3H₂ = 2NH₃的平衡常数K=0.5，若各物质初始浓度均为1mol/L，则平衡时NH₃的浓度？",o:["0.5mol/L","约0.7mol/L","1mol/L","0.3mol/L"],a:1}]},
-{title:"有机化学",tag:"hx",tagName:"化学",desc:"烃、官能团、有机反应",
-textbook:"<h3>【课文】</h3><p><span class='emphasis'>一、烃的分类</span></p><p>烷烃（CₙH₂ₙ₊₂）：饱和链烃，碳碳单键</p><p>烯烃（CₙH₂ₙ）：含碳碳双键，能使溴水褪色</p><p>炔烃（CₙH₂ₙ₋₂）：含碳碳三键</p><p>芳香烃：含苯环，苯C₆H₆</p><p><span class='emphasis'>二、官能团</span></p><p>-OH（羟基）：醇的特征</p><p>-CHO（醛基）：醛的特征，能发生银镜反应</p><p>-COOH（羧基）：羧酸的特征，具有酸性</p><p>-COO-（酯基）：酯的特征</p><p><span class='emphasis'>三、有机反应类型</span></p><p>取代反应：卤代烃水解、硝化反应、磺化反应</p><p>加成反应：烯烃、炔烃与Br₂、H₂、HX、H₂O的加成</p><p>消去反应：醇的脱水（170℃浓硫酸）</p><p>氧化反应：燃烧、银镜反应、催化氧化</p><p>酯化反应：醇 + 酸 → 酯 + 水（浓硫酸，加热）</p>",
-examples:[{q:"如何用化学方法鉴别甲烷、乙烯、乙炔？",a:"分别通入溴水：乙烯和乙炔使其褪色（加成反应），甲烷不反应。再用银氨溶液或Cu₂O：乙炔有沉淀，乙烯无反应。"},{q:"乙醇与乙酸反应的化学方程式",a:"CH₃COOH + C₂H₅OH ⇌ CH₃COOC₂H₅ + H₂O（浓硫酸催化，加热，可逆）"}],
-practices:[{q:"能使溴水褪色的是？",o:["甲烷","乙烯","苯","乙醇"],a:1},{q:"乙醇的催化氧化产物是？",o:["乙醛","乙酸","乙烷","乙烯"],a:0}],
-intensive:[{q:"某有机物C₃H₆O₂，能发生银镜反应，又能与金属钠反应，还原产物为丙酸，则该有机物是？",o:["甲酸乙酯","乙酸甲酯","丙酸甲酯","羟基丙醛"],a:0}]}
+intensive:[
+{q:"只用一种试剂鉴别NaCl、HCl、NaOH三种溶液，可选用？",o:["紫色石蕊试液","酚酞试液","AgNO₃溶液","BaCl₂溶液"],a:0}
+]}
 ]
 };
 
@@ -487,7 +974,7 @@ html+='<h3>'+item.title+'</h3>';
 html+='<p>'+item.desc+'</p>';
 html+='<div class="points">';
 html+='<span>📖 课文</span>';
-html+='<span>📝 例题</span>';
+html+='<span>📝 例题('+item.examples.length+')</span>';
 html+='<span>✏️ 练习</span>';
 html+='<span>🔥 强化</span>';
 html+='</div></div>';
@@ -505,13 +992,11 @@ document.getElementById('headerActions').innerHTML='<button class="btn btn-succe
 var html='<button class="back-btn" onclick="go(\'knowledge\',\''+key+'\')">← 返回知识列表</button>';
 html+='<div class="tab-bar" id="tabBar">';
 html+='<button class="tab-btn active" onclick="showTab(this,\'tab1\')">📖 课文</button>';
-html+='<button class="tab-btn" onclick="showTab(this,\'tab2\')">📝 例题</button>';
-html+='<button class="tab-btn" onclick="showTab(this,\'tab3\')">✏️ 练习</button>';
-html+='<button class="tab-btn" onclick="showTab(this,\'tab4\')">🔥 强化训练</button>';
+html+='<button class="tab-btn" onclick="showTab(this,\'tab2\')">📝 例题('+item.examples.length+')</button>';
+html+='<button class="tab-btn" onclick="showTab(this,\'tab3\')">✏️ 练习('+item.practices.length+')</button>';
+html+='<button class="tab-btn" onclick="showTab(this,\'tab4\')">🔥 强化('+item.intensive.length+')</button>';
 html+='</div>';
-html+='<div id="tabContent">';
-html+=renderTab1(item);
-html+='</div>';
+html+=renderTabContent(item);
 document.getElementById('page-learn').innerHTML=html;
 window._currentKey=key;
 window._currentIdx=idx;
@@ -519,14 +1004,14 @@ window._practiceAnswers={};
 window._intensiveAnswers={};
 }
 
-function renderTab1(item){
+function renderTabContent(item){
 var html='<div id="tab1" class="tab-pane">';
 html+='<div class="textbook-content">';
 html+=item.textbook||'<p>本节课文内容正在整理中...</p>';
 html+='</div></div>';
 html+='<div id="tab2" class="tab-pane" style="display:none">';
 if(item.examples&&item.examples.length>0){
-html+='<div class="example-box"><h4>📝 例题精讲</h4>';
+html+='<div class="example-box"><h4>📝 例题精讲（共'+item.examples.length+'道）</h4>';
 for(var i=0;i<item.examples.length;i++){
 html+='<div class="q"><strong>例'+(i+1)+'：</strong>'+item.examples[i].q+'</div>';
 html+='<div class="a"><strong>解答：</strong>'+item.examples[i].a+'</div>';
@@ -536,7 +1021,7 @@ html+='</div>';
 html+='</div>';
 html+='<div id="tab3" class="tab-pane" style="display:none">';
 if(item.practices&&item.practices.length>0){
-html+='<div class="practice-box"><h4>✏️ 课堂练习</h4>';
+html+='<div class="practice-box"><h4>✏️ 课堂练习（共'+item.practices.length+'道）</h4>';
 for(var i=0;i<item.practices.length;i++){
 var qi=item.practices[i];
 html+='<div class="practice-item" id="pq'+i+'">';
@@ -554,7 +1039,7 @@ html+='<button class="btn btn-primary" onclick="checkPractice(\'practice\')">提
 html+='</div>';
 html+='<div id="tab4" class="tab-pane" style="display:none">';
 if(item.intensive&&item.intensive.length>0){
-html+='<div class="intensive-box"><h4>🔥 强化训练</h4>';
+html+='<div class="intensive-box"><h4>🔥 强化训练（共'+item.intensive.length+'道）</h4>';
 for(var i=0;i<item.intensive.length;i++){
 var qi=item.intensive[i];
 html+='<div class="intensive-item" id="iq'+i+'">';
@@ -576,23 +1061,19 @@ return html;
 function showTab(btn,tabId){
 document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
 btn.classList.add('active');
-document.getElementById('tabContent').innerHTML=renderTab1(KNOWLEDGE[window._currentKey][window._currentIdx]);
+var item=KNOWLEDGE[window._currentKey][window._currentIdx];
+document.getElementById('page-learn').innerHTML=document.getElementById('page-learn').innerHTML;
+document.getElementById('tabContent').innerHTML=renderTabContent(item);
 var tabs=document.querySelectorAll('[id^=tab]');
 for(var i=0;i<tabs.length;i++){
+if(tabs[i].id==='tabContent')continue;
 tabs[i].style.display='none';
 }
 if(document.getElementById(tabId)){
 document.getElementById(tabId).style.display='block';
 }
 if(tabId==='tab2'||tabId==='tab3'||tabId==='tab4'){
-document.getElementById('tabContent').innerHTML=document.getElementById('tabContent').innerHTML;
-if(tabId==='tab2'){
-document.getElementById('tab2').style.display='block';
-}else if(tabId==='tab3'){
-document.getElementById('tab3').style.display='block';
-}else if(tabId==='tab4'){
-document.getElementById('tab4').style.display='block';
-}
+document.getElementById(tabId).style.display='block';
 }
 }
 
@@ -615,13 +1096,13 @@ var item=KNOWLEDGE[window._currentKey][window._currentIdx];
 var questions=type==='practice'?item.practices:item.intensive;
 var answers=type==='practice'?window._practiceAnswers:window._intensiveAnswers;
 var prefix=type==='practice'?'pq':'iq';
+var optPrefix=type==='practice'?'pp':'ip';
 var correct=0;
 for(var i=0;i<questions.length;i++){
 var userAns=answers['q'+i];
 if(userAns===undefined)continue;
 var isCorrect=userAns===questions[i].a;
 if(isCorrect)correct++;
-var optPrefix=type==='practice'?'pp':'ip';
 document.getElementById(optPrefix+i+'_'+userAns).classList.add(isCorrect?'correct':'wrong');
 if(!isCorrect){
 document.getElementById(optPrefix+i+'_'+questions[i].a).classList.add('correct');
