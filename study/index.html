@@ -996,7 +996,9 @@ html+='<button class="tab-btn" onclick="showTab(this,\'tab2\')">📝 例题('+it
 html+='<button class="tab-btn" onclick="showTab(this,\'tab3\')">✏️ 练习('+item.practices.length+')</button>';
 html+='<button class="tab-btn" onclick="showTab(this,\'tab4\')">🔥 强化('+item.intensive.length+')</button>';
 html+='</div>';
+html+='<div id="tabContent">';
 html+=renderTabContent(item);
+html+='</div>';
 document.getElementById('page-learn').innerHTML=html;
 window._currentKey=key;
 window._currentIdx=idx;
@@ -1061,18 +1063,8 @@ return html;
 function showTab(btn,tabId){
 document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
 btn.classList.add('active');
-var item=KNOWLEDGE[window._currentKey][window._currentIdx];
-document.getElementById('page-learn').innerHTML=document.getElementById('page-learn').innerHTML;
-document.getElementById('tabContent').innerHTML=renderTabContent(item);
-var tabs=document.querySelectorAll('[id^=tab]');
-for(var i=0;i<tabs.length;i++){
-if(tabs[i].id==='tabContent')continue;
-tabs[i].style.display='none';
-}
+document.querySelectorAll('[id^=tab]').forEach(function(t){t.style.display='none';});
 if(document.getElementById(tabId)){
-document.getElementById(tabId).style.display='block';
-}
-if(tabId==='tab2'||tabId==='tab3'||tabId==='tab4'){
 document.getElementById(tabId).style.display='block';
 }
 }
