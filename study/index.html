@@ -18,8 +18,9 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f7f4;m
 .nav-tool:last-child{margin-bottom:0}
 .nav-tool:hover{background:rgba(255,255,255,0.2)}
 .main{margin-left:200px;min-height:100vh;display:flex;flex-direction:column}
-.header{background:#fff;height:52px;border-bottom:1px solid #b7e4c7;display:flex;align-items:center;padding:0 20px;position:sticky;top:0;z-index:50;flex-shrink:0}
+.header{background:#fff;height:52px;border-bottom:1px solid #b7e4c7;display:flex;align-items:center;padding:0 20px;position:sticky;top:0;z-index:50;flex-shrink:0;justify-content:space-between}
 .header h1{font-size:15px;color:#1b4332;font-weight:600}
+.header-actions{display:flex;gap:8px}
 .content{flex:1;padding:16px 20px;max-width:900px}
 .page{display:none}
 .page.active{display:block}
@@ -33,378 +34,264 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#f0f7f4;m
 .sub-card .icon{font-size:22px;margin-bottom:6px}
 .sub-card .name{font-size:12px;font-weight:600;color:#1b4332}
 .sub-card .desc{font-size:10px;color:#888;margin-top:4px}
-.content-item{background:#fff;border:1px solid #b7e4c7;border-radius:10px;padding:12px;margin-bottom:8px}
-.content-item h4{font-size:12px;color:#1b4332;margin-bottom:6px}
-.content-item ul{margin:0 0 0 16px;font-size:11px;color:#555;line-height:1.8}
-.content-item li{margin-bottom:3px}
-.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
-.res-card{background:#fff;border:1px solid #b7e4c7;border-radius:10px;overflow:hidden;cursor:pointer}
-.res-card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.08)}
-.res-card .top{height:60px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:28px;position:relative}
-.res-card .top .type-tag{position:absolute;top:5px;left:5px;padding:1px 5px;border-radius:4px;font-size:8px;color:#fff;font-weight:600}
-.res-card .info{padding:8px 10px}
-.res-card .info h4{font-size:11px;color:#1b4332;margin-bottom:3px}
-.res-card .info p{font-size:10px;color:#888}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.item-card{background:#fff;border:1px solid #b7e4c7;border-radius:10px;padding:12px;cursor:pointer;transition:all 0.2s}
+.item-card:hover{border-color:#52b788;background:#f8fff8}
+.item-card .title{font-size:13px;font-weight:600;color:#1b4332;margin-bottom:6px}
+.item-card .meta{font-size:11px;color:#888;display:flex;gap:12px}
+.know-card{background:#fff;border:1px solid #b7e4c7;border-radius:10px;padding:14px;margin-bottom:10px;cursor:pointer;transition:all 0.2s}
+.know-card:hover{border-color:#52b788;transform:translateY(-2px)}
+.know-card .tag{display:inline-block;padding:2px 8px;border-radius:8px;font-size:10px;font-weight:600;margin-bottom:8px}
+.tag-yy{background:#e6f3ff;color:#1890ff}
+.tag-sx{background:#fff7e6;color:#fa8c16}
+.tag-yy2{background:#f6ffed;color:#52c41a}
+.tag-wl{background:#fff1f0;color:#ff4d4f}
+.tag-hx{background:#f9f0ff;color:#722ed1}
+.know-card h3{font-size:14px;color:#1b4332;margin-bottom:8px}
+.know-card p{font-size:12px;color:#666;line-height:1.7}
+.know-card .points{margin-top:8px;font-size:11px;color:#888}
+.know-card .points span{margin-right:8px}
+.read-section{background:#fff;border-radius:12px;padding:20px;margin-bottom:12px}
+.read-section h2{font-size:18px;color:#1b4332;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #b7e4c7}
+.read-section h3{font-size:15px;color:#2d6a4f;margin:16px 0 8px}
+.read-section p{font-size:13px;color:#444;line-height:2;margin-bottom:10px}
+.read-section ul{margin:8px 0 8px 20px}
+.read-section li{font-size:13px;color:#555;line-height:1.9}
+.read-section .highlight{background:#fffbe6;border-left:3px solid #faad14;padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.read-section .example{background:#f6ffed;border-left:3px solid #52c41a;padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0}
+.read-section .formula{background:#e6f7ff;border-left:3px solid #1890ff;padding:10px 14px;margin:12px 0;border-radius:0 6px 6px 0;font-family:Consolas,monospace}
+.quiz-section{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px}
+.quiz-section h3{font-size:15px;color:#1b4332;margin-bottom:12px}
+.quiz-item{background:#f8fffe;border:1px solid #b7e4c7;border-radius:10px;padding:14px;margin-bottom:10px}
+.quiz-item h4{font-size:13px;color:#1b4332;margin-bottom:10px}
+.quiz-item .question{font-size:13px;color:#333;margin-bottom:10px;line-height:1.6}
+.quiz-options{margin-left:0}
+.quiz-option{display:flex;align-items:center;padding:8px 12px;background:#fff;border:1px solid #e2e8f0;border-radius:6px;margin-bottom:6px;cursor:pointer;transition:all 0.2s}
+.quiz-option:hover{border-color:#52b788;background:#f0fff8}
+.quiz-option.selected{border-color:#2d6a4f;background:#ebf8ff}
+.quiz-option.correct{border-color:#52c41a;background:#f6ffed}
+.quiz-option.wrong{border-color:#ff4d4f;background:#fff1f0}
+.quiz-option .opt{margin-right:10px;font-size:12px;color:#555}
+.quiz-item .result{margin-top:10px;padding:8px 12px;border-radius:6px;font-size:12px}
+.quiz-item .result.pass{background:#f6ffed;color:#52c41a}
+.quiz-item .result.fail{background:#fff1f0;color:#ff4d4f}
+.quiz-item .result .explain{margin-top:6px;font-size:11px;color:#666}
 .btn{padding:7px 14px;border:none;border-radius:6px;cursor:pointer;font-size:12px;font-weight:500;font-family:inherit;display:inline-flex;align-items:center;gap:4px}
 .btn-primary{background:#3182ce;color:#fff}
 .btn-primary:hover{background:#2c5282}
+.btn-success{background:#38a169;color:#fff}
+.btn-success:hover{background:#2f855a}
 .btn-secondary{background:#e2e8f0;color:#4a5568}
 .btn-secondary:hover{background:#cbd5e0}
-.btn-success{background:#38a169;color:#fff}
-.modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:200}
-.modal.show{display:flex}
-.modal-box{background:#fff;border-radius:12px;width:480px;max-height:80vh;overflow:auto}
-.modal-hd{padding:12px 16px;border-bottom:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center}
-.modal-hd h3{font-size:14px;color:#1b4332}
-.modal-close{background:transparent;border:none;font-size:18px;cursor:pointer;color:#888}
-.modal-body{padding:14px 16px}
-.modal-ft{padding:10px 16px;border-top:1px solid #f0f0f0;display:flex;justify-content:flex-end;gap:6px}
-.form-group{margin-bottom:10px}
-.form-group label{display:block;font-size:11px;color:#888;margin-bottom:4px}
-.form-group input,.form-group textarea,.form-group select{width:100%;padding:8px 10px;border:1px solid #b7e4c7;border-radius:6px;font-size:12px;font-family:inherit}
-.form-group textarea{min-height:120px;resize:vertical}
-textarea{width:100%;min-height:100px;border:1px solid #b7e4c7;border-radius:6px;padding:8px 10px;font-size:12px;font-family:inherit;resize:vertical}
+.progress-bar{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin:8px 0}
+.progress-bar .fill{height:100%;background:#38a169;border-radius:3px;transition:width 0.3s}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+.stat-card{background:#fff;border-radius:10px;padding:14px;text-align:center}
+.stat-card .num{font-size:22px;font-weight:700;color:#3182ce}
+.stat-card .label{font-size:11px;color:#888;margin-top:4px}
 .toast{position:fixed;top:16px;right:16px;padding:10px 14px;background:#fff;border-left:4px solid #3182ce;border-radius:6px;font-size:12px;box-shadow:0 4px 12px rgba(0,0,0,0.1);z-index:9999;animation:slideIn 0.3s ease-out}
 .toast.success{border-left-color:#38a169}
 .toast.error{border-left-color:#e53e3e}
 @keyframes slideIn{from{opacity:0;transform:translateX(60px)}to{opacity:1;transform:translateX(0)}}
-.empty{text-align:center;padding:30px;color:#aaa;font-size:12px}
-.empty .icon{font-size:36px;margin-bottom:8px;opacity:0.5}
-.tab-nav{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.tab-btn{padding:6px 14px;border:1px solid #b7e4c7;border-radius:20px;background:#fff;cursor:pointer;font-size:12px;color:#555;transition:all 0.2s;font-family:inherit}
-.tab-btn:hover{border-color:#52b788}
-.tab-btn.active{background:#2d6a4f;color:#fff;border-color:#2d6a4f}
-@media(max-width:700px){.nav{width:56px}.nav-title,.nav-item span,.nav-section,.nav-tools span{display:none}.nav-item{justify-content:center;padding:10px}.nav-item .icon{font-size:20px}.main{margin-left:56px}.header h1{font-size:13px}.grid{grid-template-columns:1fr 1fr}}
+.empty{text-align:center;padding:40px;color:#aaa;font-size:12px}
+.empty .icon{font-size:40px;margin-bottom:10px;opacity:0.5}
+@media(max-width:700px){.nav{width:56px}.nav-title,.nav-item span,.nav-section,.nav-tools span{display:none}.nav-item{justify-content:center;padding:10px}.nav-item .icon{font-size:20px}.main{margin-left:56px}.stats{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="nav">
 <div class="nav-title">📚 好好学习</div>
-<div class="nav-section">学科</div>
+<div class="nav-section">年级</div>
 <div id="navList"></div>
 <div class="nav-tools">
-<div class="nav-tool" onclick="go('notes')"><span>📝</span><span>笔记</span></div>
-<div class="nav-tool" onclick="go('mindmap')"><span>🧠</span><span>导图</span></div>
-<div class="nav-tool" onclick="go('review')"><span>🔄</span><span>复习</span></div>
+<div class="nav-tool" onclick="go('home')"><span>🏠</span><span>返回首页</span></div>
 <div class="nav-tool" onclick="location.href='../index.html'"><span>🏠</span><span>返回主页</span></div>
 </div>
 </div>
 <div class="main">
-<div class="header"><h1 id="headerTitle">好好学习</h1></div>
+<div class="header"><h1 id="headerTitle">好好学习</h1><div class="header-actions" id="headerActions"></div></div>
 <div class="content">
 <div id="page-home" class="page active"></div>
 <div id="page-grade" class="page"></div>
-<div id="page-subject" class="page"></div>
-<div id="page-notes" class="page"></div>
-<div id="page-mindmap" class="page"></div>
-<div id="page-review" class="page"></div>
+<div id="page-knowledge" class="page"></div>
+<div id="page-read" class="page"></div>
+<div id="page-quiz" class="page"></div>
+<div id="page-progress" class="page"></div>
 </div>
 </div>
-</div>
-<div class="modal" id="noteModal">
-<div class="modal-box">
-<div class="modal-hd"><h3 id="noteModalTitle">新建笔记</h3><button class="modal-close" onclick="closeNoteModal()">×</button></div>
-<div class="modal-body">
-<input type="hidden" id="editNoteId">
-<div class="form-group"><label>标题</label><input type="text" id="noteTitle" placeholder="笔记标题"></div>
-<div class="form-group"><label>学科（可选）</label><select id="noteSubj"><option value="">无关联</option></select></div>
-<div class="form-group"><label>内容</label><textarea id="noteContent" placeholder="笔记内容..."></textarea></div>
-</div>
-<div class="modal-ft"><button class="btn btn-secondary" onclick="closeNoteModal()">取消</button><button class="btn btn-primary" onclick="saveNote()">保存</button></div>
-</div></div>
-<div class="modal" id="mapModal">
-<div class="modal-box">
-<div class="modal-hd"><h3 id="mapModalTitle">新建思维导图</h3><button class="modal-close" onclick="closeMapModal()">×</button></div>
-<div class="modal-body">
-<div class="form-group"><label>导图名称</label><input type="text" id="mapName" placeholder="导图名称"></div>
-</div>
-<div class="modal-ft"><button class="btn btn-secondary" onclick="closeMapModal()">取消</button><button class="btn btn-primary" onclick="createMap()">创建</button></div>
-</div></div>
-<div class="modal" id="revModal">
-<div class="modal-box">
-<div class="modal-hd"><h3>添加复习项</h3><button class="modal-close" onclick="closeRevModal()">×</button></div>
-<div class="modal-body">
-<div class="form-group"><label>内容</label><input type="text" id="revTitle" placeholder="复习内容"></div>
-<div class="form-group"><label>学科（可选）</label><select id="revSubj"><option value="">无关联</option></select></div>
-<div class="form-group"><label>间隔</label>
-<select id="revInterval"><option value="1">1天</option><option value="3">3天</option><option value="7" selected>7天</option><option value="14">14天</option><option value="30">30天</option></select>
-</div>
-</div>
-<div class="modal-ft"><button class="btn btn-secondary" onclick="closeRevModal()">取消</button><button class="btn btn-primary" onclick="saveRev()">添加</button></div>
-</div></div>
 <div class="toast" id="toast" style="display:none"></div>
 <script>
 var GRADES=[
-{name:"小学一年级",icon:"🎒",stage:"义务教育",order:1},
-{name:"小学二年级",icon:"🎒",stage:"义务教育",order:2},
-{name:"小学三年级",icon:"🎒",stage:"义务教育",order:3},
-{name:"小学四年级",icon:"🎒",stage:"义务教育",order:4},
-{name:"小学五年级",icon:"🎒",stage:"义务教育",order:5},
-{name:"小学六年级",icon:"🎒",stage:"义务教育",order:6},
-{name:"初中一年级",icon:"📚",stage:"义务教育",order:7},
-{name:"初中二年级",icon:"📚",stage:"义务教育",order:8},
-{name:"初中三年级",icon:"📚",stage:"义务教育",order:9},
-{name:"高中一年级",icon:"🎓",stage:"高中",order:10},
-{name:"高中二年级",icon:"🎓",stage:"高中",order:11},
-{name:"高中三年级",icon:"🎓",stage:"高中",order:12}
+{name:"小学一年级",icon:"🎒",order:1},
+{name:"小学二年级",icon:"🎒",order:2},
+{name:"小学三年级",icon:"🎒",order:3},
+{name:"小学四年级",icon:"🎒",order:4},
+{name:"小学五年级",icon:"🎒",order:5},
+{name:"小学六年级",icon:"🎒",order:6},
+{name:"初中一年级",icon:"📚",order:7},
+{name:"初中二年级",icon:"📚",order:8},
+{name:"初中三年级",icon:"📚",order:9},
+{name:"高中一年级",icon:"🎓",order:10},
+{name:"高中二年级",icon:"🎓",order:11},
+{name:"高中三年级",icon:"🎓",order:12}
 ];
 
-var SUBJECTS={
+var KNOWLEDGE={
 "语文-小学":[
-{title:"汉语拼音",list:["声母23个：b p m f d t n l g k h j q x zh ch sh r z c s","韵母24个：单韵母a o e i u；复韵母ai ei ui ao ou iu ie；鼻韵母an en in un ang eng ing ong","整体认读音节：zhi chi shi ri zi ci si yi wu yu ye yue yuan yin yun"]},
-{title:"识字写字",list:["象形识字：日(太阳)、月(月亮)、水(流水)、火(火焰)、山(山峰)","形声识字：清（氵+青）、晴（日+青）、河（氵+可）、草（艹+早）","比较识字：已/己、末/未、入/八、木/本"]},
-{title:"阅读理解",list:["找中心句：大多数段落的第一句或最后一句","理解词语：联系上下文、拆字法、近义词替换"]},
-{title:"写作基础",list:["看图写话：时间+地点+人物+做什么","简单句子：谁+干什么；什么+怎么样"]}
+{title:"汉语拼音",tag:"yy",tagName:"语文",desc:"声母、韵母、整体认读音节",
+content:"<h3>一、声母（23个）</h3><p>唇音：b p m f</p><p>舌尖音：d t n l</p><p>舌根音：g k h</p><p>舌面音：j q x</p><p>舌尖后音：zh ch sh r</p><p>舌尖前音：z c s</p><div class='highlight'>记忆口诀：b像广播，p像红旗，m像两扇门，f像拐棍。</div><h3>二、韵母（24个）</h3><p>单韵母（6个）：a o e i u ü</p><p>复韵母（9个）：ai ei ui ao ou iu ie üe er</p><p>鼻韵母（9个）：an en in un ün ang eng ing ong</p><h3>三、整体认读音节（16个）</h3><p>zhi chi shi ri zi ci si yi wu yu ye yue yuan yin yun</p><div class='example'>例：zhī（知）、chī（吃）、shī（师）、rì（日）</div>"},
+{title:"识字写字",tag:"yy",tagName:"语文",desc:"象形字、形声字、形近字",
+content:"<h3>一、象形字</h3><p>日、月、水、火 → 像实物形状</p><p>山、石、田、木 → 模拟自然事物</p><div class='example'>口（嘴巴）、目（眼睛）、手（手掌）</div><h3>二、形声字</h3><p>形旁（表意）+ 声旁（表音）</p><p>清（氵+青）→ 与水相关</p><p>晴（日+青）→ 与太阳相关</p><p>河（氵+可）→ 与水相关</p><h3>三、形近字</h3><p>已/己：已（已经）、己（自己）</p><p>末/未：末（末尾）、未（没有）</p><p>木/本：木（树木）、本（书本）</p>"},
+{title:"阅读理解",tag:"yy",tagName:"语文",desc:"找中心句、理解词语、段落大意",
+content:"<h3>一、找中心句</h3><p>中心句通常在：</p><ul><li>段落开头（总起句）</li><li>段落结尾（总结句）</li><li>段落中间（承上启下）</li></ul><h3>二、理解词语</h3><p>方法：联系上下文、拆字理解、近义词替换</p><div class='example'>例：五彩缤纷 → 五种颜色丰富多彩，形容色彩鲜艳</div><h3>三、概括段意</h3><p>摘句法：直接用段落中的重点句子</p><p>取舍法：抓住主要内容，舍去次要</p><p>合并法：把几层意思合并起来</p>"},
+{title:"写作基础",tag:"yy",tagName:"语文",desc:"看图写话、记叙文要素",
+content:"<h3>一、看图写话</h3><p>四要素：时间、地点、人物、事情</p><p>观察顺序：从上到下、从远到近</p><div class='example'>今天（时间），小红和妈妈在公园（地点）放风筝（事情）。</div><h3>二、记叙文六要素</h3><p>时间、地点、人物、起因、经过、结果</p><h3>三、写作步骤</h3><p>审题 → 立意 → 选材 → 写作 → 修改</p>"}
 ],
 "数学-小学":[
-{title:"数数与比大小",list:["1-100数数，正数倒数","比大小：> < =符号使用","顺序：第几（序数）与几个（基数）"]},
-{title:"加减法",list:["20以内加减法","进位退位","简单应用题：多多少、少多少"]},
-{title:"认识图形",list:["正方形、长方形、三角形、圆形","辨认图形特征"]},
-{title:"认识人民币",list:["元角分换算","简单购物计算"]}
+{title:"20以内加减法",tag:"sx",tagName:"数学",desc:"凑十法、破十法、进位退位",
+content:"<h3>一、凑十法（加法）</h3><p>看大数，拆小数，凑成十，算得数</p><div class='formula'>8 + 5 = 8 + 2 + 3 = 13</div><div class='example'>凑十歌：一九一九好朋友，二八二八手拉手，三七三七真亲密，四六四六一起走，五五凑成一双手。</div><h3>二、破十法（减法）</h3><p>看大数，分出十，减小数，加剩数</p><div class='formula'>15 - 8 = 10 - 8 + 5 = 7</div><h3>三、竖式计算</h3><p>相同数位对齐，从个位算起</p><p>加法：满十进一</p><p>减法：不够减借一当十</p>"},
+{title:"认识图形",tag:"sx",tagName:"数学",desc:"平面图形、立体图形",
+content:"<h3>一、平面图形</h3><p>正方形：4条边相等，4个角都是直角</p><p>长方形：2条长、2条宽，对边相等</p><p>三角形：3条边、3个角</p><p>圆形：没有角，边缘光滑</p><h3>二、立体图形</h3><p>长方体：6个面，相对的面相等</p><p>正方体：6个面，都相等</p><p>球：没有平面，可以滚动</p><p>圆柱：上下两个圆面</p><h3>三、特征对比</h3><div class='highlight'>正方形：4边等、4直角 | 长方形：对边等、4直角 | 三角形：3边3角</div>"},
+{title:"认识人民币",tag:"sx",tagName:"数学",desc:"元角分、换算、购物",
+content:"<h3>一、人民币单位</h3><p>元、角、分</p><p>1元 = 10角 = 100分</p><p>1角 = 10分</p><h3>二、换算</h3><div class='formula'>5元 = 50角 = 500分</div><div class='formula'>3元5角 = 35角 = 350分</div><h3>三、购物计算</h3><p>同单位相加减</p><div class='example'>小明买了2元5角的铅笔和1元3角的橡皮，一共花了 2元5角 + 1元3角 = 3元8角</div>"},
+{title:"乘法初步",tag:"sx",tagName:"数学",desc:"乘法口诀、乘除法意义",
+content:"<h3>一、乘法意义</h3><p>求几个相同加数的和的简便运算</p><div class='formula'>3 × 4 = 4 + 4 + 4 = 12</div><h3>二、乘法口诀</h3><p>熟记1-9的乘法口诀</p><div class='example'>一一得一 | 一二得二... | 二二得四 | 二三得六... | 九九八十一</div><h3>三、乘除法关系</h3><p>乘法：3 × 4 = 12</p><p>除法：12 ÷ 3 = 4 或 12 ÷ 4 = 3</p><p>被除数 ÷ 除数 = 商</p>"}
 ],
 "英语-小学":[
-{title:"26个字母",list:["元音字母：a e i o u","辅音字母：21个","字母书写：大小写配对"]},
-{title:"基础词汇",list:["颜色：red blue green yellow orange purple","数字：one-two-three-four-five","家庭：mum dad brother sister","动物：cat dog bird fish"]},
-{title:"日常用语",list:["Hello! Hi! Good morning! Good afternoon!","What's your name? My name is...","How are you? I'm fine, thank you."]}
+{title:"26个字母",tag:"yy2",tagName:"英语",desc:"字母分类、书写、发音",
+content:"<h3>一、字母分类</h3><p><b>元音字母（5个）：</b>A E I O U</p><p><b>辅音字母（21个）：</b>其余字母</p><h3>二、字母书写</h3><p>大写占上格，小写有区别：</p><p>a c e m n o r s u v w x z 写在中间格</p><p>b d h i k l t 写上中格</p><p>g p q y 写下格</p><div class='highlight'>书写注意：大写字母高度一致，不顶格也不贴底。</div>"},
+{title:"基础词汇",tag:"yy2",tagName:"英语",desc:"颜色、数字、家庭、动物",
+content:"<h3>一、颜色（Colors）</h3><p>red红色 | blue蓝色 | green绿色 | yellow黄色 | orange橙色 | purple紫色 | white白色 | black黑色</p><h3>二、数字（Numbers）</h3><p>one/two/three/four/five | six/seven/eight/nine/ten</p><p>eleven十二 | twelve十二 | twenty二十</p><h3>三、家庭（Family）</h3><p>father/mother | brother/sister | grandfather/grandmother</p><h3>四、动物（Animals）</h3><p>cat猫 | dog狗 | bird鸟 | fish鱼 | rabbit兔子 | panda熊猫</p>"},
+{title:"日常用语",tag:"yy2",tagName:"英语",desc:"问候、介绍、感谢",
+content:"<h3>一、问候（Greetings）</h3><p>Hello! / Hi! 你好！</p><p>Good morning! 早上好！</p><p>Good afternoon! 下午好！</p><p>Good evening! 晚上好！</p><p>Goodbye! / Bye! 再见！</p><h3>二、自我介绍</h3><p>What's your name? 你叫什么名字？</p><p>My name is... 我叫...</p><p>How are you? 你好吗？</p><p>I'm fine, thank you. 我很好，谢谢。</p><h3>三、感谢与道歉</h3><p>Thank you! / Thanks! 谢谢！</p><p>Sorry! 对不起！</p>"}
 ],
 "语文-初中":[
-{title:"字词积累",list:["多音字：行(xíng/háng)、长(cháng/zhǎng)、为(wèi/wéi)","同义词辨析：勉励vs鼓励、精密vs细致","成语典故：守株待兔、画蛇添足、亡羊补牢"]},
-{title:"语法基础",list:["词性：名词、动词、形容词、副词、代词、数词、量词","短语类型：主谓短语、动宾短语、偏正短语","单句成分：主语、谓语、宾语、定语、状语、补语"]},
-{title:"阅读理解",list:["记叙文：六要素（时间、地点、人物、起因、经过、结果）","说明文：说明方法（打比方、列数字、作比较、举例子）","议论文：论点、论据、论证"]},
-{title:"文言文入门",list:["重点实词：之、其、以、于、而、则、乃、且","虚词用法：而（表转折）、则（表承接）","古今异义：妻子（妻和子）、卑鄙（地位低微）"]},
-{title:"写作",list:["记叙文：详略得当、细节描写","说明文：条理清晰、语言准确","议论文：观点明确、论据充分"]}
+{title:"字词积累",tag:"yy",tagName:"语文",desc:"多音字、同义词、成语典故",
+content:"<h3>一、多音字辨析</h3><div class='formula'>行 xíng（行走）/ háng（银行）</div><div class='formula'>长 zhǎng（长大）/ cháng（长短）</div><div class='formula'>为 wèi（因为）/ wéi（行为）</div><div class='formula'>朝 zhāo（朝霞）/ cháo（朝向）</div><h3>二、同义词辨析</h3><p>勉励vs鼓励：勉励多用于上对下，鼓励可用于平辈</p><p>精密vs细致：精密侧重精确，细致侧重精细</p><p>愤怒vs愤慨：愤怒程度更深</p><h3>三、成语典故</h3><p>守株待兔：比喻死守狭隘经验</p><p>画蛇添足：比喻多做无用功</p><p>亡羊补牢：比喻出了问题后想办法补救</p>"},
+{title:"语法基础",tag:"yy",tagName:"语文",desc:"词性、短语、句子成分",
+content:"<h3>一、词性</h3><p><b>实词：</b>名词、动词、形容词、数词、量词、代词</p><p><b>虚词：</b>副词、介词、连词、助词、叹词</p><h3>二、短语类型</h3><p>主谓短语：天气好（名+形）</p><p>动宾短语：吃饭（动+名）</p><p>偏正短语：美丽花园（形+名）</p><p>并列短语：爸爸妈妈（名+名）</p><h3>三、单句成分</h3><p>主语 + 谓语 + 宾语</p><p>定语 + 主语 + 状语 + 谓语 + 补语 + 定语 + 宾语</p>"},
+{title:"阅读理解",tag:"yy",tagName:"语文",desc:"记叙文、说明文、议论文",
+content:"<h3>一、记叙文</h3><p><b>六要素：</b>时间、地点、人物、起因、经过、结果</p><p><b>叙述顺序：</b>顺叙、倒叙、插叙</p><p><b>修辞手法：</b>比喻、拟人、排比、夸张</p><h3>二、说明文</h3><p><b>说明方法：</b>举例子、列数字、作比较、打比方</p><p><b>说明顺序：</b>时间顺序、空间顺序、逻辑顺序</p><h3>三、议论文</h3><p><b>三要素：</b>论点、论据、论证</p><p><b>论证方法：</b>举例论证、道理论证、对比论证、比喻论证</p>"},
+{title:"文言文入门",tag:"yy",tagName:"语文",desc:"实词、虚词、古今异义",
+content:"<h3>一、重点实词</h3><p>之（的/去/它）、其（他的/其中）、以（因为/用来）、于（在/比）</p><p>而（但是/并且）、则（就/却）、乃（于是/竟然）、且（而且/尚且）</p><h3>二、虚词用法</h3><div class='highlight'>而：表转折（然而）、表递进（而且）、表承接（然后）</div><div class='highlight'>则：表承接（则...）、表转折（则...）</div><h3>三、古今异义</h3><p>妻子（古：妻和子 → 今：妻子的配偶）</p><p>卑鄙（古：地位低微 → 今：品质恶劣）</p><p>虽然（古：虽然这样 → 今：转折连词）</p>"},
+{title:"写作训练",tag:"yy",tagName:"语文",desc:"审题、立意、结构",
+content:"<h3>一、审题方法</h3><p>看题目要求、看清题材、看清字数</p><p>找关键词、找限制词</p><h3>二、立意原则</h3><p>深刻：透过现象看本质</p><p>新颖：独特视角、个人体验</p><p>准确：符合题意、积极健康</p><h3>三、结构安排</h3><p><b>起承转合：</b>开头、承接、发展、结尾</p><p><b>层层深入：</b>现象→原因→本质→做法</p><p><b>正反对比：</b>正面例子→反面例子→总结观点</p>"}
 ],
 "数学-初中":[
-{title:"有理数与整式",list:["有理数：整数、分数、正数、负数","数轴：原点、正方向、单位长度","相反数、绝对值","整式：单项式、多项式、同类项"]},
-{title:"一元一次方程",list:["等式性质：两边同时加减乘除相同数","解方程步骤：去括号→移项→合并同类项→系数化为1","应用题：行程问题、工程问题、利润问题"]},
-{title:"几何图形",list:["相交线与平行线：对顶角相等、内错角相等、同位角相等","三角形：内角和180°、全等三角形（SAS、ASA、SSS）","四边形：正方形、长方形、平行四边形、梯形"]},
-{title:"函数初步",list:["平面直角坐标系：坐标轴、象限、坐标","一次函数：y=kx+b（k≠0）","正比例函数：y=kx"]},
-{title:"统计与概率",list:["统计量：平均数、中位数、众数","普查与抽样调查","概率：必然事件、不可能事件、随机事件"]}
+{title:"有理数与整式",tag:"sx",tagName:"数学",desc:"数轴、相反数、绝对值、整式",
+content:"<h3>一、有理数分类</h3><p>整数：正整数、0、负整数</p><p>分数：正分数、负分数</p><h3>二、数轴三要素</h3><p>原点、正方向、单位长度</p><div class='highlight'>数轴上的点与有理数一一对应</div><h3>三、相反数与绝对值</h3><div class='formula'>相反数：a的相反数是-a | 性质：a + (-a) = 0</div><div class='formula'>绝对值：|a| = a（a≥0）；|a| = -a（a<0）</div><h3>四、整式</h3><p>单项式：数与字母的积</p><p>多项式：几个单项式的和</p><p>同类项：所含字母相同，相同字母指数也相同</p>"},
+{title:"一元一次方程",tag:"sx",tagName:"数学",desc:"等式性质、解方程、应用题",
+content:"<h3>一、等式性质</h3><p>性质1：两边同时加（或减）同一个数，等式仍成立</p><p>性质2：两边同时乘（或除以）同一个数（不为0），等式仍成立</p><h3>二、解方程步骤</h3><p>去括号 → 移项 → 合并同类项 → 系数化为1</p><div class='example'>3(x-2) + 1 = x - (2x-3)</div><div class='formula'>解：3x - 6 + 1 = x - 2x + 3</div><div class='formula'>3x - 5 = -x + 3</div><div class='formula'>3x + x = 3 + 5 → 4x = 8 → x = 2</div><h3>三、应用题类型</h3><p>行程问题：路程 = 速度 × 时间</p><p>工程问题：工作总量 = 效率 × 时间</p><p>利润问题：利润 = 售价 - 进价</p>"},
+{title:"几何图形",tag:"sx",tagName:"数学",desc:"相交线、平行线、三角形、四边形",
+content:"<h3>一、相交线与平行线</h3><p><b>对顶角相等</b></p><p><b>同位角相等</b>、<b>内错角相等</b></p><div class='highlight'>平行线判定：同位角相等→两直线平行</div><h3>二、三角形</h3><p>内角和：180°</p><p><b>全等三角形判定：</b>SAS、ASA、SSS、AAS</p><div class='formula'>SAS：两边及其夹角相等 | ASA：两角及其夹边相等</div><h3>三、四边形</h3><p>平行四边形：两组对边平行</p><p>矩形：四个角都是直角</p><p>菱形：四条边相等</p><p>正方形：四边等、四角直</p>"},
+{title:"函数初步",tag:"sx",tagName:"数学",desc:"坐标系、一次函数、正比例函数",
+content:"<h3>一、平面直角坐标系</h3><p>X轴（横轴）、Y轴（纵轴）</p><p>原点O（0,0）</p><p>四个象限：I（+,+）、II（-,+）、III（-,-）、IV(+,-)</p><h3>二、坐标表示</h3><p>点P的坐标：(x, y)</p><p>x表示横坐标，y表示纵坐标</p><h3>三、一次函数</h3><div class='formula'>y = kx + b（k≠0）</div><p>k > 0：直线过一二三象限</p><p>k < 0：直线过二三四象限</p><p>b > 0：与y轴交于正半轴</p><h3>四、正比例函数</h3><div class='formula'>y = kx（k≠0，b=0）</div><p>图像经过原点</p>"},
+{title:"统计与概率",tag:"sx",tagName:"数学",desc:"统计量、普查抽样、概率计算",
+content:"<h3>一、统计量</h3><p><b>平均数：</b>所有数据之和÷数据个数</p><p><b>中位数：</b>将数据排序后位于中间的值</p><p><b>众数：</b>出现次数最多的数据</p><h3>二、普查与抽样调查</h3><p>普查：对全体对象进行调查</p><p>抽样调查：从总体中抽取部分进行调查</p><div class='highlight'>抽样调查要求：随机性、代表性、样本容量足够大</div><h3>三、概率</h3><div class='formula'>P(A) = 满足条件的结果数 / 所有可能的结果数</div><p>必然事件：P = 1</p><p>不可能事件：P = 0</p><p>随机事件：0 < P < 1</p>"}
 ],
 "英语-初中":[
-{title:"词汇积累",list:["词性转换：quick（adj）→quickly（adv）；happy（adj）→happiness（n）→happily（adv）","词根词缀：un-否定；re-重复；-tion名词后缀；-ly副词后缀","短语动词：take/put/look/get/turn+介词/副词"]},
-{title:"时态系统",list:["一般现在时：习惯经常（主语+V原/V单三）","现在进行时：正在进行（be+V-ing）","一般过去时：过去发生（V-ed）","一般将来时：将来发生（will+动原/be going to+动原）"]},
-{title:"从句",list:["宾语从句：that/if/whether/what/who引导","状语从句：because（原因）、although（让步）、if（条件）","定语从句：who/which/that"]},
-{title:"句型转换",list:["肯定句↔否定句：加not/加any/no","陈述句↔疑问句：be/助动词/情态动词提前","合并句子：用and/but/because/although"]}
+{title:"词汇积累",tag:"yy2",tagName:"英语",desc:"词性转换、词根词缀、短语动词",
+content:"<h3>一、词性转换</h3><p>quick（adj）→ quickly（adv）→ quickness（n）</p><p>happy（adj）→ happily（adv）→ happiness（n）</p><p>die（v）→ dead（adj）→ death（n）</p><p>beauty（n）→ beautiful（adj）→ beautifully（adv）</p><h3>二、词根词缀</h3><p>un-（否定）：unhappy、unfair、undo</p><p>re-（重复）：rewrite、rebuild、return</p><p>-tion（名词后缀）：education、relation</p><p>-ly（副词后缀）：carefully、quickly</p><h3>三、短语动词</h3><p>take：take off（起飞）、take up（占据）、take care of（照顾）</p><p>put：put off（推迟）、put away（放好）、put out（熄灭）</p><p>get：get up（起床）、get along with（相处）</p>"},
+{title:"时态系统",tag:"yy2",tagName:"英语",desc:"现在时、过去时、将来时",
+content:"<h3>一、一般现在时</h3><p>结构：主语 + 动词原形（主三单加s/es）</p><p>用法：习惯经常、客观事实、普遍真理</p><div class='example'>He plays football every day. | Water boils at 100°C.</div><h3>二、现在进行时</h3><p>结构：be + V-ing</p><p>用法：正在进行的动作</p><div class='example'>She is reading a book now.</div><h3>三、一般过去时</h3><p>结构：主语 + 动词过去式</p><p>标志词：yesterday、last week、ago、in 2020</p><div class='example'>They visited Beijing last year.</div><h3>四、一般将来时</h3><p>结构：will + 动词原形 / be going to + 动词原形</p><div class='example'>I will go to school tomorrow. | She is going to study English.</div>"},
+{title:"从句",tag:"yy2",tagName:"英语",desc:"宾语从句、状语从句、定语从句",
+content:"<h3>一、宾语从句</h3><p>结构：主句 + 连接词 + 从句</p><p>连接词：that（无含义）、if/whether（是否）、what/who/where...</p><div class='example'>I think that he is right. | Can you tell me where he lives?</div><h3>二、状语从句</h3><p>时间：when/while/as（当...时）、before/after、since</p><p>条件：if/unless（除非）</p><p>原因：because、since、as</p><p>让步：although/though（虽然）、even if</p><div class='example'>I will call you when I arrive. | If it rains, I will stay home.</div><h3>三、定语从句</h3><p>关系代词：who（指人）、which（指物）、that（人/物）</p><div class='example'>The boy who is playing football is my brother.</div>"}
 ],
 "物理-初中":[
-{title:"声与光",list:["声音的产生：振动；声音的传播需要介质","声音三特性：音调（频率）、响度（振幅）、音色","光的直线传播：同种均匀介质","光的反射：反射角=入射角","光的折射：折射角<入射角（空气→水/玻璃）"]},
-{title:"力与运动",list:["力的作用效果：改变运动状态、使物体形变","力的三要素：大小、方向、作用点","二力平衡：同物、同线、反向、大小相等","重力：G=mg；重力的方向竖直向下","摩擦力：f=μN"]},
-{title:"压强浮力",list:["固体压强：p=F/S","液体压强：p=ρgh","大气压强：马德堡半球实验、托里拆利实验","浮力：F浮=G排=ρ液gV排","阿基米德原理"]},
-{title:"机械功能",list:["功：W=Fs","功率：P=W/t","动能：Ek=½mv²","势能：Ep=mgh（重力势能）","机械能守恒"]},
-{title:"电学基础",list:["电流：I=U/R；串联I相等；并联I分流","电压：U；串联U分压；并联U相等","电阻：R=U/I","欧姆定律：I=U/R"]}
+{title:"声与光",tag:"wl",tagName:"物理",desc:"声音、光的传播、反射折射",
+content:"<h3>一、声音的产生与传播</h3><p>声音由物体振动产生</p><p>声音的传播需要介质（固体、液体、气体）</p><p>真空不能传声</p><div class='formula'>声音在15°C空气中传播速度：340 m/s</div><h3>二、声音三要素</h3><p><b>音调：</b>声音的高低（由频率决定）</p><p><b>响度：</b>声音的强弱（由振幅决定）</p><p><b>音色：</b>声音的特色（由发声体决定）</p><h3>三、光的传播</h3><p>光在同种均匀介质中沿直线传播</p><p>光速：3×10⁸ m/s</p><h3>四、光的反射与折射</h3><p>反射定律：反射角 = 入射角</p><div class='formula'>折射规律：光从空气斜射入水/玻璃时，折射角 < 入射角</div>"},
+{title:"力与运动",tag:"wl",tagName:"物理",desc:"重力、弹力、摩擦力、二力平衡",
+content:"<h3>一、力的作用效果</h3><p>改变物体的运动状态</p><p>使物体发生形变</p><h3>二、重力</h3><div class='formula'>G = mg（g = 9.8 N/kg）</div><p>重力的方向：竖直向下</p><h3>三、弹力与摩擦力</h3><p>弹力：物体发生弹性形变产生的力</p><p>摩擦力：f = μN（μ为摩擦系数）</p><p>滑动摩擦、静摩擦、滚动摩擦</p><h3>四、二力平衡</h3><p><b>条件：</b>同物、同线、反向、等大</p><div class='highlight'>平衡力与相互作用力的区别：平衡力作用在同一物体上，相互作用力作用在两个不同物体上</div>"},
+{title:"压强浮力",tag:"wl",tagName:"物理",desc:"固体液体压强、大气压、浮力",
+content:"<h3>一、固体压强</h3><div class='formula'>p = F/S（压力 ÷ 受力面积）</div><p>压力越大、受力面积越小，压强越大</p><h3>二、液体压强</h3><div class='formula'>p = ρgh（ρ为液体密度，h为深度）</div><p>液体压强只与密度和深度有关</p><h3>三、大气压强</h3><p>马德堡半球实验证明了大气压的存在</p><p>托里拆利实验测出了大气压的值</p><div class='formula'>标准大气压：1.01×10⁵ Pa</div><h3>四、浮力</h3><div class='formula'>F浮 = G排 = ρ液gV排</div><p><b>阿基米德原理：</b>浮力等于物体排开液体的重力</p>"},
+{title:"电学基础",tag:"wl",tagName:"物理",desc:"电流电压、电阻、欧姆定律",
+content:"<h3>一、电流</h3><p>电荷的定向移动形成电流</p><p>电流方向：正电荷移动方向（或负电荷移动反方向）</p><div class='formula'>I = Q/t（电流 = 电荷量 / 时间）</div><p>单位：安培（A）</p><h3>二、电压</h3><p>电压是使电荷定向移动形成电流的原因</p><p>单位：伏特（V）</p><h3>三、电阻</h3><div class='formula'>R = U/I（电阻 = 电压 / 电流）</div><p>电阻大小与材料、长度、横截面积、温度有关</p><h3>四、欧姆定律</h3><div class='formula'>I = U/R</div><p>电流与电压成正比，与电阻成反比</p>"}
 ],
 "化学-初中":[
-{title:"物质构成",list:["分子与原子：分子保持化学性质；原子是最小粒子","原子结构：原子核（质子+中子）+核外电子","元素：具有相同核电荷数；元素符号（H He Li...）","化学式：用元素符号表示物质组成"]},
-{title:"化学用语",list:["化合价：一价氢氯钾钠银；二价氧钙钡镁锌；三铝四硅五价磷","化学方程式：遵循质量守恒定律","配平方法：最小公倍数法、奇数配偶法"]},
-{title:"空气氧气",list:["空气成分：氮气78%、氧气21%、稀有气体0.94%、二氧化碳0.03%","氧气性质：支持燃烧、供给呼吸","燃烧条件：达到着火点、与氧气接触","实验室制氧气：二氧化锰催化分解过氧化氢"]},
-{title:"溶液",list:["溶液组成：溶质+溶剂","溶解度：温度影响固体溶解度","浓度：质量分数=溶质/溶液×100%"]},
-{title:"酸碱盐",list:["酸碱指示剂：紫色石蕊（酸红碱蓝）、酚酞（碱红酸无色）","酸的通性：与指示剂、与金属、与碱、与盐反应","碱的通性：与指示剂、与非金属氧化物、与酸、与盐反应"]}
-],
-"历史-初中":[
-{title:"中国古代史",list:["先秦：华夏族形成、夏商周政治制度、百家争鸣（儒道墨法）","秦汉：秦朝统一（文字、度量衡、货币）、中央集权制度","隋唐：科举制、三省六部制、大运河、贞观之治、开元盛世","宋元：重文轻武、交子、活字印刷","明清：君主专制加强、郑和下西洋、闭关锁国"]},
-{title:"中国近现代史",list:["近代救亡：鸦片战争（《南京条约》）、洋务运动、戊戌变法、辛亥革命","新民主主义革命：五四运动、中共成立、国共合作抗日、解放战争","现代建设：新中国成立、土地改革、一五计划、改革开放"]},
-{title:"世界古代史",list:["古埃及：尼罗河、金字塔","古希腊罗马：城邦制度（雅典民主）、法律传统（罗马法）","基督教与伊斯兰教：产生与传播"]},
-{title:"世界近现代史",list:["资本主义确立：文艺复兴、宗教改革、启蒙运动、英国资产阶级革命","工业革命：第一次（蒸汽机）、第二次（电气化）","世界大战：一战、二战、战后国际秩序（联合国）","当代世界：冷战与多极化、全球化、区域集团化"]}
-],
-"地理-初中":[
-{title:"地球与地图",list:["地球：地球形状（两极稍扁赤道略鼓）","经纬线：经线半圆、纬线圆圈；赤道是最大纬线圈","经纬度：0°经线（本初子午线）、0°纬线（赤道）","地图三要素：方向、比例尺、图例注记"]},
-{title:"自然地理",list:["海洋与陆地：七大洲（亚洲、非洲、北美洲、南美洲、南极洲、欧洲、大洋洲）","四大洋：太平洋、大西洋、印度洋、北冰洋","气候类型：热带雨林/草原/沙漠/季风/地中海/温带季风/亚热带季风","世界人口：自然增长率=出生率-死亡率"]},
-{title:"中国地理",list:["中国地形：三大阶梯（青藏高原→高原平原→平原丘陵）","中国气候：季风气候显著（夏季风从太平洋来）","中国河流：长江（最长、水量最大、流域最广）、黄河","中国资源：南水北调、西气东输、西电东送"]},
-{title:"区域地理",list:["亚洲：地形复杂（中部高四周低）、人口最多","非洲：高原大陆、热带大陆、撒哈拉沙漠","北美洲：地形纵列（西部山脉+中部平原+东部高原）","欧洲：资本主义发展最早"]}
-],
-"生物学-初中":[
-{title:"生物体的结构",list:["细胞：植物细胞（细胞壁、细胞膜、细胞质、细胞核、叶绿体、液泡）；动物细胞","组织：植物组织（保护、营养、输导、机械、分生）；动物组织（上皮、结缔、肌肉、神经）","器官与系统：器官由多种组织构成；系统由多个器官构成"]},
-{title:"植物类群",list:["藻类植物：无根茎叶分化；如海带、紫菜","苔藓植物：有茎叶分化，无根","蕨类植物：有根茎叶分化，有输导组织","种子植物：裸子植物（松杉柏）；被子植物（单子叶/双子叶）"]},
-{title:"动物类群",list:["无脊椎动物：腔肠动物（珊瑚）、扁形动物（涡虫）、线形动物（蛔虫）、环节动物（蚯蚓）、软体动物（蜗牛）、节肢动物（昆虫）","脊椎动物：鱼类（变温/鳃呼吸）、两栖类、爬行类（变温/肺呼吸）、鸟类（恒温/羽毛）、哺乳类（恒温/毛发/乳腺）"]},
-{title:"人体生理",list:["消化系统：口腔→咽→食道→胃→小肠→大肠→肛门","呼吸系统：鼻腔→咽→喉→气管→支气管→肺","循环系统：心脏（四腔）；血管（动脉、静脉、毛细血管）","神经系统：中枢神经（脑、脊髓）、周围神经"]},
-{title:"遗传与进化",list:["遗传：DNA是主要遗传物质；基因（显性/隐性）","变异：可遗传变异（基因突变、染色体变异）；不可遗传变异（环境影响）","进化：自然选择（适者生存、不适者淘汰）"]}
-],
-"道德与法治-初中":[
-{title:"个人成长",list:["自尊与自信：正确认识自我价值","情绪管理：基本情绪、情绪调节方法","意志品质：自觉性、果断性、自制性、坚韧性"]},
-{title:"社会生活",list:["个人与集体：个人离不开集体、集体利益高于个人利益","交往与友谊：尊重他人、真诚待人、建立友谊","竞争与合作：在竞争中合作、在合作中竞争"]},
-{title:"法治教育",list:["法律特征：由国家制定或认可、靠国家强制力保证实施","未成年人保护：家庭保护、学校保护、社会保护、网络保护、政府保护","违法犯罪：违法行为分类（民事、行政、刑事）、犯罪特征"]}
+{title:"物质构成",tag:"hx",tagName:"化学",desc:"分子原子、元素、化学式",
+content:"<h3>一、分子与原子</h3><p><b>分子：</b>保持物质化学性质的最小粒子</p><p><b>原子：</b>化学变化中的最小粒子</p><p>分子由原子构成</p><h3>二、原子结构</h3><p>原子核（质子+中子）+ 核外电子</p><p>质子数 = 核电荷数 = 核外电子数（原子）</p><div class='highlight'>在化学反应中，原子核不变，只有核外电子转移</div><h3>三、元素</h3><p>具有相同核电荷数的一类原子的总称</p><p>元素符号：H He Li Be B C N O F Ne...</p><h3>四、化学式</h3><p>用元素符号和数字表示物质组成的式子</p><p>H₂O表示一个水分子含2个氢原子和1个氧原子</p>"},
+{title:"化学用语",tag:"hx",tagName:"化学",desc:"化合价、化学方程式、配平",
+content:"<h3>一、化合价</h3><div class='formula'>一价氢氯钾钠银 | 二价氧钙钡镁锌</div><div class='formula'>三铝四硅五价磷 | 二三铁、二四碳</div><div class='highlight'>化合物中化合价代数和为零</div><h3>二、化学方程式</h3><p>书写原则：以客观事实为依据，遵循质量守恒定律</p><p>配平方法：最小公倍数法、奇数配偶法</p><h3>三、质量守恒定律</h3><p>化学反应前后：</p><ul><li>物质总质量不变</li><li>原子种类不变</li><li>原子数目不变</li><li>原子质量不变</li></ul>"},
+{title:"空气氧气",tag:"hx",tagName:"化学",desc:"空气成分、氧气性质、燃烧条件",
+content:"<h3>一、空气成分</h3><p>氮气78% | 氧气21% | 稀有气体0.94% | 二氧化碳0.03%</p><h3>二、氧气性质</h3><p>无色无味气体，不易溶于水</p><p>支持燃烧，供给呼吸</p><h3>三、燃烧条件</h3><p>达到着火点</p><p>与氧气接触</p><div class='highlight'>灭火原理：破坏任一条件（隔绝空气或降低温度至着火点以下）</div><h3>四、实验室制氧气</h3><p>过氧化氢分解：2H₂O₂ → 2H₂O + O₂↑（二氧化锰催化）</p><p>加热高锰酸钾：2KMnO₄ → K₂MnO₄ + MnO₂ + O₂↑</p>"},
+{title:"溶液",tag:"hx",tagName:"化学",desc:"溶解度、浓度计算",
+content:"<h3>一、溶液组成</h3><p><b>溶质：</b>被溶解的物质</p><p><b>溶剂：</b>能溶解其他物质的物质（水是最常见溶剂）</p><h3>二、溶解度</h3><div class='formula'>溶解度 = (饱和时溶质质量 / 100g溶剂) × 100g</div><p>影响因素：温度（固体）、压强（气体）</p><h3>三、浓度</h3><div class='formula'>质量分数 = (溶质质量 / 溶液质量) × 100%</div><div class='example'>20g盐溶解在80g水中，溶液质量分数 = 20/(20+80) × 100% = 20%</div>"},
+{title:"酸碱盐",tag:"hx",tagName:"化学",desc:"酸碱指示剂、通性、复分解反应",
+content:"<h3>一、酸碱指示剂</h3><p>紫色石蕊：酸红碱蓝</p><p>酚酞：碱红酸无色</p><h3>二酸的通性</h3><p>与指示剂反应</p><p>与活泼金属反应：Fe + 2HCl → FeCl₂ + H₂↑</p><p>与碱反应：HCl + NaOH → NaCl + H₂O</p><p>与盐反应：2HCl + Na₂CO₃ → 2NaCl + H₂O + CO₂↑</p><h3>三、碱的通性</h3><p>与指示剂反应</p><p>与非金属氧化物反应：2NaOH + CO₂ → Na₂CO₃ + H₂O</p><p>与酸反应（中和反应）</p><h3>四、复分解反应</h3><p>AB + CD → AD + CB</p><p>条件：生成物中有沉淀、气体或水</p>"}
 ],
 "语文-高中":[
-{title:"现代文阅读",list:["小说阅读：三要素（人物、情节、环境）；塑造人物方法（语言、动作、心理、神态、外貌描写）","散文阅读：形散神聚；托物言志、借景抒情、动静结合","论述文阅读：论点、论据、论证；论证方法（举例、对比、比喻、引用）"]},
-{title:"文言文",list:["实词积累：之、其、以、于、而、则、乃、且、所、为","虚词用法：而（表转折/递进）；则（表承接/转折）；以（表原因/方式）","词类活用：名词作动词、名词作状语、意动用法、使动用法"]},
-{title:"古诗文鉴赏",list:["表达技巧：借景抒情、托物言志、对比反衬、卒章显志、埋伏笔","意象分析：月亮（思乡）、折柳（离别）、梅花（高洁）、鸿雁（书信）","情感主旨：忧国忧民、建功立业、寄情山水、羁旅思乡、离愁别绪"]},
-{title:"写作",list:["立意：深刻、新颖、准确","选材：真实、典型、独特","结构：起承转合、层层深入、正反对比","语言：准确、鲜明、生动、文采"]}
+{title:"现代文阅读",tag:"yy",tagName:"语文",desc:"小说、散文、论述文阅读技巧",
+content:"<h3>一、小说阅读</h3><p><b>三要素：</b>人物、情节、环境</p><p><b>人物塑造方法：</b>语言描写、动作描写、心理描写、神态描写、外貌描写</p><p><b>情节推进：</b>开端、发展、高潮、结局</p><h3>二、散文阅读</h3><p><b>特点：</b>形散神聚</p><p><b>表现手法：</b>托物言志、借景抒情、动静结合、虚实相生</p><h3>三、论述文阅读</h3><p><b>三要素：</b>论点（观点）、论据（材料）、论证（方法）</p><p><b>论证方法：</b>举例论证、道理论证、对比论证、比喻论证、引用论证</p>"},
+{title:"文言文精讲",tag:"yy",tagName:"语文",desc:"实词虚词、词类活用、翻译技巧",
+content:"<h3>一、重点实词（120个）</h3><p>之、其、以、于、而、则、乃、且、所、为、者、而、于、以、因</p><h3>二、虚词用法</h3><div class='highlight'>而：表转折（然而）、表递进（而且）、表修饰（地）</div><div class='highlight'>以：表原因（因为）、表方式（用来）、表时间（在）</div><h3>三、词类活用</h3><p><b>名词作动词：</b>假舟楫者，非能水也（游水）</p><p><b>名词作状语：</b>有狼恒入口（从口里）</p><p><b>意动用法：</b>孔子登东山而小鲁（认为...小）</p><p><b>使动用法：</b>可烧而走也（使...败退）</p><h3>四、翻译技巧</h3><p>留（人名地名）、换（古今异义）、补（省略成分）、删（无意义虚词）</p>"},
+{title:"古诗文鉴赏",tag:"yy",tagName:"语文",desc:"表达技巧、意象分析、情感主旨",
+content:"<h3>一、表达技巧</h3><p><b>修辞手法：</b>比喻、拟人、夸张、对偶、排比、互文</p><p><b>表现手法：</b>借景抒情、托物言志、对比反衬、卒章显志、埋伏笔</p><h3>二、常见意象</h3><p><b>思乡：</b>月亮、鸿雁、捣衣</p><p><b>离别：</b>折柳、长亭、南浦</p><p><b>高洁：</b>梅花、菊花、莲花、松柏</p><p><b>战争：</b>烽火、硝烟、将军、长城</p><h3>三、情感主旨</h3><p>忧国忧民 | 建功立业 | 寄情山水 | 羁旅思乡</p><p>离愁别绪 | 怀才不遇 | 田园情趣 | 哲理感悟</p>"},
+{title:"写作提升",tag:"yy",tagName:"语文",desc:"立意、选材、结构、语言",
+content:"<h3>一、立意</h3><p><b>深刻：</b>透过现象看本质</p><p><b>新颖：</b>独特视角、个人体验</p><p><b>准确：</b>符合题意、积极健康</p><h3>二、选材</h3><p>真实：亲身经历或真实所见</p><p>典型：代表性强</p><p>独特：与众不同的角度</p><h3>三、结构</h3><p>起承转合 | 层层深入 | 正反对比 | 一线贯穿</p><h3>四、语言</h3><p>准确：措辞精确</p><p>鲜明：态度明确</p><p>生动：形象具体</p><p>文采：优美流畅</p>"}
 ],
 "数学-高中":[
-{title:"函数",list:["函数概念：y=f(x)；定义域、值域、对应关系","函数性质：单调性（增函数、减函数）；奇偶性（偶函数、奇函数）；周期性","基本函数：一次函数、二次函数、反比例函数、指数函数、对数函数、三角函数"]},
-{title:"导数",list:["导数定义：f'(x)=lim [f(x+Δx)-f(x)]/Δx","求导公式：(xⁿ)'=nxⁿ⁻¹；(sinx)'=cosx；(cosx)'=-sinx；(eˣ)'=eˣ；(lnx)'=1/x","导数应用：判断单调性、求极值最值、证明不等式、求切线方程"]},
-{title:"三角函数",list:["三角函数：sin、cos、tan的图像与性质","恒等变换：同角三角函数关系、诱导公式、两角和差公式、二倍角公式","解三角形：正弦定理、余弦定理、面积公式S=½ab sinC"]},
-{title:"数列",list:["等差数列：通项aₙ=a₁+(n-1)d；前n项和Sₙ=n(a₁+aₙ)/2","等比数列：通项aₙ=a₁qⁿ⁻¹；前n项和Sₙ=a₁(1-qⁿ)/(1-q)","递推数列：由递推关系求通项、数学归纳法"]},
-{title:"解析几何",list:["直线方程：点斜式、斜截式、两点式、一般式","圆：标准方程(x-a)²+(y-b)²=r²；一般方程x²+y²+Dx+Ey+F=0","圆锥曲线：椭圆、双曲线、抛物线的定义与标准方程；离心率e"]},
-{title:"立体几何",list:["空间向量：向量运算、数量积、向量垂直/平行的判定","线面关系：线线平行/垂直、线面平行/垂直、面面平行/垂直","空间角：异面直线所成角、线面角、二面角"]},
-{title:"概率统计",list:["排列组合：排列Aₙᵐ、组合Cₙᵐ","二项式定理：(a+b)ⁿ=∑Cₙᵏaⁿ⁻ᵏbᵏ","概率：古典概型、几何概型、条件概率、独立事件"]}
+{title:"函数",tag:"sx",tagName:"数学",desc:"函数概念、性质、基本函数",
+content:"<h3>一、函数概念</h3><p>函数：y = f(x)</p><p><b>定义域：</b>x的取值范围</p><p><b>值域：</b>y的取值范围</p><p><b>对应关系：</b>每一个x对应唯一的y</p><h3>二、函数性质</h3><p><b>单调性：</b>增函数（x₁ < x₂ → f(x₁) < f(x₂)）</p><p><b>奇偶性：</b>偶函数f(-x)=f(x)；奇函数f(-x)=-f(x)</p><p><b>周期性：</b>f(x+T)=f(x)</p><h3>三、基本函数</h3><p>一次函数：y = kx + b</p><p>二次函数：y = ax² + bx + c</p><p>指数函数：y = aˣ</p><p>对数函数：y = logₐx</p><p>三角函数：y = sinx, cosx, tanx</p>"},
+{title:"导数",tag:"sx",tagName:"数学",desc:"导数公式、几何意义、应用",
+content:"<h3>一、导数定义</h3><div class='formula'>f'(x) = lim(Δx→0) [f(x+Δx) - f(x)] / Δx</div><h3>二、求导公式</h3><div class='formula'>(xⁿ)' = nxⁿ⁻¹</div><div class='formula'>(sinx)' = cosx | (cosx)' = -sinx</div><div class='formula'>(eˣ)' = eˣ | (lnx)' = 1/x</div><div class='formula'>(aˣ)' = aˣlna | (logₐx)' = 1/(x·lna)</div><h3>三、导数几何意义</h3><p>切线斜率：k = f'(x₀)</p><div class='formula'>切线方程：y - f(x₀) = f'(x₀)(x - x₀)</div><h3>四、导数应用</h3><p>判断单调性</p><p>求极值：f'(x)=0</p><p>求最值</p><p>证明不等式</p>"},
+{title:"数列",tag:"sx",tagName:"数学",desc:"等差数列、等比数列、递推",
+content:"<h3>一、等差数列</h3><div class='formula'>通项：aₙ = a₁ + (n-1)d</div><div class='formula'>前n项和：Sₙ = n(a₁+aₙ)/2 = na₁ + n(n-1)d/2</div><h3>二、等比数列</h3><div class='formula'>通项：aₙ = a₁qⁿ⁻¹</div><div class='formula'>前n项和：Sₙ = a₁(1-qⁿ)/(1-q)（q≠1）</div><h3>三、递推数列</h3><p>由递推关系求通项</p><p>累加法、累乘法、构造法</p><h3>四、数学归纳法</h3><p>步骤：证明n=1时成立 → 假设n=k时成立 → 证明n=k+1时成立</p>"},
+{title:"解析几何",tag:"sx",tagName:"数学",desc:"直线、圆、圆锥曲线",
+content:"<h3>一、直线方程</h3><p>点斜式：y - y₀ = k(x - x₀)</p><p>斜截式：y = kx + b</p><p>一般式：Ax + By + C = 0</p><h3>二、圆</h3><div class='formula'>标准方程：(x-a)² + (y-b)² = r²</div><div class='formula'>一般方程：x² + y² + Dx + Ey + F = 0</div><h3>三、椭圆</h3><div class='formula'>标准方程：x²/a² + y²/b² = 1（a > b > 0）</div><p>a：长半轴，b：短半轴，c² = a² - b²</p><p>离心率：e = c/a</p><h3>四、双曲线与抛物线</h3><p>双曲线：x²/a² - y²/b² = 1</p><p>抛物线：y² = 2px</p>"}
 ],
 "英语-高中":[
-{title:"非谓语动词",list:["动名词（v-ing）：作主语、宾语、表语、定语","分词（v-ing/v-ed）：作定语、状语、宾补","不定式（to do）：作目的状语、结果状语、主语补足语"]},
-{title:"从句",list:["名词性从句（主语、宾语、表语、同位语）：that/if/whether/what/who/whom/which","定语从句（关系代词/副词）：who/whom/whose/which/that/where/when/why","状语从句：时间、条件、原因、目的、结果、让步、比较、方式"]},
-{title:"虚拟语气",list:["与现在相反：从句过去时态（were/did）","与过去相反：从句过去完成时（had done）","与将来相反：从句would/could/might+动词原形","wish后虚拟"]},
-{title:"词汇扩展",list:["词根词缀：-able可...的；pre-前；post-后；anti-反对；-tion名词；-ize动词化","同义词辨析：effect/affect；adapt/adopt；considerate/considerable","短语动词：take/look/get/turn/carry+介词或副词"]},
-{title:"写作句型",list:["开头：Recently,...has become a hot topic；It is universally acknowledged that...","衔接：moreover/furthermore；however/nevertheless；in conclusion/to sum up","高级句型：倒装句、强调句、被动句、非谓语作状语"]}
+{title:"非谓语动词",tag:"yy2",tagName:"英语",desc:"动名词、分词、不定式",
+content:"<h3>一、动名词（v-ing作主语/宾语）</h3><div class='example'>Seeing is believing. | I enjoy reading.</div><h3>二、分词（v-ing/v-ed作定语/状语/补语）</h3><p><b>现在分词（v-ing）：</b>主动、进行</p><p><b>过去分词（v-ed）：</b>被动、完成</p><div class='example'>The boiling water = The water which is boiling</div><div class='example'>The broken cup = The cup which was broken</div><h3>三、不定式（to do）</h3><p>作主语：To learn English is important.</p><p>作目的状语：I came here to study.</p><p>作宾补：I want you to go.</p>"},
+{title:"从句",tag:"yy2",tagName:"英语",desc:"名词性从句、定语从句、状语从句",
+content:"<h3>一、名词性从句</h3><p>主语从句、宾语从句、表语从句、同位语从句</p><p>连接词：that（无含义）、if/whether（是否）、what/who/which/where/when/why/how</p><div class='example'>What he said is true. | I don't know if he will come.</div><h3>二、定语从句</h3><p>关系代词：who（人）、whom（人）、which（物）、that（人/物）、whose</p><p>关系副词：where、when、why</p><div class='example'>The man who/that is standing there is my teacher.</div><h3>三、状语从句</h3><p>时间：when/while/as/before/after/since</p><p>条件：if/unless</p><p>原因：because/since/as</p><p>让步：although/though/even if</p>"},
+{title:"虚拟语气",tag:"yy2",tagName:"英语",desc:"与现在/过去/将来相反的虚拟",
+content:"<h3>一、与现在相反</h3><div class='formula'>从句：过去时（were/did）| 主句：would/could/might + 动词原形</div><div class='example'>If I were you, I would take this job.</div><h3>二、与过去相反</h3><div class='formula'>从句：过去完成时（had done）| 主句：would/could/might + have done</div><div class='example'>If I had studied hard, I would have passed the exam.</div><h3>三、与将来相反</h3><div class='formula'>从句：过去时（were to do / should do）| 主句：would/could/might + 动词原形</div><div class='example'>If it should rain tomorrow, I would stay home.</div><h3>四、wish后虚拟</h3><p>wish + were/did（与现在相反）</p><p>wish + had done（与过去相反）</p>"},
+{title:"写作高级句型",tag:"yy2",tagName:"英语",desc:"倒装句、强调句、非谓语",
+content:"<h3>一、倒装句</h3><p><b>部分倒装：</b>Only then did he realize his mistake.</p><p><b>完全倒装：</b>Here comes the bus.</p><p>否定词提前要倒装：Not only...but also...</p><h3>二、强调句</h3><div class='formula'>It is/was + 被强调部分 + that/who + 其余</div><div class='example'>It was because he was ill that he didn't come.</div><h3>三、非谓语作状语</h3><div class='example'>Seeing the teacher, the students stopped talking.</div><div class='example'>Given more time, I could do it better.</div><h3>四、高级表达</h3><p>With + n. + done（伴随状语）</p><div class='example'>With the problem solved, we felt relieved.</div>"}
 ],
 "物理-高中":[
-{title:"力学",list:["运动学：匀变速直线运动公式（v=v₀+at；s=v₀t+½at²）；自由落体；抛体运动","动力学：牛顿三定律；受力分析；共点力平衡","能量：动能定理（W=ΔEk）；机械能守恒；能量守恒定律","动量：动量定理；动量守恒；碰撞（弹性碰撞、完全非弹性碰撞）"]},
-{title:"电磁学",list:["电场：库仑定律F=kq₁q₂/r²；电场强度E=F/q；电势φ；电容C=Q/U","电路：欧姆定律I=U/R；串并联；复杂电路分析（基尔霍夫定律）","磁场：安培力F=BIL；洛伦兹力F=qvB；带电粒子在磁场中运动（圆周运动）","电磁感应：法拉第电磁感应定律E=nΔΦ/Δt；楞次定律；自感与互感"]},
-{title:"热学",list:["分子动理论：分子动能、分子势能、内能","气体实验定律：玻意耳定律pV=C；查理定律p/T=C；盖·吕萨克定律V/T=C","热力学定律：ΔU=Q+W；热力学第二定律（方向性）"]},
-{title:"光学",list:["几何光学：光的直线传播、反射（全反射）、折射（折射率n=sinθ₁/sinθ₂）","波动光学：干涉（双缝干涉）、衍射（单缝衍射）、偏振"]},
-{title:"原子物理",list:["原子结构：α粒子散射实验、原子核式结构模型","原子核：核力、结合能、核聚变、核裂变、衰变（α衰变、β衰变）"]}
+{title:"力学",tag:"wl",tagName:"物理",desc:"运动学、动力学、能量、动量",
+content:"<h3>一、运动学</h3><div class='formula'>v = v₀ + at</div><div class='formula'>s = v₀t + ½at²</div><div class='formula'>v² - v₀² = 2as</div><h3>二、动力学</h3><p><b>牛顿三定律：</b></p><p>第一定律（惯性定律）</p><p>第二定律：F = ma</p><p>第三定律：作用力与反作用力</p><h3>三、能量</h3><p><b>动能定理：</b>W = ΔEk = ½mv² - ½mv₀²</p><p><b>机械能守恒：</b>（只有重力/弹力做功时）</p><h3>四、动量</h3><div class='formula'>动量定理：I = Δp</div><div class='formula'>动量守恒：m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'</div>"},
+{title:"电磁学",tag:"wl",tagName:"物理",desc:"电场、电路、磁场、电磁感应",
+content:"<h3>一、电场</h3><div class='formula'>库仑定律：F = kq₁q₂/r²</div><div class='formula'>电场强度：E = F/q</div><p>电场线：始于正电荷，止于负电荷</p><h3>二、电路</h3><p><b>欧姆定律：</b>I = U/R</p><p><b>串并联：</b>串联分压、并联分流</p><h3>三、磁场</h3><div class='formula'>安培力：F = BIL</div><div class='formula'>洛伦兹力：F = qvB</div><h3>四、电磁感应</h3><div class='formula'>法拉第定律：E = nΔΦ/Δt</div><p><b>楞次定律：</b>感应电流的磁场阻碍原磁场变化</p>"}
 ],
 "化学-高中":[
-{title:"物质结构",list:["原子结构：原子核构成（质子、中子）；核外电子排布规律（能层、能级、电子层）","化学键：离子键、共价键（极性键、非极性键、配位键）、金属键","分子结构：VSEPR模型、杂化轨道理论（sp/sp²/sp³）、氢键、范德华力"]},
-{title:"反应原理",list:["化学反应速率：v=Δc/Δt；影响因素（浓度、温度、压强、催化剂、接触面积）","化学平衡：平衡常数K；转化率；勒夏特列原理（平衡移动）","水溶液：水的电离、pH计算、盐类水解、缓冲溶液、沉淀溶解平衡"]},
-{title:"有机化学",list:["烃：烷烃（饱和链烃）、烯烃（双键）、炔烃（三键）、芳香烃（苯环）","烃的衍生物：醇（-OH）、醛（-CHO）、羧酸（-COOH）、酯（-COO-）","官能团反应：加成反应、取代反应、消去反应、氧化反应、还原反应","有机合成：逆合成分析法；碳骨架构建；官能团转化"]},
-{title:"实验化学",list:["物质的分离提纯：过滤、蒸发、蒸馏、萃取、分液、层析","物质的检验：离子检验（Cl⁻、SO₄²⁻、CO₃²⁻）；官能团检验","定量实验：配制溶液（物质的量浓度）；酸碱滴定；误差分析"]}
-],
-"历史-高中":[
-{title:"中国古代史",list:["先秦：夏商周社会（分封制、宗法制、礼乐制）；百家争鸣","秦汉：秦朝统一与制度创新（郡县制、书同文）；汉朝郡国并行、丝绸之路","唐宋：唐朝盛世（贞观之治、开元盛世、三省六部）；宋朝文官政治","明清：君主专制强化（废宰相、设军机处）；赋税制度变化（一条鞭法、摊丁入亩）；闭关锁国"]},
-{title:"中国近现代史",list:["近代救亡：鸦片战争（《南京条约》《北京条约》）；洋务运动；戊戌变法；辛亥革命","新民主主义革命：五四运动；中共成立；国民革命；抗日战争；解放战争","现代建设：新中国成立；社会主义改造（一五计划、三大改造）；改革开放；现代化建设"]},
-{title:"世界古代史",list:["古希腊罗马：民主制度（直接民主、公民大会）；法律传统（罗马法、《十二铜表法》）","中世纪欧洲：封建制度、基督教会的统治"]},
-{title:"世界近现代史",list:["资本主义确立：文艺复兴；宗教改革；启蒙运动；英国资产阶级革命、美国独立战争、法国大革命","工业革命：第一次（蒸汽机、工作机、改进蒸汽机）；第二次（电气化、内燃机）","世界大战：一战（二元格局、凡尔赛-华盛顿体系）；二战（三元格局、雅尔塔体系）","当代世界：冷战与多极化；全球化；区域集团化（欧盟、东盟）"]}
-],
-"地理-高中":[
-{title:"自然地理",list:["地球运动：自转（昼夜更替、时差、地转偏向力）；公转（四季、五带、正午太阳高度、昼夜长短）","大气环流：三圈环流（低纬环流、中纬环流、高纬环流）；季风环流；气候类型","水循环：海陆间循环；陆地内循环；海上内循环","地壳运动：地质构造（褶皱、断层）；板块构造学说（生长边界、消亡边界）"]},
-{title:"人文地理",list:["人口：人口增长模式（原始型、传统型、现代型）；人口迁移","城市：城市化进程（逆城市化）；城市功能分区；城市问题","农业：农业区位因素（自然、社会经济、技术）；农业地域类型；粮食问题","工业：工业区位因素（原料、市场、劳动力、交通、政策、环境）；产业转移"]},
-{title:"区域地理",list:["中国地理：地形（三大阶梯）；气候（季风气候、非季风区）；河流（长江、黄河、淮河）","世界地理：各大洲地形气候特征；重要国家（美国、俄罗斯、巴西、澳大利亚、日本、印度）"]}
-],
-"政治-高中":[
-{title:"经济生活",list:["商品与货币：商品二因素（使用价值、价值）；货币职能（价值尺度、流通手段、贮藏手段、支付手段、世界货币）","价值规律：价值量由社会必要劳动时间决定；价格围绕价值上下波动","企业：企业类型；企业经营成功因素；企业社会责任","个人收入：按劳分配；按要素分配；公平与效率"]},
-{title:"政治生活",list:["公民：基本权利与义务；公民参与（民主选举、决策、管理、监督）","政府：职能（保障人民民主和维护国家长治久安、组织社会主义经济建设、提供社会公共服务的职能）；依法行政；接受监督","国际社会：主权国家；国际组织；和平与发展主题；我国外交政策"]},
-{title:"哲学与生活",list:["唯物论：物质与意识关系；规律的客观性；发挥主观能动性","辩证法：联系观（联系的普遍性、客观性、多样性）；发展观（发展的实质）；矛盾观（对立统一是唯物辩证法的核心）","认识论：实践与认识关系；认识的特性（反复性、无限性、上升性）"]}
-],
-"信息技术-高中":[
-{title:"程序设计",list:["Python基础：变量与数据类型；控制结构（if/for/while）；函数定义与调用","数据结构：列表、元组、字典、集合；算法复杂度O(1)、O(n)、O(n²)、O(logn)","算法：排序（冒泡、选择）；查找（顺序、二分）；递归"]},
-{title:"数据处理",list:["Excel应用：常用函数（SUM、AVERAGE、IF、VLOOKUP、COUNTIF、SUMIF）；数据透视表","数据可视化：图表类型选择（柱状图、折线图、饼图、散点图）；图表制作规范"]},
-{title:"网络基础",list:["计算机网络：OSI七层模型；TCP/IP协议；IP地址（IPv4、IPv6）；域名","信息安全：计算机病毒与防护；数据加密（对称加密、非对称加密）；网络安全法律法规"]}
+{title:"物质结构",tag:"hx",tagName:"化学",desc:"原子结构、化学键、分子结构",
+content:"<h3>一、原子结构</h3><p>原子核（质子+中子）+ 核外电子</p><p>电子排布规律：2-8-8-18...</p><h3>二、化学键</h3><p><b>离子键：</b>阴阳离子间静电作用</p><p><b>共价键：</b>原子间共用电子对</p><p><b>金属键：</b>金属离子与自由电子间作用</p><h3>三、分子结构</h3><p>VSEPR模型：判断分子空间构型</p><p>杂化轨道：sp/sp²/sp³</p><div class='highlight'>氢键：F、O、N与H形成的弱键，影响沸点、溶解度</div>"},
+{title:"反应原理",tag:"hx",tagName:"化学",desc:"反应速率、化学平衡、水溶液",
+content:"<h3>一、化学反应速率</h3><div class='formula'>v = Δc/Δt</div><p>影响因素：浓度、温度、压强、催化剂、接触面积</p><h3>二、化学平衡</h3><div class='formula'>平衡常数：K = [C]ᶜ[D]ᵈ / [A]ᵃ[B]ᵇ</div><p><b>勒夏特列原理：</b>平衡向减弱改变的方向移动</p><h3>三、水溶液</h3><p>pH = -lg[H⁺]</p><p><b>盐类水解：</b>强酸弱碱盐呈酸性，强碱弱酸盐呈碱性</p>"},
+{title:"有机化学",tag:"hx",tagName:"化学",desc:"烃、官能团、有机反应",
+content:"<h3>一、烃</h3><p><b>烷烃：</b>CₙH₂ₙ₊₂，饱和链烃</p><p><b>烯烃：</b>含C=C双键</p><p><b>炔烃：</b>含C≡C三键</p><p><b>芳香烃：</b>含苯环</p><h3>二、官能团</h3><p>-OH（羟基）、-CHO（醛基）、-COOH（羧基）、-COO-（酯基）</p><h3>三、有机反应</h3><p><b>取代反应：</b>卤代烃水解</p><p><b>加成反应：</b>烯烃加成</p><p><b>消去反应：</b>醇脱水</p><p><b>氧化反应：</b>燃烧、银镜反应</p>"}
 ]
 };
 
-var RESOURCES={
-"语文":[
-{type:"视频",icon:"🎬",title:"清华附小语文课",url:"https://www.bilibili.com/video/BV1xx411v7Rb"},
-{type:"视频",icon:"🎬",title:"窦昕·文言文精讲",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"杨思涵·阅读理解技巧",url:"https://www.bilibili.com"},
-{type:"网站",icon:"🌐",title:"古诗文网",url:"https://gushiwen.cn"},
-{type:"网站",icon:"🌐",title:"汉语词典",url:"https://www.zdic.net"},
-{type:"书籍",icon:"📚",title:"《唐诗三百首》蘅塘退士",url:""},
-{type:"书籍",icon:"📚",title:"《古文观止》吴楚材",url:""},
-{type:"书籍",icon:"📚",title:"《现代汉语词典》商务印书馆",url:""},
-{type:"书籍",icon:"📚",title:"《活着》余华",url:""}
+var QUIZZES={
+"语文-小学":[
+{title:"汉语拼音测试",q:[{q:"声母有几个？",o:["21个","23个","22个","24个"],a:1},{q:"'zhī'是哪个整体认读音节？",o:["知","吃","师","日"],a:0},{q:"韵母'an'属于哪一类？",o:["单韵母","复韵母","鼻韵母","特殊韵母"],a:2}]},
+{title:"识字写字测试",q:[{q:"'清'字是什么结构的形声字？",o:["左形右声","右形左声","上形下声","下形上声"],a:0},{q:"'已'和'己'的主要区别是？",o:["读音不同","字形不同","意思不同","以上都对"],a:3}]}
 ],
-"数学":[
-{type:"视频",icon:"🎬",title:"3Blue1Brown·数学可视化",url:"https://www.youtube.com/c/3blue1brown"},
-{type:"视频",icon:"🎬",title:"一数·初高中数学",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"宋浩老师·高数线代概率论",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"李永乐老师·物理解题",url:"https://www.bilibili.com"},
-{type:"网站",icon:"🌐",title:"GeoGebra·数学可视化工具",url:"https://www.geogebra.org"},
-{type:"网站",icon:"🌐",title:"Wolfram Alpha·计算引擎",url:"https://www.wolframalpha.com"},
-{type:"书籍",icon:"📚",title:"《数学之美》吴军",url:""},
-{type:"书籍",icon:"📚",title:"《怎样解题》波利亚",url:""},
-{type:"书籍",icon:"📚",title:"《高等数学》同济大学版",url:""},
-{type:"书籍",icon:"📚",title:"《数学分析》华东师范大学版",url:""}
+"数学-小学":[
+{title:"20以内加减法测试",q:[{q:"8 + 7 = ?",o:["13","14","15","16"],a:2},{q:"15 - 8 = ?",o:["6","7","8","9"],a:1},{q:"凑十法计算9+5，正确步骤是？",o:["9+1+4=14","9+1+5=15","9+5=14","5+5+4=14"],a:0}]},
+{title:"认识图形测试",q:[{q:"正方形有几条边？",o:["3条","4条","5条","6条"],a:1},{q:"下列哪个是立体图形？",o:["正方形","长方形","圆形","长方体"],a:3}]}
 ],
-"英语":[
-{type:"视频",icon:"🎬",title:"English with Lucy·发音口语",url:"https://www.youtube.com/c/EnglishwithLucy"},
-{type:"视频",icon:"🎬",title:"A路人·语法写作",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"Coach Shane·EVP每日听力",url:"https://www.youtube.com/c/coachshane"},
-{type:"网站",icon:"🌐",title:"Cambridge Dictionary",url:"https://dictionary.cambridge.org"},
-{type:"网站",icon:"🌐",title:"Quizlet·背单词",url:"https://quizlet.com"},
-{type:"网站",icon:"🌐",title:"Grammarly·语法检查",url:"https://grammarly.com"},
-{type:"书籍",icon:"📚",title:"Word Power Made Easy",url:""},
-{type:"书籍",icon:"📚",title:"English Grammar in Use",url:""},
-{type:"书籍",icon:"📚",title:"《新概念英语》",url:""},
-{type:"书籍",icon:"📚",title:"《维克多高中英语词汇》",url:""}
+"初中一年级":[
+{title:"语文测试",q:[{q:"下列哪个是词类活用？",o:["名词作动词","名词作主语","动词作主语","形容词作状语"],a:0},{q:"文言文'而'表转折时，相当于？",o:["而且","但是","于是","如果"],a:1}]},
+{title:"数学测试",q:[{q:"-3的相反数是？",o:["3","-3","1/3","-1/3"],a:0},{q:"|−5| = ?",o:["5","-5","±5","0"],a:0}]}
 ],
-"物理":[
-{type:"视频",icon:"🎬",title:"3Blue1Brown·物理系列",url:"https://www.youtube.com/c/3blue1brown"},
-{type:"视频",icon:"🎬",title:"李永乐老师·物理解题",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"Huang-Shuman·物理可视化",url:"https://www.youtube.com/c/huangshuman"},
-{type:"网站",icon:"🌐",title:"PhET·物理互动模拟",url:"https://phet.colorado.edu"},
-{type:"网站",icon:"🌐",title:"HyperPhysics·物理概念图",url:"http://hyperphysics.phy-astr.gsu.edu"},
-{type:"书籍",icon:"📚",title:"《费曼物理学讲义》",url:""},
-{type:"书籍",icon:"📚",title:"《物理竞赛教程》程守洙",url:""},
-{type:"书籍",icon:"📚",title:"《高中物理知识点清单》",url:""}
+"初中二年级":[
+{title:"物理测试",q:[{q:"声音在15°C空气中传播速度是？",o:["340 m/s","300 m/s","380 m/s","400 m/s"],a:0},{q:"光的反射定律：反射角_____入射角",o:["大于","小于","等于","无关"],a:2}]},
+{title:"英语测试",q:[{q:"一般现在时中，主语是第三人称单数，动词要加？",o:["ing","ed","s/es","er"],a:2}]}
 ],
-"化学":[
-{type:"视频",icon:"🎬",title:"美丽化学·实验可视化",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"H2化学·基础概念",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"杨奇·有机化学",url:"https://www.bilibili.com"},
-{type:"网站",icon:"🌐",title:"PubChem·化学数据库",url:"https://pubchem.ncbi.nlm.nih.gov"},
-{type:"网站",icon:"🌐",title:"ChemDraw·化学绘图",url:"https://perkinelmerinformatics.com"},
-{type:"书籍",icon:"📚",title:"《普通化学》北大版",url:""},
-{type:"书籍",title:"《有机化学》邢其毅",url:""},
-{type:"书籍",icon:"📚",title:"《化学竞赛教程》",url:""}
+"初中三年级":[
+{title:"化学测试",q:[{q:"下列哪个是纯净物？",o:["空气","海水","蒸馏水","泥浆"],a:2},{q:"2H₂ + O₂ → ？",o:["H₂O","2H₂O","H₂O₂","OH"],a:1}]}
 ],
-"历史":[
-{type:"视频",icon:"🎬",title:"历史其实挺有趣",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"安姐课堂·中外历史",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"李左乙·世界历史",url:"https://www.bilibili.com"},
-{type:"网站",icon:"🌐",title:"全历史·历史资料库",url:"https://www.allhistory.com"},
-{type:"网站",icon:"🌐",title:"历史地图集",url:"https://www.davidrumsey.com"},
-{type:"网站",icon:"🌐",title:"中国历史年表",url:"https://www.china-history.com"},
-{type:"书籍",icon:"📚",title:"《全球通史》斯塔夫里阿诺斯",url:""},
-{type:"书籍",icon:"📚",title:"《中国通史》吕思勉",url:""},
-{type:"书籍",icon:"📚",title:"《万历十五年》黄仁宇",url:""},
-{type:"books",icon:"📚",title:"《明朝那些事儿》当年明月",url:""}
-],
-"地理":[
-{type:"视频",icon:"🎬",title:"地理中国",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"星球研究所",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"三维地图看世界",url:"https://www.bilibili.com"},
-{type:"网站",icon:"🌐",title:"NASA Earth Data",url:"https://www.nasa.gov/mission_pages/earth-observation/earth-data.html"},
-{type:"网站",icon:"🌐",title:"Google Earth",url:"https://earth.google.com"},
-{type:"网站",icon:"🌐",title:"Windy·气象地图",url:"https://www.windy.com"},
-{type:"书籍",icon:"📚",title:"《地理学与生活》",url:""},
-{type:"books",icon:"📚",title:"《中国地理地图》",url:""},
-{type:"books",icon:"📚",title:"《世界地理地图》",url:""}
-],
-"生物学":[
-{type:"视频",icon:"🎬",title:"混乱博物馆·生物科普",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"动物农场·动物行为",url:"https://www.bilibili.com"},
-{type:"视频",icon:"🎬",title:"3Blue1Brown·生物可视化",url:"https://www.youtube.com/c/3blue1brown"},
-{type:"网站",icon:"🌐",title:"PDB·蛋白质结构数据库",url:"https://www.rcsb.org"},
-{type:"website",icon:"🌐",title:"人体解剖学Atlas",url:"https://www.kenhub.com"},
-{type:"website",icon:"🌐",title:"Biology Online",url:"https://www.biologyonline.com"},
-{type:"books",icon:"📚",title:"《细胞生物学》翟中和",url:""},
-{type:"books",icon:"📚",title:"《普通动物学》刘凌云",url:""},
-{type:"books",icon:"📚",title:"《植物学》",url:""}
-],
-"道德与法治":[
-{type:"视频",icon:"🎬",title:"法治在线·法律科普",url:"https://www.bilibili.com"},
-{type:"website",icon:"🌐",title:"中国法院网",url:"https://www.chinacourt.org"},
-{type:"website",icon:"🌐",title:"普法网",url:"https://www.legalinfo.gov.cn"},
-{type:"books",icon:"📚",title:"《道德经》老子",url:""},
-{type:"books",icon:"📚",title:"《论语》孔子",url:""},
-{type:"books",icon:"📚",title:"《宪法》",url:""},
-{type:"books",icon:"📚",title:"《民法典》",url:""}
-],
-"信息技术":[
-{type:"视频",icon:"🎬",title:"MIT 6.00SC·计算机科学导论",url:"https://www.youtube.com/watch?v=oWLmjN1C_7c"},
-{type:"video",icon:"🎬",title:"Python教程·技术蛋老师",url:"https://www.bilibili.com"},
-{type:"video",icon:"🎬",title:"C语言教程·小甲鱼",url:"https://www.bilibili.com"},
-{type:"website",icon:"🌐",title:"MDN Web Docs",url:"https://developer.mozilla.org"},
-{type:"website",icon:"🌐",title:"LeetCode·刷题",url:"https://leetcode.com"},
-{type:"website",icon:"🌐",title:"菜鸟教程",url:"https://www.runoob.com"},
-{type:"books",icon:"📚",title:"《Python编程：从入门到实践》",url:""},
-{type:"books",icon:"📚",title:"《算法导论》",url:""},
-{type:"books",icon:"📚",title:"《C Primer Plus》",url:""}
-],
-"政治":[
-{type:"video",icon:"🎬",title:"考研政治·徐涛",url:"https://www.bilibili.com"},
-{type:"video",icon:"🎬",title:"李薇讲政治",url:"https://www.bilibili.com"},
-{type:"website",icon:"🌐",title:"人民网",url:"http://www.people.com.cn"},
-{type:"website",icon:"🌐",title:"新华网",url:"http://www.xinhuanet.com"},
-{type:"books",icon:"📚",title:"《马克思主义基本原理概论》",url:""},
-{type:"books",icon:"📚",title:"《毛泽东思想和中国特色社会主义理论体系概论》",url:""},
-{type:"books",icon:"📚",title:"《中国近现代史纲要》",url:""}
+"高中":[
+{title:"函数测试",q:[{q:"f(x) = x² 的定义域是？",o:["x > 0","x ≥ 0","所有实数","x ≠ 0"],a:2},{q:"奇函数满足什么条件？",o:["f(-x) = f(x)","f(-x) = -f(x)","f(-x) = 1/f(x)","f(-x) = -1/f(x)"],a:1}]},
+{title:"英语语法测试",q:[{q:"If I _____ you, I would take this job. (与现在相反)",o:["was","were","had been","am"],a:1},{q:"_____ seeing the teacher, the students stopped talking. (非谓语)",o:["See","Saw","Seeing","Seen"],a:2}]}
 ]
 };
 
-var ls={get:function(k){try{return JSON.parse(localStorage.getItem(k))||[]}catch(e){return []}},set:function(k,v){localStorage.setItem(k,JSON.stringify(v))}};
+var ls={get:function(k){try{return JSON.parse(localStorage.getItem(k))||{}}catch(e){return{}}},set:function(k,v){localStorage.setItem(k,JSON.stringify(v))}};
 
 function toast(msg,type){
 var t=document.getElementById('toast');
@@ -412,49 +299,73 @@ t.textContent=msg;t.className='toast'+(type?' '+type:'');t.style.display='block'
 setTimeout(function(){t.style.display='none'},2500);
 }
 
-function go(page,subjName){
+function go(page,param){
 var pages=document.querySelectorAll('.page');
-for(var i=0;i<pages.length;i++){pages[i].classList.remove('active');}
-if(page==='subject'&&subjName){
-renderSubject(subjName);
-document.getElementById('page-subject').classList.add('active');
-document.getElementById('headerTitle').textContent=subjName;
-}else if(page==='grade'&&subjName){
-renderGrade(subjName);
-document.getElementById('page-grade').classList.add('active');
-document.getElementById('headerTitle').textContent=subjName;
-}else{
+for(var i=0;i<pages.length;i++)pages[i].classList.remove('active');
 document.getElementById('page-'+page).classList.add('active');
-var titles={home:'好好学习',notes:'笔记管理',mindmap:'思维导图',review:'复习计划'};
+document.getElementById('headerActions').innerHTML='';
+var titles={home:'好好学习',grade:'年级学科',knowledge:'知识学习',read:'阅读',quiz:'练习',progress:'学习进度'};
 document.getElementById('headerTitle').textContent=titles[page]||page;
-if(page==='home'){renderHome();}
-if(page==='notes'){renderNotes();}
-if(page==='mindmap'){renderMindmap();}
-if(page==='review'){renderReview();}
-}
+if(page==='home')renderHome();
+if(page==='grade')renderGrade(param);
+if(page==='knowledge')renderKnowledge(param);
+if(page==='read')renderRead(param);
+if(page==='quiz')renderQuiz(param);
+if(page==='progress')renderProgress();
 }
 
 function renderHome(){
-var html='<div class="card"><div class="card-title">📚 选择年级</div><div class="grid">';
+var html='<div class="stats"><div class="stat-card"><div class="num" id="statTotal">0</div><div class="label">已学习</div></div><div class="stat-card"><div class="num" id="statRead">0</div><div class="label">已阅读</div></div><div class="stat-card"><div class="num" id="statQuiz">0</div><div class="label">已完成练习</div></div><div class="stat-card"><div class="num" id="statCorrect">0</div><div class="label">正确率%</div></div></div>';
+html+='<div class="card"><div class="card-title">📚 选择年级开始学习</div><div class="grid">';
 for(var i=0;i<GRADES.length;i++){
-var g=GRADES[i];
-html+='<div class="sub-card" onclick="go(\'grade\',\''+g.name+'\')"><div class="icon">'+g.icon+'</div><div class="name">'+g.name+'</div><div class="desc">'+(g.stage||'')+'</div></div>';
+html+='<div class="sub-card" onclick="go(\'grade\',\''+GRADES[i].name+'\')"><div class="icon">'+GRADES[i].icon+'</div><div class="name">'+GRADES[i].name+'</div></div>';
 }
 html+='</div></div>';
+html+='<div class="card"><div class="card-title">📊 学习进度</div>';
+html+='<button class="btn btn-primary" onclick="go(\'progress\')">查看详细进度 →</button>';
+html+='</div>';
 document.getElementById('page-home').innerHTML=html;
-var navHtml='<div class="nav-section">义务教育</div>';
-for(var i=0;i<GRADES.length;i++){
-if(GRADES[i].stage==='义务教育'){
-navHtml+='<div class="nav-item" onclick="go(\'grade\',\''+GRADES[i].name+'\')"><span>'+GRADES[i].icon+'</span><span>'+GRADES[i].name+'</span></div>';
+updateHomeStats();
+}
+
+function updateHomeStats(){
+var data=ls.get('studyData');
+var total=data.learned?Object.keys(data.learned).length:0;
+var read=data.read?Object.keys(data.read).length:0;
+var quizDone=data.quizScore?Object.keys(data.quizScore).length:0;
+var correct=0,totalQ=0;
+if(data.quizScore){
+for(var k in data.quizScore){
+correct+=data.quizScore[k].correct||0;
+totalQ+=data.quizScore[k].total||0;
 }
 }
-navHtml+='<div class="nav-section">高中</div>';
-for(var i=0;i<GRADES.length;i++){
-if(GRADES[i].stage==='高中'){
-navHtml+='<div class="nav-item" onclick="go(\'grade\',\''+GRADES[i].name+'\')"><span>'+GRADES[i].icon+'</span><span>'+GRADES[i].name+'</span></div>';
+document.getElementById('statTotal').textContent=total;
+document.getElementById('statRead').textContent=read;
+document.getElementById('statQuiz').textContent=quizDone;
+document.getElementById('statCorrect').textContent=totalQ>0?Math.round(correct/totalQ*100):0;
 }
+
+function renderGrade(gradeName){
+var subs=getSubjectsByGrade(gradeName);
+var iconMap={语文:"📖",数学:"📐",英语:"🇬🇧",物理:"⚡",化学:"🧪",历史:"📜",地理:"🌍",生物学:"🧬"};
+var html='<button class="back-btn" onclick="go(\'home\')">← 返回年级选择</button>';
+html+='<div class="card"><div class="card-title">'+gradeName+' <span style="font-weight:400;color:#888;font-size:12px">'+subs.length+'个学科</span></div>';
+html+='<div class="grid-2">';
+for(var i=0;i<subs.length;i++){
+var s=subs[i];
+html+='<div class="item-card" onclick="go(\'knowledge\',\''+s.key+'\')">';
+html+='<div class="title">'+iconMap[s.name]+' '+s.name+'</div>';
+html+='<div class="meta"><span>'+s.items.length+'个知识点</span><span>'+getLearnedCount(s.key)+'已学</span></div>';
+html+='</div>';
 }
-document.getElementById('navList').innerHTML=navHtml;
+html+='</div></div>';
+document.getElementById('page-grade').innerHTML=html;
+}
+
+function getLearnedCount(key){
+var data=ls.get('studyData');
+return data.learned&&data.learned[key]?data.learned[key].length:0;
 }
 
 function getSubjectsByGrade(gradeName){
@@ -478,310 +389,176 @@ for(var i=0;i<subs.length;i++){
 var key=subs[i];
 var parts=key.split('-');
 var name=parts[0];
-if(SUBJECTS[key]){
-result.push({key:key,name:name,items:SUBJECTS[key]});
+if(KNOWLEDGE[key]){
+result.push({key:key,name:name,items:KNOWLEDGE[key]});
 }
 }
 return result;
 }
 
-function renderGrade(gradeName){
-var subs=getSubjectsByGrade(gradeName);
-var html='<button class="back-btn" onclick="go(\'home\')">← 返回年级选择</button>';
-html+='<div class="card"><div class="card-title">📚 '+gradeName+' <span style="font-weight:400;color:#888;font-size:12px">'+subs.length+'个学科</span></div>';
-html+='<div class="grid">';
-var iconMap={语文:"📖",数学:"📐",英语:"🇬🇧",物理:"⚡",化学:"🧪",历史:"📜",地理:"🌍",生物学:"🧬",道德与法治:"⚖️",政治:"🏛️",信息技术:"💻"};
-for(var i=0;i<subs.length;i++){
-var s=subs[i];
-html+='<div class="sub-card" onclick="go(\'subject\',\''+s.key+'\')"><div class="icon">'+iconMap[s.name]+'</div><div class="name">'+s.name+'</div><div class="desc">'+s.items.length+'个模块</div></div>';
-}
-html+='</div></div>';
-document.getElementById('page-grade').innerHTML=html;
-}
-
-function getSubjectName(key){
-var parts=key.split('-');
-return parts[0];
-}
-
-function renderSubject(key){
-var parts=key.split('-');
-var name=parts[0];
-var items=SUBJECTS[key]||[];
-var html='<button class="back-btn" onclick="go(\'home\')">← 返回学科列表</button>';
-html+='<div class="card"><div class="card-title">'+name+' <span style="font-weight:400;color:#888;font-size:12px">'+items.length+'个知识模块</span></div>';
-html+='<div class="tab-nav">';
+function renderKnowledge(key){
+var items=KNOWLEDGE[key]||[];
+var name=key.split('-')[0];
+var html='<button class="back-btn" onclick="go(\'home\')">← 返回年级</button>';
+html+='<div class="card"><div class="card-title">'+name+' <span style="font-weight:400;color:#888;font-size:12px">'+items.length+'个知识模块</span></div></div>';
 for(var i=0;i<items.length;i++){
-html+='<button class="tab-btn'+(i===0?' active':'')+'" onclick="showItem(this,'+i+')">'+items[i].title+'</button>';
-}
-html+='</div>';
-for(var i=0;i<items.length;i++){
-html+='<div class="content-item item-content" id="item'+i+'" style="'+(i>0?'display:none':'')+'"><h4>'+items[i].title+'</h4><ul>';
-for(var j=0;j<items[i].list.length;j++){html+='<li>'+items[i].list[j]+'</li>';}
-html+='</ul></div>';
-}
-html+='</div>';
-html+='<div style="margin:8px 0 12px"><button class="btn btn-success" onclick="showNoteModal(\''+name+'\')">✏️ 写笔记</button> ';
-html+='<button class="btn btn-primary" onclick="showRevModal(\''+name+'\')">🔄 添加复习</button></div>';
-var res=RESOURCES[name]||[];
-if(res.length>0){
-var typeColors={视频:'#e53e3e',文档:'#3182ce',网站:'#38a169',书籍:'#805ad5'};
-html+='<div class="card"><div class="card-title">📚 学习资源</div><div class="res-grid">';
-for(var i=0;i<res.length;i++){
-var r=res[i];
-html+='<div class="res-card"'+(r.url?' onclick="window.open(\''+r.url+'\')"':'')+'>';
-html+='<div class="top" style="background:'+(typeColors[r.type]||'#666')+'20"><span style="font-size:28px">'+r.icon+'</span><span class="type-tag" style="background:'+(typeColors[r.type]||'#666')+'">'+r.type+'</span></div>';
-html+='<div class="info"><h4>'+r.title+'</h4><p>'+r.type+'</p></div></div>';
-}
+var item=items[i];
+html+='<div class="know-card" onclick="go(\'read\',\''+key+'|'+i+'\')">';
+html+='<span class="tag tag-'+item.tag+'">'+item.tagName+'</span>';
+html+='<h3>'+item.title+'</h3>';
+html+='<p>'+item.desc+'</p>';
+html+='<div class="points">';
+html+='<span>📖 阅读学习</span>';
+html+='<span>✏️ 练习测试</span>';
 html+='</div></div>';
 }
-document.getElementById('page-subject').innerHTML=html;
+document.getElementById('page-knowledge').innerHTML=html;
+document.getElementById('headerActions').innerHTML='<button class="btn btn-primary" onclick="go(\'quiz\',\''+key+'\')">✏️ 开始练习</button>';
 }
 
-function showItem(btn,idx){
-document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
-document.querySelectorAll('.item-content').forEach(function(c){c.style.display='none';});
-btn.classList.add('active');
-document.getElementById('item'+idx).style.display='block';
+function renderRead(param){
+var parts=param.split('|');
+var key=parts[0];
+var idx=parseInt(parts[1]);
+var item=KNOWLEDGE[key][idx];
+var name=key.split('-')[0];
+document.getElementById('headerActions').innerHTML='<button class="btn btn-success" onclick="markRead(\''+key+'\','+idx+')">✓ 已读完</button><button class="btn btn-primary" onclick="go(\'quiz\',\''+key+'\')">✏️ 练习</button>';
+var html='<button class="back-btn" onclick="go(\'knowledge\',\''+key+'\')">← 返回知识列表</button>';
+html+='<div class="read-section">';
+html+='<h2>'+item.title+'</h2>';
+html+=item.content;
+html+='</div>';
+document.getElementById('page-read').innerHTML=html;
+window.scrollTo(0,0);
 }
 
-function renderNotes(){
-var notes=ls.get('notes')||[];
-if(notes.length===0){
-document.getElementById('page-notes').innerHTML='<div class="empty"><div class="icon">📝</div>暂无笔记<br><br><button class="btn btn-primary" onclick="showNoteModal()">✏️ 新建笔记</button></div>';
+function markRead(key,idx){
+var data=ls.get('studyData');
+if(!data.read)data.read={};
+if(!data.read[key])data.read[key]=[];
+if(data.read[key].indexOf(idx)===-1)data.read[key].push(idx);
+ls.set('studyData',data);
+toast('已标记为已阅读！','success');
+updateHomeStats();
+}
+
+function renderQuiz(key){
+var quizz=getQuizByKey(key);
+var name=key.split('-')[0];
+if(!quizz||quizz.length===0){
+document.getElementById('page-quiz').innerHTML='<button class="back-btn" onclick="go(\'knowledge\',\''+key+'\')">← 返回</button><div class="empty"><div class="icon">✏️</div>暂无练习题<br><br><button class="btn btn-primary" onclick="go(\'home\')">返回首页</button></div>';
 return;
 }
-var html='<div style="margin-bottom:12px"><button class="btn btn-primary" onclick="showNoteModal()">✏️ 新建笔记</button></div>';
-for(var i=0;i<notes.length;i++){
-var n=notes[i];
-html+='<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><strong style="font-size:13px;color:#1b4332">'+n.title+'</strong><div><button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="editNote('+n.id+')">编辑</button> <button class="btn btn-secondary" style="padding:4px 10px;font-size:11px" onclick="delNote('+n.id+')">删除</button></div></div><p style="font-size:12px;color:#666;margin:6px 0">'+n.content.substring(0,100)+(n.content.length>100?'...':'')+'</p><div style="font-size:11px;color:#aaa">'+(n.subj?'['+n.subj+'] ':'')+new Date(n.updated).toLocaleDateString()+'</div></div>';
+var q0=quizz[0];
+var html='<button class="back-btn" onclick="go(\'knowledge\',\''+key+'\')">← 返回</button>';
+html+='<div class="quiz-section"><h3>'+q0.title+'</h3>';
+for(var i=0;i<q0.q.length;i++){
+var qi=q0.q[i];
+html+='<div class="quiz-item" id="qi'+i+'">';
+html+='<div class="question">'+(i+1)+'. '+qi.q+'</div>';
+html+='<div class="quiz-options">';
+for(var j=0;j<qi.o.length;j++){
+html+='<div class="quiz-option" onclick="selectOpt('+i+','+j+',\''+key+'\')" id="opt'+i+'_'+j+'">';
+html+='<span class="opt">'+String.fromCharCode(65+j)+'.</span>';
+html+='<span>'+qi.o[j]+'</span></div>';
 }
-document.getElementById('page-notes').innerHTML=html;
+html+='</div></div>';
 }
-
-function showNoteModal(subjName){
-document.getElementById('noteModalTitle').textContent='新建笔记';
-document.getElementById('editNoteId').value='';
-document.getElementById('noteTitle').value='';
-document.getElementById('noteContent').value='';
-var allSubj=["语文","数学","英语","物理","化学","历史","地理","生物学","道德与法治","政治","信息技术"];
-var sel=document.getElementById('noteSubj');
-var opts='<option value="">无关联</option>';
-for(var i=0;i<allSubj.length;i++){opts+='<option value="'+allSubj[i]+'"'+(allSubj[i]===subjName?' selected':'')+'>'+allSubj[i]+'</option>';}
-sel.innerHTML=opts;
-document.getElementById('noteModal').classList.add('show');
-}
-
-function editNote(id){
-var notes=ls.get('notes')||[];
-var n=null;
-for(var i=0;i<notes.length;i++){if(notes[i].id===id){n=notes[i];break;}}
-if(!n){return;}
-document.getElementById('noteModalTitle').textContent='编辑笔记';
-document.getElementById('editNoteId').value=n.id;
-document.getElementById('noteTitle').value=n.title;
-document.getElementById('noteContent').value=n.content;
-var allSubj=["语文","数学","英语","物理","化学","历史","地理","生物学","道德与法治","政治","信息技术"];
-var sel=document.getElementById('noteSubj');
-var opts='<option value="">无关联</option>';
-for(var i=0;i<allSubj.length;i++){opts+='<option value="'+allSubj[i]+'"'+(allSubj[i]===n.subj?' selected':'')+'>'+allSubj[i]+'</option>';}
-sel.innerHTML=opts;
-document.getElementById('noteModal').classList.add('show');
+html+='<button class="btn btn-primary" onclick="submitQuiz(\''+key+'\')">提交答案</button>';
+html+='<div id="quizResult"></div></div>';
+document.getElementById('page-quiz').innerHTML=html;
+document.getElementById('headerActions').innerHTML='';
+window._quizAnswers={};
 }
 
-function closeNoteModal(){document.getElementById('noteModal').classList.remove('show');document.getElementById('noteModal').className='modal';}
-
-function saveNote(){
-var title=document.getElementById('noteTitle').value.trim();
-var content=document.getElementById('noteContent').value.trim();
-if(!title){toast('请输入标题','error');return;}
-var subj=document.getElementById('noteSubj').value;
-var notes=ls.get('notes')||[];
-var now=Date.now();
-var editId=document.getElementById('editNoteId').value;
-if(editId){
-for(var i=0;i<notes.length;i++){if(notes[i].id==editId){notes[i]={id:editId,title:title,content:content,subj:subj,updated:now};break;}}
-}else{
-notes.unshift({id:now,title:title,content:content,subj:subj,created:now,updated:now});
-}
-ls.set('notes',notes);
-closeNoteModal();
-renderNotes();
-toast('已保存','success');
+function getQuizByKey(key){
+var grade=key.split('-')[1];
+if(QUIZZES[key])return QUIZZES[key];
+if(grade==='小学')return QUIZZES["语文-小学"]||QUIZZES["数学-小学"];
+if(grade==='初中')return QUIZZES["初中一年级"];
+if(grade==='高中')return QUIZZES["高中"];
+return null;
 }
 
-function delNote(id){
-if(!confirm('确定删除？')){return;}
-var notes=ls.get('notes')||[];
-var filtered=[];
-for(var i=0;i<notes.length;i++){if(notes[i].id!==id){filtered.push(notes[i]);}}
-ls.set('notes',filtered);
-renderNotes();
-toast('已删除');
+function selectOpt(qIdx,optIdx,key){
+if(window._quizAnswers['q'+qIdx]!==undefined)return;
+window._quizAnswers['q'+qIdx]=optIdx;
+document.querySelectorAll('#qi'+qIdx+' .quiz-option').forEach(function(el,idx){
+el.classList.toggle('selected',idx===optIdx);
+});
 }
 
-function renderMindmap(){
-document.getElementById('page-mindmap').innerHTML='<div style="margin-bottom:12px"><button class="btn btn-primary" onclick="showMapModal()">🧠 新建导图</button> <select id="mapSel" onchange="loadMap(this.value)" style="padding:7px 12px;border:1px solid #b7e4c7;border-radius:6px;font-size:12px"><option value="">📂 加载导图</option></select></div><div id="mapCanvas" style="height:400px;background:#fff;border-radius:12px;position:relative;overflow:auto"></div>';
-var maps=ls.get('maps')||[];
-var sel=document.getElementById('mapSel');
-if(sel){sel.innerHTML='<option value="">📂 加载导图</option>'+maps.map(function(m){return'<option value="'+m.id+'">'+m.name+'</option>';}).join('');}
+function submitQuiz(key){
+var quizz=getQuizByKey(key);
+if(!quizz||!quizz[0])return;
+var q0=quizz[0];
+var correct=0,total=q0.q.length;
+for(var i=0;i<q0.q.length;i++){
+var userAns=window._quizAnswers['q'+i];
+if(userAns===undefined)continue;
+var isCorrect=userAns===q0.q[i].a;
+if(isCorrect)correct++;
+document.getElementById('opt'+i+'_'+userAns).classList.add(isCorrect?'correct':'wrong');
+if(!isCorrect){
+document.getElementById('opt'+i+'_'+q0.q[i].a).classList.add('correct');
+}
+}
+var score=Math.round(correct/total*100);
+var resultHtml='<div class="quiz-item"><h3>答题结果</h3>';
+resultHtml+='<p>正确：'+correct+'/'+total+'（'+score+'%）</p>';
+resultHtml+='<div class="progress-bar"><div class="fill" style="width:'+score+'%;background:'+(score>=60?'#38a169':'#e53e3e')+'"></div></div>';
+resultHtml+='<button class="btn btn-primary" onclick="go(\'quiz\',\''+key+'\')">再练一次</button>';
+resultHtml+='<button class="btn btn-secondary" onclick="go(\'home\')">返回首页</button></div>';
+document.getElementById('quizResult').innerHTML=resultHtml;
+var data=ls.get('studyData');
+if(!data.quizScore)data.quizScore={};
+data.quizScore[key]={correct:correct,total:total,score:score,date:new Date().toISOString()};
+ls.set('studyData',data);
+updateHomeStats();
+toast(score>=60?'🎉 合格！':'加油！',score>=60?'success':'error');
 }
 
-function showMapModal(){
-document.getElementById('mapName').value='';
-document.getElementById('mapModal').classList.add('show');
+function renderProgress(){
+var data=ls.get('studyData');
+var html='<button class="back-btn" onclick="go(\'home\')">← 返回首页</button>';
+html+='<div class="card"><div class="card-title">📊 学习进度总览</div>';
+html+='<div class="stats" style="margin-bottom:16px">';
+html+='<div class="stat-card"><div class="num">'+(data.learned?Object.keys(data.learned).length:0)+'</div><div class="label">已学习学科</div></div>';
+html+='<div class="stat-card"><div class="num">'+(data.read?Object.keys(data.read).length:0)+'</div><div class="label">已阅读知识点</div></div>';
+html+='<div class="stat-card"><div class="num">'+(data.quizScore?Object.keys(data.quizScore).length:0)+'</div><div class="label">完成练习</div></div>';
+html+='</div></div>';
+if(data.quizScore){
+html+='<div class="card"><div class="card-title">✏️ 练习成绩</div>';
+for(var k in data.quizScore){
+var qs=data.quizScore[k];
+html+='<div style="padding:8px 0;border-bottom:1px solid #f0f0f0">';
+html+='<strong>'+k+'</strong>：'+qs.correct+'/'+qs.total+'（'+qs.score+'%）';
+html+='</div>';
+}
+html+='</div>';
+}
+if(data.read){
+html+='<div class="card"><div class="card-title">📖 已阅读</div>';
+for(var k in data.read){
+html+='<div style="padding:8px 0;border-bottom:1px solid #f0f0f0">';
+html+='<strong>'+k+'</strong>：'+data.read[k].length+'个知识点';
+html+='</div>';
+}
+html+='</div>';
+}
+document.getElementById('page-progress').innerHTML=html;
 }
 
-function closeMapModal(){document.getElementById('mapModal').classList.remove('show');document.getElementById('mapModal').className='modal';}
-
-function createMap(){
-var name=document.getElementById('mapName').value.trim();
-if(!name){toast('请输入名称','error');return;}
-var maps=ls.get('maps')||[];
-var id=Date.now();
-maps.push({id:id,name:name,nodes:[{id:1,x:180,y:150,text:'中心主题',root:true}],lines:[]});
-ls.set('maps',maps);
-closeMapModal();
-toast('导图已创建','success');
-loadMap(id);
+function initNav(){
+var navHtml='<div class="nav-section">年级</div>';
+for(var i=0;i<GRADES.length;i++){
+navHtml+='<div class="nav-item" onclick="go(\'grade\',\''+GRADES[i].name+'\')"><span>'+GRADES[i].icon+'</span><span>'+GRADES[i].name+'</span></div>';
+}
+document.getElementById('navList').innerHTML=navHtml;
 }
 
-function loadMap(id){
-if(!id){document.getElementById('mapCanvas').innerHTML='<div class="empty" style="padding:60px;text-align:center;color:#aaa">请新建或加载导图</div>';return;}
-var maps=ls.get('maps')||[];
-var m=null;
-for(var i=0;i<maps.length;i++){if(maps[i].id==id){m=maps[i];break;}}
-if(!m){return;}
-var canvas=document.getElementById('mapCanvas');
-canvas.innerHTML='';
-for(var i=0;i<(m.lines||[]).length;i++){
-var l=m.lines[i];
-var f=null,t2=null;
-for(var j=0;j<(m.nodes||[]).length;j++){if(m.nodes[j].id===l.from){f=m.nodes[j];}if(m.nodes[j].id===l.to){t2=m.nodes[j];}}
-if(f&&t2){
-var a=Math.atan2(t2.y-f.y,t2.x-f.x);
-var dist=Math.sqrt(Math.pow(t2.x-f.x,2)+Math.pow(t2.y-f.y,2));
-var line=document.createElement('div');
-line.style.cssText='position:absolute;left:'+(f.x+40)+'px;top:'+(f.y+20)+'px;width:'+dist+'px;height:2px;background:#3182ce;transform-origin:left center;transform:rotate('+a+'rad)';
-canvas.appendChild(line);
-}
-}
-for(var i=0;i<(m.nodes||[]).length;i++){
-var n=m.nodes[i];
-var node=document.createElement('div');
-node.style.cssText='position:absolute;left:'+n.x+'px;top:'+n.y+'px;padding:8px 14px;background:'+(n.root?'#2d6a4f':'#ebf8ff')+';color:'+(n.root?'#fff':'#1b4332')+';border-radius:8px;border:2px solid '+(n.root?'#2d6a4f':'#3182ce')+';cursor:move;min-width:80px;text-align:center;font-size:12px;user-select:none';
-node.textContent=n.text;
-node.dataset.id=n.id;
-node.onmousedown=function(e){window._dragNode=Number(this.dataset.id);window._dragOffX=e.offsetX;window._dragOffY=e.offsetY;};
-node.onclick=function(){window._selNode=Number(this.dataset.id);};
-canvas.appendChild(node);
-}
-canvas.onmousemove=function(e){
-if(!window._dragNode){return;}
-var rect=canvas.getBoundingClientRect();
-var x=e.clientX-rect.left-window._dragOffX;
-var y=e.clientY-rect.top-window._dragOffY;
-var nodes2=(ls.get('maps')||[]).find(function(m2){return m2.nodes.some(function(n){return n.id===window._dragNode;});})||{nodes:[]};
-for(var i=0;i<nodes2.nodes.length;i++){if(nodes2.nodes[i].id===window._dragNode){nodes2.nodes[i].x=x;nodes2.nodes[i].y=y;break;}}
-};
-canvas.onmouseup=function(){
-if(window._dragNode){
-var maps2=ls.get('maps')||[];
-var map2=null;
-for(var i=0;i<maps2.length;i++){if(maps2[i].id==document.getElementById('mapSel').value){map2=maps2[i];break;}}
-if(map2){
-for(var i=0;i<map2.nodes.length;i++){if(map2.nodes[i].id===window._dragNode){map2.nodes[i].x=parseFloat(canvas.querySelector('[data-id="'+window._dragNode+'"]').style.left);map2.nodes[i].y=parseFloat(canvas.querySelector('[data-id="'+window._dragNode+'"]').style.top);break;}}
-ls.set('maps',maps2);
-}
-window._dragNode=null;
-}
-};
-canvas.ondblclick=function(e){
-if(e.target===canvas){return;}
-var nid=Number(e.target.dataset.id);
-if(!nid){return;}
-var txt=prompt('节点内容：',e.target.textContent);
-if(txt){
-var maps3=ls.get('maps')||[];
-var map3=null;
-for(var i=0;i<maps3.length;i++){if(document.getElementById('mapSel')&&maps3[i].id==document.getElementById('mapSel').value){map3=maps3[i];break;}}
-if(map3){
-for(var i=0;i<map3.nodes.length;i++){if(map3.nodes[i].id===nid){map3.nodes[i].text=txt;break;}}
-ls.set('maps',maps3);
-}
-e.target.textContent=txt;
-}
-};
-canvas.onclick=function(e){
-if(e.target===canvas){window._selNode=null;}
-};
-}
-
-function renderReview(){
-var reviews=ls.get('reviews')||[];
-var today=new Date();today.setHours(0,0,0,0);
-var due=[];
-var pastDue=[];
-var mastered=[];
-for(var i=0;i<reviews.length;i++){
-var r=reviews[i];
-var d=new Date(r.nextReview);d.setHours(0,0,0,0);
-if(r.mastered){mastered.push(r);}
-else if(d.getTime()===today.getTime()){due.push(r);}
-else if(d<today){pastDue.push(r);}
-}
-document.getElementById('page-review').innerHTML='<div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">'+
-'<div class="card" style="flex:1;min-width:100px;text-align:center;padding:12px"><div style="font-size:24px;font-weight:700;color:#3182ce">'+reviews.length+'</div><div style="font-size:11px;color:#888">总计</div></div>'+
-'<div class="card" style="flex:1;min-width:100px;text-align:center;padding:12px"><div style="font-size:24px;font-weight:700;color:#f59e0b">'+(due.length+pastDue.length)+'</div><div style="font-size:11px;color:#888">待复习</div></div>'+
-'<div class="card" style="flex:1;min-width:100px;text-align:center;padding:12px"><div style="font-size:24px;font-weight:700;color:#38a169">'+mastered.length+'</div><div style="font-size:11px;color:#888">已掌握</div></div>'+
-'<button class="btn btn-primary" onclick="showRevModal()">➕ 添加复习项</button></div>'+
-'<div class="card"><div class="card-title">⏰ 待复习</div>'+(due.concat(pastDue).map(function(r){return'<div style="padding:10px;border-bottom:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center"><div><strong style="font-size:13px">'+r.title+'</strong><div style="font-size:11px;color:#888">'+(r.subj?'['+r.subj+'] ':'')+'间隔'+r.interval+'天</div></div><button class="btn btn-success btn-sm" onclick="markDone('+r.id+')">✓ 完成</button></div>';}).join('')||'<div style="padding:20px;text-align:center;color:#aaa;font-size:12px">暂无待复习内容</div>')+'</div>';
-}
-
-function showRevModal(subjName){
-var allSubj=["语文","数学","英语","物理","化学","历史","地理","生物学","道德与法治","政治","信息技术"];
-var sel=document.getElementById('revSubj');
-var opts='<option value="">无关联</option>';
-for(var i=0;i<allSubj.length;i++){opts+='<option value="'+allSubj[i]+'">'+allSubj[i]+'</option>';}
-sel.innerHTML=opts;
-if(subjName){document.getElementById('revSubj').value=subjName;}
-document.getElementById('revTitle').value='';
-document.getElementById('revInterval').value='7';
-document.getElementById('revModal').classList.add('show');
-}
-
-function closeRevModal(){document.getElementById('revModal').classList.remove('show');document.getElementById('revModal').className='modal';}
-
-function saveRev(){
-var title=document.getElementById('revTitle').value.trim();
-if(!title){toast('请输入内容','error');return;}
-var subj=document.getElementById('revSubj').value;
-var interval=parseInt(document.getElementById('revInterval').value);
-var now=new Date();
-var reviews=ls.get('reviews')||[];
-reviews.unshift({id:Date.now(),title:title,subj:subj,interval:interval,nextReview:new Date(now.getTime()+interval*86400000).toISOString(),created:now.getTime(),mastered:false,history:[]});
-ls.set('reviews',reviews);
-closeRevModal();
-renderReview();
-toast('已添加','success');
-}
-
-function markDone(id){
-var reviews=ls.get('reviews')||[];
-var idx=-1;
-for(var i=0;i<reviews.length;i++){if(reviews[i].id===id){idx=i;break;}}
-if(idx===-1){return;}
-var r=reviews[idx];
-r.history=r.history||[];
-r.history.push(new Date().toISOString());
-if(r.history.length>=3){r.mastered=true;toast('🎉 已掌握！','success');}
-else{var next=new Date();next.setDate(next.getDate()+r.interval*(r.history.length+1));r.nextReview=next.toISOString();toast('下次复习：'+new Date(r.nextReview).toLocaleDateString());}
-reviews[idx]=r;
-ls.set('reviews',reviews);
-renderReview();
-}
-
-renderHome();
+initNav();
+go('home');
 </script>
 </body>
 </html>
